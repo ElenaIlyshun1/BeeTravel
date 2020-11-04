@@ -12,7 +12,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     border: 0;
     font-size: 100%;
     font: inherit;
-    vertical-align: baseline; 
+    vertical-align: baseline;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -2501,7 +2501,6 @@ ul {
     list-style: disc;
     margin: 0 0 2em 0;
     padding-left: 1em;
-
 }
 
     ul li {
@@ -2535,6 +2534,7 @@ ul {
             line-height: 2.5em;
             padding: 0 0.5em;
         }
+
             ul.icons li:hover {
                 transform: scale(1.2);
             }
@@ -2552,8 +2552,6 @@ ul {
         cursor: default;
         list-style: none;
         padding-left: 0;
-
-       
     }
 
         ul.actions li {
@@ -2564,7 +2562,6 @@ ul {
 
             ul.actions li:last-child {
                 padding-right: 0;
-                
             }
 
         ul.actions.small li {
@@ -2590,7 +2587,6 @@ ul {
 
             ul.actions.vertical.small li:first-child {
                 padding-top: 0;
-                
             }
 
         ul.actions.fit {
@@ -3157,7 +3153,6 @@ body.landing .dropotron.level-0 {
         position: absolute;
         right: 1em;
         top: 0;
-       
     }
 
         #header nav ul {
@@ -3167,7 +3162,6 @@ body.landing .dropotron.level-0 {
             #header nav ul li {
                 display: inline-block;
                 margin-left: 1em;
-          
             }
 
                 #header nav ul li a, #header nav ul li span {
@@ -3184,27 +3178,23 @@ body.landing .dropotron.level-0 {
                         height: 2em;
                         line-height: 2em;
                         padding: 0 1.25em;
-                       
                     }
 
                     #header nav ul li a:not(.button):before, #header nav ul li span:not(.button):before {
                         margin-right: 0.5em;
-                      
                     }
 
                 #header nav ul li.active > a, #header nav ul li.active > span {
                     color: var(--main-color);
-                   
                 }
 
                 #header nav ul li > ul {
                     display: none;
-                    
                 }
 
 body.landing #page-wrapper {
     padding-top: 0;
-    width:100%;
+    width: 100%;
 }
 
 body.landing #header {
@@ -3238,11 +3228,8 @@ body.landing #header {
 
     #banner:after {
         background-image: -moz-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");
-       
-        background-image: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");
-        
+        background-image: -webkit-linear-gradient(top, rgb(45 47 60 / 95%), rgba(23, 24, 32, 0.95)), url(images/overlay.png);
         background-image: linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");
-     
         content: '';
         display: block;
         height: 100%;
@@ -3827,12 +3814,10 @@ body.is-touch #banner {
 
         ul.actions.small li {
             padding: 0.5em 0 0 0;
-            
         }
 
             ul.actions.small li:first-child {
                 padding-top: 0;
-          
             }
 
     /* Button */
@@ -3882,5 +3867,4 @@ body.is-touch #banner {
                 margin: 0;
                 padding: 0;
             }
-    
 }

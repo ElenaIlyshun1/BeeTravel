@@ -18,7 +18,10 @@ namespace BeeTravel.Areas.Identity
                 services.AddDbContext<BeeTravelContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("BeeTravelContextConnection")));
-              
+
+
+                //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                //    .AddEntityFrameworkStores<BeeTravelContext>();
             });
         }
     }

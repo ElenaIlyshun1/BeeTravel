@@ -3,11 +3,11 @@
     --main-color: #fcd76f;
     --main-dark: #eda532;
 }
+
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
 .button {
-    
     -moz-appearance: none;
     -webkit-appearance: none;
     -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -114,3 +114,7 @@ input[type="button"],
         cursor: default;
         opacity: 0.25;
     }
+
+.button-language:hover {
+    transform: scale(1.1);
+}

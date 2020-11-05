@@ -1,14 +1,18 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
     ViewData["Title"] = "Home Page";
 }
+
 <div>
     <section id="banner">
         <div class="content">
             <header>
-                <h2>The future has landed</h2>
+                <h2>@Localizer["Header_main_title"]</h2>
                 <p>
-                    And there are no hoverboards or flying cars.<br />
-                    Just apps. Lots of mother flipping apps.
+                    @Localizer["Header_main_subtitle_1"]<br />
+                    @Localizer["Header_main_subtitle_2"]
                 </p>
             </header>
             <span class="image"><img src="~/img/pic01.jpg" alt="" /></span>
@@ -62,7 +66,7 @@
             </header>
             <p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
             <ul class="actions">
-                <li><a href="#" class="button" style="text-decoration:none;">Learn More</a></li>
+                <li><a href="#" class="button" style="text-decoration:none;">@Localizer["Button_LearnMore"]</a></li>
             </ul>
         </div>
         <a href="#three" class="goto-next scrolly">Next</a>
@@ -78,7 +82,7 @@
             </header>
             <p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
             <ul class="actions">
-                <li><a href="#" class="button" style="text-decoration:none;">Learn More</a></li>
+                <li><a href="#" class="button" style="text-decoration:none;">@Localizer["Button_LearnMore"]</a></li>
             </ul>
         </div>
         <a href="#four" class="goto-next scrolly">Next</a>
@@ -94,40 +98,40 @@
             <div class="box alt">
                 <div class="row uniform">
                     <section class="4u 6u(medium) 12u$(xsmall)">
-                        <span class="icon alt major fa-area-chart"></span>
-                        <h3>Ipsum sed commodo</h3>
-                        <p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
+                        <span class="icon alt major fa-search"></span>
+                        <h3>@Localizer["About_Search_Title"]</h3>
+                        <p>@Localizer["About_Search_SubTitle"]</p>
                     </section>
                     <section class="4u 6u$(medium) 12u$(xsmall)">
                         <span class="icon alt major fa-comment"></span>
-                        <h3>Eleifend lorem ornare</h3>
-                        <p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
+                        <h3>@Localizer["About_Support_Title"]</h3>
+                        <p>@Localizer["About_Support_SubTitle"]</p>
                     </section>
                     <section class="4u$ 6u(medium) 12u$(xsmall)">
-                        <span class="icon alt major fa-flask"></span>
-                        <h3>Cubilia cep lobortis</h3>
-                        <p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
+                        <span class="icon alt major fa-medkit"></span>
+                        <h3>@Localizer["About_Insurance_Title"]</h3>
+                        <p>@Localizer["About_Insurance_SubTitle"]</p>
                     </section>
                     <section class="4u 6u$(medium) 12u$(xsmall)">
-                        <span class="icon alt major fa-paper-plane"></span>
-                        <h3>Non semper interdum</h3>
-                        <p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
+                        <span class="icon alt major fa-plane"></span>
+                        <h3>@Localizer["About_Facilities_Title"]</h3>
+                        <p>@Localizer["About_Facilities_SubTitle"]</p>
                     </section>
                     <section class="4u 6u(medium) 12u$(xsmall)">
                         <span class="icon alt major fa-file"></span>
-                        <h3>Odio laoreet accumsan</h3>
-                        <p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
+                        <h3>@Localizer["About_Documents_Title"]</h3>
+                        <p>@Localizer["About_Documents_SubTitle"]</p>
                     </section>
                     <section class="4u$ 6u$(medium) 12u$(xsmall)">
                         <span class="icon alt major fa-lock"></span>
-                        <h3>Massa arcu accumsan</h3>
-                        <p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
+                        <h3>@Localizer["About_Privacy_Title"]</h3>
+                        <p>@Localizer["About_Privacy_SubTitle"]</p>
                     </section>
                 </div>
             </div>
             <footer class="major">
                 <ul class="actions">
-                    <li><a href="#" class="button search-order" style="text-decoration:none;">Magna sed feugiat</a></li>
+                    <li><a href="#" class="button search-order" style="text-decoration:none;">@Localizer["Button_SearchOrder"]</a></li>
                 </ul>
             </footer>
         </div>

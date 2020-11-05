@@ -135,6 +135,9 @@
   <data name="About_Insurance_Title" xml:space="preserve">
     <value>Медицинская страховка</value>
   </data>
+  <data name="About_Main_Title" xml:space="preserve">
+    <value>Больше про нас</value>
+  </data>
   <data name="About_Privacy_SubTitle" xml:space="preserve">
     <value>Полная конфиденциальность ваших данных и данных о ваших поездках.</value>
   </data>

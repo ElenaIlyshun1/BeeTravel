@@ -135,6 +135,9 @@
   <data name="About_Insurance_Title" xml:space="preserve">
     <value>Medical insurance</value>
   </data>
+  <data name="About_Main_Title" xml:space="preserve">
+    <value>More about us</value>
+  </data>
   <data name="About_Privacy_SubTitle" xml:space="preserve">
     <value>Complete confidentiality of your data and data about your travels.</value>
   </data>

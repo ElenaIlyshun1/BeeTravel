@@ -1,9 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
-@{
-    ViewData["Title"] = "Home Page";
-}
+@{ ViewData["Title"] = "Home Page"; }
 
 <div>
     <section id="banner">
@@ -92,11 +90,11 @@
     <section id="four" class="wrapper style1 special fade-up">
         <div class="container">
             <header class="major">
-                <h2>@Localizer["About_Main_Title"]</h2>            
+                <h2>@Localizer["About_Main_Title"]</h2>
             </header>
             <div class="box alt">
                 <div class="row uniform">
-                    <section class="4u 6u(medium) 12u$(xsmall)">    
+                    <section class="4u 6u(medium) 12u$(xsmall)">
                         <span class="icon alt major fa-search"></span>
                         <h3>@Localizer["About_Search_Title"]</h3>
                         <p>@Localizer["About_Search_SubTitle"]</p>

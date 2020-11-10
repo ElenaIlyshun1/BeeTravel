@@ -1,0 +1,81 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Identity
+@using BeeTravel.Entities
+@inject SignInManager<DbUser> SignInManager
+@inject UserManager<DbUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BeeTravel</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/button.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/login-register.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="landing">
+    <div id="page-wrapper">
+        <header id="header">
+            <h1 id="logo"><a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BeeTravel</a></h1>
+            <nav id="nav">
+                <ul>
+                    <li><a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Navbar_menu_item_1"]</a></li>
+                    <li><a href="#">@Localizer["Navbar_menu_item_2"]</a></li>
+                    <li><a href="elements.html">@Localizer["Navbar_menu_item_3"]</a></li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                        </li>
+                        <li class="nav-item">
+                            <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="button special" asp-area="" asp-controller="Account" asp-action="Login">@Localizer["Navbar_menu_login"]</a>
+                        </li>
+                    }
+                    <li class="nav-item button-language">
+                        <partial name="_Culture" />
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div>
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <ul class="icons">
+            <li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+            <li><a href="#" class="icon alt fa-plane"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+            <li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <ul class="copyright">
+            <li>&copy; BeeTravel. All rights reserved.</li>
+        </ul>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/jquery.scrolly.min.js"></script>
+    <script src="~/js/jquery.dropotron.min.js"></script>
+    <script src="~/js/jquery.scrollex.min.js"></script>
+    <script src="~/js/skel.min.js"></script>
+    <script src="~/js/util.js"></script>
+    <script src="~/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

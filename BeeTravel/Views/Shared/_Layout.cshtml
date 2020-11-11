@@ -5,13 +5,15 @@
 @inject SignInManager<DbUser> SignInManager
 @inject UserManager<DbUser> UserManager
 @using BeeTravel.Service
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - @Config.CompanyName</title>
+    <title>@ViewData["Title"] - @Configuration.GetSection("ConnectionStrings")["CompanyName"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="~/css/site.css" rel="stylesheet" type="text/css" />
     <link href="~/css/button.css" rel="stylesheet" type="text/css" />

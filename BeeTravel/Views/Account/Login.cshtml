@@ -13,17 +13,22 @@
             <div class="col-md-4">
                 <form asp-action="Login">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="Email" class="control-label"></label>
-                        <input asp-for="Email" class="form-control" style="border-radius: 10px 10px 10px 10px;" />
+                    <h2>Login</h2>
+                    <div class="form-group form-lr">
+                        @*<label asp-for="Email" class="control-label"></label>*@
+                        <input asp-for="Email" type="email" name="email" id="email" value="" placeholder="Email" style="border-radius: 10px 10px 10px 10px;" />
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Password" class="control-label"></label>
-                        <input asp-for="Password" class="form-control" style="border-radius: 10px 10px 10px 10px;" />
+                    <div class="form-group form-lr">
+                        @*<label asp-for="Password" class="control-label"></label>*@
+                        <input asp-for="Password" type="password" name="password" id="password" value="" placeholder="Password" style="border-radius: 10px 10px 10px 10px;" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-lr">
+                        <input type="checkbox" id="human" name="human" checked>
+                        <label for="human">Remember Me</label>
+                    </div>
+                    <div class="form-group form-lr">
                         <input type="submit" value="Create" class="button special" style="border-radius: 10px 10px 10px 10px;"/>
                         
                     </div>

@@ -1,4 +1,6 @@
 ﻿@model BeeTravel.Models.RegistrationViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "Registration";
@@ -15,26 +17,26 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="Email" class="control-label"></label>
-                        <input asp-for="Email" class="form-control" />
+                        <input asp-for="Email" class="form-control" style="border-radius: 10px 10px 10px 10px;" />
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="PhoneNumber" class="control-label"></label>
-                        <input asp-for="PhoneNumber" class="form-control" />
+                        <input asp-for="PhoneNumber" class="form-control" style="border-radius: 10px 10px 10px 10px;" />
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="PhotoBase64" class="control-label"></label>
-                        <input asp-for="PhotoBase64" class="form-control" />
+                        <input asp-for="PhotoBase64" class="form-control" style="border-radius: 10px 10px 10px 10px;" />
                         <span asp-validation-for="PhotoBase64" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Password" class="control-label"></label>
-                        <input asp-for="Password" class="form-control" />
+                        <input asp-for="Password" class="form-control" style="border-radius: 10px 10px 10px 10px;" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <input type="submit" value="Create" class="button special" style="border-radius: 10px 10px 10px 10px;" />
                     </div>
                 </form>
             </div>
@@ -42,12 +44,12 @@
                 <section>
                     <h4>Use another service to log in.</h4>
                     <hr />
-                        <div>
-                            <p>
-                                There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                                for details on setting up this ASP.NET application to support logging in via external services.
-                            </p>
-                        </div>                      
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                            for details on setting up this ASP.NET application to support logging in via external services.
+                        </p>
+                    </div>
                 </section>
             </div>
         </div>

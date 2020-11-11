@@ -74,4 +74,10 @@
                 display: block;
                 width: 100%;
             }
-
+.input-lr {
+    border-radius: 30px 30px 30px 30px;
+   
+}
+.button-language{
+    text-decoration:none;
+}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using BeeTravel.Entities;
+using BeeTravel.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -17,8 +18,8 @@ namespace BeeTravel.Data
         {
 
         }
-        //public DbSet<Category> Categories { get; set; }
-        //public DbSet<News> News { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Tour> Tours { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

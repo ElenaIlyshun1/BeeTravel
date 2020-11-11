@@ -4,12 +4,14 @@
 @using BeeTravel.Entities
 @inject SignInManager<DbUser> SignInManager
 @inject UserManager<DbUser> UserManager
+@using BeeTravel.Service
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BeeTravel</title>
+    <title>@ViewData["Title"] - @Config.CompanyName</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="~/css/site.css" rel="stylesheet" type="text/css" />
     <link href="~/css/button.css" rel="stylesheet" type="text/css" />

@@ -2,6 +2,9 @@
 @inject IViewLocalizer Localizer
 @using BeeTravel.Service
 
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
 @{ ViewData["Title"] = @Config.CompanyName; }
 
 <div>
@@ -27,7 +30,7 @@
                 <div class="row">
                     <div class="4u 12u$(medium)">
                         <header>
-                            <h2>@Config.CompanyName</h2>
+                            <h2>@Configuration.GetSection("ConnectionStrings")["CompanyName"]</h2>
                             <h2>Odio faucibus ipsum integer consequat</h2>
                             <p>Nascetur eu nibh vestibulum amet gravida nascetur praesent</p>
                         </header>

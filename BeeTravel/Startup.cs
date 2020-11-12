@@ -106,6 +106,7 @@ namespace BeeTravel
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+            SeederDB.SeedData(app.ApplicationServices, env, this.Configuration);
         }
     }
 }

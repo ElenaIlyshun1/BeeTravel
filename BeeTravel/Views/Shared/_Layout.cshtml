@@ -33,12 +33,10 @@
                     <li><a href="elements.html">@Localizer["Navbar_menu_item_3"]</a></li>
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-                        </li>
+                        <li><a asp-area="Identity" asp-page="/Account/Manage/Index" class="button icon fa-user" title="Manage" style="box-shadow:none;padding: 0 0.15em;"></a></li>
                         <li class="nav-item">
                             <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                                <button type="submit" class="button icon fa-arrow-circle-o-right" style="box-shadow:none;padding: 0 0.15em;"></button>
                             </form>
                         </li>
                     }

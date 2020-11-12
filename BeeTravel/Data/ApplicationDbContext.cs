@@ -18,8 +18,8 @@ namespace BeeTravel.Data
         {
 
         }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Tour> Tours { get; set; }
+        //public DbSet<Category> Categories { get; set; }
+        //public DbSet<Tour> Tours { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

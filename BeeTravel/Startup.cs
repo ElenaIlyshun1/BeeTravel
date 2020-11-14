@@ -18,6 +18,7 @@ using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
 using BeeTravel.Service;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace BeeTravel
 {
@@ -51,6 +52,7 @@ namespace BeeTravel
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             services.AddControllersWithViews();
             services.AddRazorPages();
 

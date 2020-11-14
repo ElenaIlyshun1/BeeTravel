@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BeeTravel.Models
+namespace BeeTravel.Models.AccountViewModels
 {
     public class LoginViewModel
     {

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using BeeTravel.Entities;
 using BeeTravel.Helpers;
 using BeeTravel.Models;
+using BeeTravel.Models.AccountViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +21,7 @@ namespace BeeTravel.Controllers
         private readonly SignInManager<DbUser> _signInManager;
         private readonly RoleManager<DbRole> _roleManager;
         private readonly IWebHostEnvironment _env;
+
 
         public AccountController(UserManager<DbUser> userManager,
             SignInManager<DbUser> signInManager,

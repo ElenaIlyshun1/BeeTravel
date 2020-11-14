@@ -1,0 +1,88 @@
+﻿@model IndexViewModel
+<section id="banner-lr">
+    <div class="content">
+        <div class="container" >
+            <div class="Profile_page_title" style="text-align:center;">
+                <h3>PROFILE</h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="text-center">
+                        <hr>
+                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+                        <hr>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home">
+                            <hr>
+                            <form method="post">
+                                <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <label for="first_name"><h3>First name</h3></label>
+                                        <input asp-for="Username" disabled>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <div class="col-xs-6">
+                                        <label for="last_name"><h3>Last name</h3></label>
+                                        <input asp-for="Username" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <div class="col-xs-6">
+                                        <label for="phone"><h3>Phone</h3></label>
+                                        <input asp-for="PhoneNumber" type="text" name="phone" id="phone" placeholder="enter phone" disabled>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <div class="col-xs-6">
+                                        @if (Model.IsEmailConfirmed)
+                                        {
+                                            <label for="email"><h3>Email</h3></label>
+                                            <input asp-for="Email" disabled>
+                                        }
+                                        else
+                                        {
+                                            <label for="email"><h3>Email</h3></label>
+                                            <input asp-for="Email" disabled>
+                                            <button asp-action="SendVerificationEmail" class="btn button" style="margin-top:2em;">Send verification email</button>
+                                        }
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group form-lr" style="text-align:center;">
+                                  
+                                        <button class="btn button" asp-area="" asp-controller="Manage" asp-action="Edit"> Edit</button>
+                                  
+                                </div>
+                            </form>
+
+                            <hr>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

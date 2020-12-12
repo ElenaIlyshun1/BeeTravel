@@ -84,3 +84,13 @@
 .form-lr{
     margin-bottom: 3rem;
 }
+@media screen and (max-width: 736px) {
+
+    .cursor-pointer {
+        width: 100%;
+    }
+
+    .reg-log-col {
+        text-align: center;
+    }
+}

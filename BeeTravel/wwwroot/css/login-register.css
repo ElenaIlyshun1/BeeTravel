@@ -94,3 +94,14 @@
         text-align: center;
     }
 }
+.header-menu {
+    opacity: 0.5;
+}
+    .header-menu:hover {
+        opacity: 1;
+        transition: .5s;
+    }
+    .header-menu:not(:hover) {
+        opacity: 0.5;
+        transition: .5s;
+    }

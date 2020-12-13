@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="~/css/site.css" rel="stylesheet" type="text/css" />
     <link href="~/css/button.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/manage.css" rel="stylesheet" type="text/css" />
     <link href="~/css/login-register.css" rel="stylesheet" type="text/css" />
     <link href="~/css/flag-icon.css" rel="stylesheet" type="text/css" />
     <link href="~/css/flag-icon.min.css" rel="stylesheet" type="text/css" />
@@ -33,20 +34,16 @@
                     <li><a href="elements.html">@Localizer["Navbar_menu_item_3"]</a></li>
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <li><a asp-area="" asp-controller="Manage" asp-action="Index" class="button icon fa-user" title="Manage" style="box-shadow:none;padding: 0 0.15em;"></a></li>
-                        <li class="nav-item">
-                            <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                <button type="submit" class="button icon fa-arrow-circle-o-right" style="box-shadow:none;padding: 0 0.15em;outline: none;"></button>
-                            </form>
-                        </li>
+                        <li><a asp-area="" asp-controller="Manage" asp-action="Index" class="button special" title="Manage" style="box-shadow:none;padding: 0 0.55em;"> Профиль </a></li>
+
                     }
                     else
                     {
-                        <li class="nav-item">
+                        <li>
                             <a class="button special" asp-area="" asp-controller="Account" asp-action="Login">@Localizer["Navbar_menu_login"]</a>
                         </li>
                     }
-                    <li class="nav-item button-language">
+                    <li class="button-language">
                         <partial name="_Culture" />
                     </li>
                 </ul>
@@ -73,7 +70,7 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/site.js"></script>
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/jquery.scrolly.min.js"></script>
     <script src="~/js/jquery.dropotron.min.js"></script>

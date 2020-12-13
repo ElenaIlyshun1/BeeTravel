@@ -1,0 +1,9 @@
+﻿@media screen and (max-width: 736px) {
+
+    .content-profile {
+        padding: 2em !important; 
+    }
+    .line-under-profile-pic{
+        display:none;
+    }
+}

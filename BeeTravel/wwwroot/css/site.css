@@ -3123,6 +3123,10 @@ body.landing .dropotron.level-0 {
 
 /* Header */
 
+.transparent{
+opacity:0.5;
+}
+
 #page-wrapper {
     padding-top: 3.5em;
 }

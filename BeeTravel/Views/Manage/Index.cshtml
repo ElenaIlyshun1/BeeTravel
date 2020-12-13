@@ -1,6 +1,6 @@
 ﻿@model IndexViewModel
 <section id="banner-lr">
-    <div class="content">
+    <div class="content content-profile">
         <div class="container" >
             <div class="Profile_page_title" style="text-align:center;">
                 <h3>PROFILE</h3>
@@ -10,7 +10,7 @@
                     <div class="text-center">
                         <hr>
                         <img src="./img/default_user.png" class="avatar img-circle img-thumbnail" alt="avatar">
-                        <hr>
+                        <hr  class="line-under-profile-pic">
                     </div>
                 </div>
                 <div class="col-sm-9">
@@ -55,32 +55,26 @@
                                             <label for="email"><h3>Email</h3></label>
                                             <input asp-for="Email">
                                             <div style="text-align:center;">
-                                            <button asp-action="SendVerificationEmail" class="btn button" style="margin-top:2em;">Send verification email</button>
-
+                                                <button asp-action="SendVerificationEmail" class="btn button" style="margin-top:2em;">Send verification email</button>
                                             </div>
                                         }
-
                                     </div>
                                 </div>
-
-
-
                                 <div class="form-group form-lr" style="text-align:center;">
-                                  
-                                        <button class="btn button" type="submit"> Save</button>
-                                  
+                                    <button class="btn button" type="submit"> Save</button>
                                 </div>
                             </form>
-
                             <hr>
-
+                            <div class="form-group form-lr">
+                                <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <button type="submit" class="button special"> Выйти </button>
+                                </form>
+                            </div>
+                          
                         </div>
-
                     </div>
-
                 </div>
             </div>
-
         </div>
     </div>
 </section>

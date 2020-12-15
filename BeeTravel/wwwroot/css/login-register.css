@@ -105,3 +105,10 @@
         opacity: 0.5;
         transition: .5s;
     }
+.profile-label {
+    margin: 56px 0px -6px 0;
+}
+
+.profile-button {
+    border-radius: 10px;
+}

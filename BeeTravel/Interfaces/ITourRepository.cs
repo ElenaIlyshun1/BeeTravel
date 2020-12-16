@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeeTravel.Interfaces
 {
-    interface ITourRepository
+    public interface ITourRepository
     {
         Tour GetTourById(int id);
         IEnumerable<Tour> GetAllTours();

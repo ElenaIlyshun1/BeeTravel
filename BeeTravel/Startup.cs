@@ -19,6 +19,8 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
 using BeeTravel.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using BeeTravel.Interfaces;
+using BeeTravel.Data.Repository;
 
 namespace BeeTravel
 {
@@ -41,6 +43,7 @@ namespace BeeTravel
             var con = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<ITourRepository, TourRepository>();
             services.AddIdentity<DbUser, DbRole>(options => {
                 options.Stores.MaxLengthForKeys = 128;
                 options.Password.RequireDigit = false;
@@ -108,7 +111,11 @@ namespace BeeTravel
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-            SeederDB.SeedData(app.ApplicationServices, env, this.Configuration);
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                SeederDB.SeedTourData(context);
+            }
         }
     }
 }

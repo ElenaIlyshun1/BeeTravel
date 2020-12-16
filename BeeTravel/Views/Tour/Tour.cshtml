@@ -42,14 +42,14 @@
         </div>
         <div class="row">
             <div class="col-md-2">
-                <a asp-controller="Admin" asp-action="EditTour" asp-route-id="@Model.Id"
+                <a asp-controller="TourManage" asp-action="EditTour" asp-route-id="@Model.Id"
                    class=" btn btn-warning btn-default">
                     Редагувати
                 </a>
             </div>
             <div class="col-md-2">
 
-                <a asp-controller="Admin" asp-action="DeleteTour" asp-route-id="@Model.Id" method="post"
+                <a asp-controller="TourManage" asp-action="DeleteTour" asp-route-id="@Model.Id" method="post"
                    class=" btn btn-danger btn-default">
                     Видалити
                 </a>

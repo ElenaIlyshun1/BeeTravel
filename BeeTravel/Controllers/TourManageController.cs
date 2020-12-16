@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace BeeTravel.Controllers
 {
-    public class AdminController : Controller
+    public class TourManageController : Controller
     {
         private ITourRepository _tourRepository;
         private IHostingEnvironment _hostingEnvironment;
-        public AdminController(ITourRepository tourRepository, IHostingEnvironment hostingEnvironment)
+        public TourManageController(ITourRepository tourRepository, IHostingEnvironment hostingEnvironment)
         {
             _tourRepository = tourRepository;
             _hostingEnvironment = hostingEnvironment;

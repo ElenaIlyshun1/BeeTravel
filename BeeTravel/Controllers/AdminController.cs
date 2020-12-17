@@ -2,6 +2,7 @@
 using BeeTravel.Interfaces;
 using BeeTravel.Models;
 using BeeTravel.Models.AdminViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace BeeTravel.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private ITourRepository _tourRepository;

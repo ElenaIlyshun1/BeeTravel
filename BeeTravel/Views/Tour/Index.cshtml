@@ -3,64 +3,106 @@
 @{
     ViewData["Title"] = "Tours";
 }
-
-<div class="intro">
-    <div class="container">
-        <div class="intro__inner">
-            <h2 class="intro__suptitle">Creative vacation</h2>
-            <h1 class="intro__title">Welcome to TopTravel</h1>
+<!-- Two -->
+@*<section id="two" class="spotlight style3 right">
+        <span class="image fit main"><img src="~/img/pic03.jpg" alt="" /></span>
+        <div class="content">
+            <header>
+                <h2>Interdum amet non magna accumsan</h2>
+                <p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
+            </header>
+            <p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
+            <ul class="actions">
+                <li><a href="#" class="button">Learn More</a></li>
+            </ul>
         </div>
-    </div>
-</div>
+        <a href="#three" class="goto-next scrolly">Next</a>
+    </section>*@
 
-<section class="contant">
-    <div class="container">
 
-        @{
-            foreach (var item in Model)
+<div>
+
+    @{
+        foreach (var item in Model)
+        {
+            string direction;
+            if (item.Id % 2 == 0)
+
             {
-                <div class="contant__tour-list">
-                    <div class="contant__tour-item" asp-con>
-                        <a class="contant__tour-link" asp-controller="Tour" asp-action="Tour" asp-route-id="@item.Id">
+                direction = "left";
+            }
+            else
+            {
 
-                            <img class="contant__tour-image" src="~/img/@item.Img" alt="@item.Name"/>
-                            <div class="contant__tour-description">
-                                <h2 class="contant__tour-name"> @item.Name</h2>
-                                <div class="contant__tour-info">
-                                    <div class="tour-info-item">
-                                        @item.DepartureTown
-                                    </div>
-                                    <div class="tour-info-item">
-                                        @item.Period дні
-                                    </div>
-                                    <div class="tour-info-item">
-                                        @if (item.IsNightCrossing)
-                                        {
-                                            <div class="tour-info-item">
-                                                "З нічним переїздом"
-                                            </div>
-                                        }
-                                        else
-                                        {
-                                            <div class="tour-info-item">
-                                                "Без нічного переїзду"
-                                            </div>
-                                        }
-                                    </div>
-                                    <div class="contant__tour-countries">
-                                        @item.Countries
+                direction = "right";
+
+            }
+            var idTour = item.Id + 1;
+            <section id="@item.Id" class="spotlight style1 @direction">
+                <span class="image fit main"><img src="~/img/@item.Img" alt="@item.Name" /></span>
+                <div class="content">
+                    <header>
+                        <h2>@item.Name</h2>
+                        <p>@item.Countries</p>
+                    </header>
+                    <p>@item.Description</p>
+                    <ul class="actions">
+                        <li><a class="button" asp-controller="Tour" asp-action="Tour" asp-route-id="@item.Id">Learn More</a></li>
+                    </ul>
+                </div>
+                <a href="#@idTour" class="goto-next scrolly">Next</a>
+            </section>
+        }
+    }
+</div>
+@*<section class="contant">
+        <div class="container">
+
+            @{
+                foreach (var item in Model)
+                {
+                    <div class="contant__tour-list">
+                        <div class="contant__tour-item" asp-con>
+                            <a class="contant__tour-link" asp-controller="Tour" asp-action="Tour" asp-route-id="@item.Id">
+
+                                <img class="contant__tour-image" src="~/img/@item.Img" alt="@item.Name" />
+                                <div class="contant__tour-description">
+                                    <h2 class="contant__tour-name"> @item.Name</h2>
+                                    <div class="contant__tour-info">
+                                        <div class="tour-info-item">
+                                            @item.DepartureTown
+                                        </div>
+                                        <div class="tour-info-item">
+                                            @item.Period дні
+                                        </div>
+                                        <div class="tour-info-item">
+                                            @if (item.IsNightCrossing)
+                                            {
+                                                <div class="tour-info-item">
+                                                    "З нічним переїздом"
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="tour-info-item">
+                                                    "Без нічного переїзду"
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="contant__tour-countries">
+                                            @item.Countries
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tour-data-price">
-                                <div class="tour-price"> @item.Price<small>€</small></div>
+                                <div class="tour-data-price">
+                                    <div class="tour-price"> @item.Price<small>€</small></div>
 
-                                <div>@item.DepartureDate</div>
-                            </div>
-                        </a>
+                                    <div>@item.DepartureDate</div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                }
             }
-        }
-    </div>
-</section>
+        </div>
+    </section>*@

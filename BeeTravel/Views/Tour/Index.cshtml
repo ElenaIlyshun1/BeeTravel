@@ -1,5 +1,4 @@
 ﻿@model List<Tour>
-
 @{
     ViewData["Title"] = "Tours";
 }
@@ -21,12 +20,13 @@
 
 
 <div>
-
     @{
+        int i = 0;
         foreach (var item in Model)
         {
+            i++;
             string direction;
-            if (item.Id % 2 == 0)
+            if (i % 2 == 0)
 
             {
                 direction = "left";
@@ -37,7 +37,7 @@
                 direction = "right";
 
             }
-            var idTour = item.Id + 1;
+            var idTour = i;
             <section id="@item.Id" class="spotlight style1 @direction">
                 <span class="image fit main"><img src="~/img/@item.Img" alt="@item.Name" /></span>
                 <div class="content">
@@ -45,7 +45,7 @@
                         <h2>@item.Name</h2>
                         <p>@item.Countries</p>
                     </header>
-                    <p>@item.Description</p>
+                    <p class="tour-content">@item.Description</p>
                     <ul class="actions">
                         <li><a class="button" asp-controller="Tour" asp-action="Tour" asp-route-id="@item.Id">Learn More</a></li>
                     </ul>
@@ -55,6 +55,20 @@
         }
     }
 </div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(function () {
+            var size = 430,
+                newsContent = $('.tour-content'),
+                newsText = newsContent.text();
+
+            if (newsText.length > size) {
+                newsContent.text(newsText.slice(0, size) + ' ...');
+            }
+        });
+    </script>
+}
 @*<section class="contant">
         <div class="container">
 

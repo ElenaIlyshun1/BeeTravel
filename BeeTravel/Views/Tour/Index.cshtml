@@ -1,32 +1,16 @@
 ﻿@model List<Tour>
-
 @{
     ViewData["Title"] = "Tours";
 }
-<!-- Two -->
-@*<section id="two" class="spotlight style3 right">
-        <span class="image fit main"><img src="~/img/pic03.jpg" alt="" /></span>
-        <div class="content">
-            <header>
-                <h2>Interdum amet non magna accumsan</h2>
-                <p>Nunc commodo accumsan eget id nisi eu col volutpat magna</p>
-            </header>
-            <p>Feugiat accumsan lorem eu ac lorem amet ac arcu phasellus tortor enim mi mi nisi praesent adipiscing. Integer mi sed nascetur cep aliquet augue varius tempus lobortis porttitor lorem et accumsan consequat adipiscing lorem.</p>
-            <ul class="actions">
-                <li><a href="#" class="button">Learn More</a></li>
-            </ul>
-        </div>
-        <a href="#three" class="goto-next scrolly">Next</a>
-    </section>*@
-
 
 <div>
-
     @{
+        int i = 0;
         foreach (var item in Model)
         {
+            i++;
             string direction;
-            if (item.Id % 2 == 0)
+            if (i % 2 == 0)
 
             {
                 direction = "left";
@@ -37,7 +21,7 @@
                 direction = "right";
 
             }
-            var idTour = item.Id + 1;
+            var idTour = i;
             <section id="@item.Id" class="spotlight style1 @direction">
                 <span class="image fit main"><img src="~/img/@item.Img" alt="@item.Name" /></span>
                 <div class="content">
@@ -45,7 +29,7 @@
                         <h2>@item.Name</h2>
                         <p>@item.Countries</p>
                     </header>
-                    <p>@item.Description</p>
+                    <p class="tour-content">@item.Description</p>
                     <ul class="actions">
                         <li><a class="button" asp-controller="Tour" asp-action="Tour" asp-route-id="@item.Id">Learn More</a></li>
                     </ul>
@@ -55,54 +39,17 @@
         }
     }
 </div>
-@*<section class="contant">
-        <div class="container">
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(function () {
+            var size = 430,
+                newsContent = $('.tour-content'),
+                newsText = newsContent.text();
 
-            @{
-                foreach (var item in Model)
-                {
-                    <div class="contant__tour-list">
-                        <div class="contant__tour-item" asp-con>
-                            <a class="contant__tour-link" asp-controller="Tour" asp-action="Tour" asp-route-id="@item.Id">
-
-                                <img class="contant__tour-image" src="~/img/@item.Img" alt="@item.Name" />
-                                <div class="contant__tour-description">
-                                    <h2 class="contant__tour-name"> @item.Name</h2>
-                                    <div class="contant__tour-info">
-                                        <div class="tour-info-item">
-                                            @item.DepartureTown
-                                        </div>
-                                        <div class="tour-info-item">
-                                            @item.Period дні
-                                        </div>
-                                        <div class="tour-info-item">
-                                            @if (item.IsNightCrossing)
-                                            {
-                                                <div class="tour-info-item">
-                                                    "З нічним переїздом"
-                                                </div>
-                                            }
-                                            else
-                                            {
-                                                <div class="tour-info-item">
-                                                    "Без нічного переїзду"
-                                                </div>
-                                            }
-                                        </div>
-                                        <div class="contant__tour-countries">
-                                            @item.Countries
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tour-data-price">
-                                    <div class="tour-price"> @item.Price<small>€</small></div>
-
-                                    <div>@item.DepartureDate</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                }
+            if (newsText.length > size) {
+                newsContent.text(newsText.slice(0, size) + ' ...');
             }
-        </div>
-    </section>*@
+        });
+    </script>
+}

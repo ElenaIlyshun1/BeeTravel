@@ -30,6 +30,7 @@
             <nav id="nav">
                 <ul>
                     <li><a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Navbar_menu_item_1"]</a></li>
+                    <li><a asp-area="" asp-controller="Tour" asp-action="Index">Туры</a></li>
                     <li><a href="#">@Localizer["Navbar_menu_item_2"]</a></li>
                     <li><a href="elements.html">@Localizer["Navbar_menu_item_3"]</a></li>
                     @if (SignInManager.IsSignedIn(User))

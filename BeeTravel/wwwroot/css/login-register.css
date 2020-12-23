@@ -112,3 +112,7 @@
 .profile-button {
     border-radius: 10px;
 }
+
+.input-validation-error {
+    border: 1px solid #d42222 !important;
+}

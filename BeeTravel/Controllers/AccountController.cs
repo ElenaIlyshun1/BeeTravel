@@ -112,6 +112,8 @@ namespace BeeTravel.Controllers
 
                 var user = new DbUser
                 {
+                    Firstname = model.Firstname,
+                    Lastname = model.Lastname,
                     Email = model.Email,
                     UserName = model.Email,
                     PhoneNumber = model.PhoneNumber

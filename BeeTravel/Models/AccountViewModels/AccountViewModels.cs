@@ -23,6 +23,14 @@ namespace BeeTravel.Models.AccountViewModels
         [Required(ErrorMessage = "Обов'язкове поле")]
         [EmailAddress(ErrorMessage = "Не корекна пошта")]
         public string Email { get; set; }
+
+        [Display(Name = "Firstname")]
+        [Required(ErrorMessage = "Обов'язкове поле")]
+        public string Firstname { get; set; }
+
+        [Display(Name = "Lastname")]
+        [Required(ErrorMessage = "Обов'язкове поле")]
+        public string Lastname { get; set; }
         //
         [Display(Name = "Phone number")]
         [Required(ErrorMessage = "Обов'язкове поле")]

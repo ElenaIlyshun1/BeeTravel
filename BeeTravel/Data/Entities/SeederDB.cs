@@ -35,10 +35,15 @@ namespace BeeTravel.Entities
                 }).Result;
 
                 string email = "admin@gmail.com";
+                string user_name = "admin";
+                string firstlast = "admin";
+                string lastname = "administration";
                 var user = new DbUser
                 {
                     Email = email,
-                    UserName = email,
+                    UserName = user_name,
+                    Firstname = firstlast,
+                    Lastname = lastname,
                     PhoneNumber = "+11(111)111-11-11"
                 };
                 result = manager.CreateAsync(user, "33Ki9x66-3of+s").Result;

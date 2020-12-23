@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BeeTravel.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201216095109_Initial")]
+    [Migration("20201223100242_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,6 +69,12 @@ namespace BeeTravel.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
+
+                    b.Property<string>("Firstname")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Lastname")
+                        .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");

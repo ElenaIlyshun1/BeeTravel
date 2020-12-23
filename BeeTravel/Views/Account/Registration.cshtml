@@ -18,12 +18,12 @@
                     <h2>Registration</h2>
                     <div class="form-group form-lr">
                         @*<label asp-for="Email" class="control-label"></label>*@
-                        <input asp-for="Email" type="email" name="email" id="email" value="" placeholder="Email" style="border-radius: 10px 10px 10px 10px;" />
+                        <input class="input-validation-error" asp-for="Email" type="email" name="email" id="email" value="" placeholder="Email" style="border-radius: 10px 10px 10px 10px;" />
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="form-group form-lr">
                         @*<label asp-for="PhoneNumber" class="control-label"></label>*@
-                        <input asp-for="PhoneNumber" type="text" name="phonenumber" id="email" value="" placeholder="Phone number" style="border-radius: 10px 10px 10px 10px;" />
+                        <input class="input-validation-error" asp-for="PhoneNumber" type="text" name="phonenumber" id="email" value="" placeholder="Phone number" style="border-radius: 10px 10px 10px 10px;"/>
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
                     @*<div class="form-group form-lr">

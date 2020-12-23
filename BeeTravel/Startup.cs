@@ -68,7 +68,7 @@ namespace BeeTravel
                        new CultureInfo("en"),
                        new CultureInfo("ru"),
                        new CultureInfo("kr"),
-                       new CultureInfo("ua")
+                       new CultureInfo("uk")
                     };
                     opt.DefaultRequestCulture = new RequestCulture("en");
                     opt.SupportedCultures = supportedCulteres;

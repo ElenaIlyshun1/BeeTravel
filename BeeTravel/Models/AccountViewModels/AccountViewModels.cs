@@ -29,10 +29,10 @@ namespace BeeTravel.Models.AccountViewModels
         [RegularExpression(@"^[+]380\d{9}$", ErrorMessage="Некоректний номер телефону")]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Оберіть фото")]
-        [Required(ErrorMessage = "Оберіть фото профілю")]
-        [Microsoft.AspNetCore.Mvc.HiddenInput]
-        public string PhotoBase64 { get; set; }
+        //[Display(Name = "Оберіть фото")]
+        //[Required(ErrorMessage = "Оберіть фото профілю")]
+        //[Microsoft.AspNetCore.Mvc.HiddenInput]
+        //public string PhotoBase64 { get; set; }
         //
         [Display(Name = "Password")]
         [DataType(DataType.Password)]

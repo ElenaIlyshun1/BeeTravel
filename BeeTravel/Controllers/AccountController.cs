@@ -89,26 +89,26 @@ namespace BeeTravel.Controllers
             }
             if (ModelState.IsValid)
             {
-                string base64 = model.PhotoBase64;
-                if (base64.Contains(","))
-                {
-                    base64 = base64.Split(',')[1];
-                }
-                var bmp = base64.FromBase64StringToImage();
+                //string base64 = model.PhotoBase64;
+                //if (base64.Contains(","))
+                //{
+                //    base64 = base64.Split(',')[1];
+                //}
+                //var bmp = base64.FromBase64StringToImage();
 
-                var serverPath = _env.ContentRootPath; //Directory.GetCurrentDirectory(); //_env.WebRootPath;
-                var folerName = "Uploads";
-                var path = Path.Combine(serverPath, folerName); //
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-                string ext = ".jpg";
-                string fileName = Path.GetRandomFileName() + ext;
+                //var serverPath = _env.ContentRootPath; //Directory.GetCurrentDirectory(); //_env.WebRootPath;
+                //var folerName = "Uploads";
+                //var path = Path.Combine(serverPath, folerName); //
+                //if (!Directory.Exists(path))
+                //{
+                //    Directory.CreateDirectory(path);
+                //}
+                //string ext = ".jpg";
+                //string fileName = Path.GetRandomFileName() + ext;
 
-                string filePathSave = Path.Combine(path, fileName);
+                //string filePathSave = Path.Combine(path, fileName);
 
-                bmp.Save(filePathSave, ImageFormat.Jpeg);
+                //bmp.Save(filePathSave, ImageFormat.Jpeg);
 
                 var user = new DbUser
                 {

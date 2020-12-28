@@ -1,5 +1,5 @@
 ﻿using BeeTravel.Entities;
-using BeeTravel.Models;
+using BeeTravel.Models.UserViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;

@@ -71,6 +71,18 @@ namespace BeeTravel.Controllers
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
+            var firstname = user.Firstname;
+            if (model.FirstName != firstname)
+            {
+                user.Firstname = model.FirstName;
+                await _userManager.UpdateAsync(user);
+            } 
+            var lastname = user.Lastname;
+            if (model.LastName != lastname)
+            {
+                user.Lastname = model.LastName;
+                await _userManager.UpdateAsync(user);
+            }
             var email = user.Email;
             if (model.Email != email)
             {

@@ -24,3 +24,9 @@
         <input type="submit" value="Сохранить" class="btn btn-outline-secondary" />
     </div>
 </form>
+<div class="card-footer">
+    <a asp-action="ManageUserRoles" asp-route-userId="@Model.Id"
+       class="btn btn-primary">
+        Manage Roles
+    </a>
+</div>

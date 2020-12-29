@@ -102,6 +102,8 @@ namespace BeeTravel.Controllers
             }
             return RedirectToAction("Index");
         }
+        // Admin Role
+        public IActionResult RoleIndex() => View(_roleManager.Roles.ToList());
         [HttpGet]
         public IActionResult CreateRole()
         {
@@ -201,6 +203,33 @@ namespace BeeTravel.Controllers
             }
 
             return RedirectToAction("Edit", new { Id = userId });
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteRole(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+
+            if (role == null)
+            {
+                ViewBag.ErrorMessage = $"Role with Id = {id} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                var result = await _roleManager.DeleteAsync(role);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("RoleIndex");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return View("RoleIndex");
+            }
         }
     }
 

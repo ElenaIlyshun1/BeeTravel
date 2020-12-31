@@ -14,18 +14,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - @Configuration.GetSection("ConnectionStrings")["CompanyName"]</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
-    <link href="~/css/button.css" rel="stylesheet" type="text/css" />
-    <link href="~/css/manage.css" rel="stylesheet" type="text/css" />
-    <link href="~/css/login-register.css" rel="stylesheet" type="text/css" />
-    <link href="~/css/flag-icon.css" rel="stylesheet" type="text/css" />
-    <link href="~/css/flag-icon.min.css" rel="stylesheet" type="text/css" />
+
 
 </head>
 <body class="landing">
     <div id="page-wrapper">
-        <header id="header" class="header-menu" style="background-image: -webkit-linear-gradient(top, rgb(45 47 60 / 95%), rgb(43 46 57)), url(/wwwroot/img/overlay.png);position: fixed;margin-top: -10px;">
+        <header id="header" class="header-menu" style="background-image: -webkit-linear-gradient(top, rgb(45 47 60 / 95%), rgb(43 46 57)), url(/wwwroot/img/overlay.png);margin-top: -10px;">
             <h1 id="logo"><a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BeeTravel</a></h1>
             <nav id="nav">
                 <ul>
@@ -79,7 +73,7 @@
     <script src="~/lib/cropperjs/cropper.min.js"></script>
     <script src="~/js/skel.min.js"></script>
     <script src="~/js/util.js"></script>
-    <script src="~/js/main.js"></script>
+    <script src="~/js/main_script.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

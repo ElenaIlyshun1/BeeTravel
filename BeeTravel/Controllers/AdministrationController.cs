@@ -1,5 +1,6 @@
 ﻿using BeeTravel.Entities;
 using BeeTravel.Models.AdministrationViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace BeeTravel.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdministrationController : Controller
     {
         private readonly UserManager<DbUser> _userManager;
@@ -21,6 +23,7 @@ namespace BeeTravel.Controllers
             _roleManager = roleManager;
         }
         public IActionResult Index() => View(_userManager.Users.ToList());
+
         public IActionResult Create() => View();
         [HttpPost]
         public async Task<IActionResult> Create(CreateUserViewModel model)
@@ -40,21 +43,24 @@ namespace BeeTravel.Controllers
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
                 }
+                
             }
             return View(model);
         }
+        [HttpGet]
         public async Task<IActionResult> Edit(long id)
         {
             var model = _userManager.Users
-                .Select(x=> new EditUserViewModel {
-                    Id=x.Id,
-                    Email=x.Email,
-                    UserName=x.UserName,
+                .Select(x => new EditUserViewModel
+                {
+                    Id = x.Id,
+                    Email = x.Email,
+                    UserName = x.UserName,
                     Firstname = x.Firstname,
                     Lastname = x.Lastname,
                     PhoneNumber = x.PhoneNumber
                 })
-                .SingleOrDefault(x=>x.Id==id);
+                .SingleOrDefault(x => x.Id == id);
             if (model == null)
             {
                 return NotFound();

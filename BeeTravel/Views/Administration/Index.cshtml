@@ -3,7 +3,11 @@
     ViewBag.Title = " - User List";
 }
 
-
+@using Microsoft.AspNetCore.Identity
+@using BeeTravel.Entities
+@inject SignInManager<DbUser> SignInManager
+@inject RoleManager<DbRole> RoleManager
+@inject UserManager<DbUser> UserManager
 @model IEnumerable<BeeTravel.Entities.DbUser>
 
 <div class="section__content section__content--p30">
@@ -54,7 +58,37 @@
                                         <span>@user.PhoneNumber</span>
                                     </td>
                                     <td>
-                                        <span class="role admin">admin</span>
+                                        @{
+                                            var usercur = await UserManager.FindByIdAsync(user.Id.ToString());
+                                            foreach (var role in RoleManager.Roles.ToList())
+                                            {
+                                                var userRolesViewModel = new UserRolesViewModel
+                                                {
+                                                    RoleId = role.Id,
+                                                    RoleName = role.Name
+                                                };
+
+                                                if (await UserManager.IsInRoleAsync(user, role.Name))
+                                                {
+                                                    if (role.Name == "Admin")
+                                                    {
+                                                        <span class="role admin">admin</span>
+
+                                                    }
+                                                    if (role.Name == "User")
+                                                    {
+                                                        <span class="role user">user</span>
+                                                    }                                                   
+
+                                                }
+                                                else
+                                                {
+                                                   
+                                                }
+
+
+                                            }
+                                        }
                                     </td>
                                     <td>
                                         @if (user.EmailConfirmed)

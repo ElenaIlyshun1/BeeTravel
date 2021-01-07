@@ -40,10 +40,7 @@
                             </td>
                             <td>
                                 <form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
-                                    <div class="table-data-feature">
-                                        <a asp-action="EditRole" asp-route-id="@role.Id" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="zmdi zmdi-edit"></i>
-                                        </a>
+                                    <div class="table-data-feature">         
                                         <button type="submit" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </button>

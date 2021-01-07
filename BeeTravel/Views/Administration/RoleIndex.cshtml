@@ -19,11 +19,31 @@
                     {
                         <tr class="tr-shadow">
                             <td>
-                                <span class="block-email">@role.Name</span>
+                                @{ if (role.NormalizedName == "ADMIN")
+                                    {
+                                        <span class="role admin">@role.Name</span>
+
+                                    }
+                                    if (role.NormalizedName == "USER")
+                                    {
+                                        <span class="role user">@role.Name</span>
+                                    }
+                                    if (role.NormalizedName == "VIP")
+                                    {
+                                        <span class="role vip">@role.Name</span>
+                                    }
+                                    if ((role.NormalizedName != "ADMIN") && (role.NormalizedName != "USER") && (role.NormalizedName != "VIP"))
+                                    {
+                                        <span class="role other">@role.Name</span>
+                                    }
+                                }
                             </td>
                             <td>
                                 <form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
                                     <div class="table-data-feature">
+                                        <a asp-action="EditRole" asp-route-id="@role.Id" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </a>
                                         <button type="submit" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                             <i class="zmdi zmdi-delete"></i>
                                         </button>

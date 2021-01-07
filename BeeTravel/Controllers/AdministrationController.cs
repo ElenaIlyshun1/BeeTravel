@@ -131,7 +131,7 @@ namespace BeeTravel.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("index", "home");
+                    return RedirectToAction("roleindex", "administration");
                 }
 
                 foreach (IdentityError error in result.Errors)
@@ -208,7 +208,7 @@ namespace BeeTravel.Controllers
                 return View(model);
             }
 
-            return RedirectToAction("Edit", new { Id = userId });
+            return RedirectToAction("index", "administration");
         }
         [HttpPost]
         public async Task<IActionResult> DeleteRole(string id)
@@ -237,6 +237,7 @@ namespace BeeTravel.Controllers
                 return View("RoleIndex");
             }
         }
+       
     }
 
 }

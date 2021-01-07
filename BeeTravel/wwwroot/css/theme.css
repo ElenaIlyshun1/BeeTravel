@@ -1,12 +1,4 @@
-/*------------------------------------------------------------------
-[Master Stylesheet]
 
-Project:  CoolAdmin
-Version:	1.0
-Last change:	08/10/2018 [Add Define a table of contents Link]
-Assigned to:	Hau Nguyen
-Primary use:	Open Source
--------------------------------------------------------------------*/
 /*------------------------------------------------------------------
 [LAYOUT]
 
@@ -4460,10 +4452,13 @@ section {
 .role.user {
     background: #00b5e9;
 }
+    .role.vip {
+        background: #f2a7c8;
+    }
 
-.role.member {
-    background: #57b846;
-}
+    .role.other {
+        background: #48e07d;
+    }
 
 .table-top-campaign.table td {
     border-top: none;

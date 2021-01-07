@@ -5,14 +5,11 @@
 @using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 
-@{ ViewData["Title"] = "Home page"; }
-<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-<link href="~/css/site.css" rel="stylesheet" type="text/css" />
-<link href="~/css/button.css" rel="stylesheet" type="text/css" />
-<link href="~/css/manage.css" rel="stylesheet" type="text/css" />
-<link href="~/css/login-register.css" rel="stylesheet" type="text/css" />
-<link href="~/css/flag-icon.css" rel="stylesheet" type="text/css" />
-<link href="~/css/flag-icon.min.css" rel="stylesheet" type="text/css" />
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Tours";
+}
+
 <div>
     <section id="banner">
         <div class="content">

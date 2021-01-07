@@ -15,6 +15,14 @@
                             <hr>
                             <img src="./img/default_user.png" class="avatar img-circle img-thumbnail" alt="avatar">
                             <hr class="line-under-profile-pic">
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-controller="Administration" asp-action="Index" class="btn button profile-button"> Admin Panel </a>
+                            }
+                            else
+                            {
+
+                            }
                         </div>
                     </div>
                     <div class="col-sm-9">

@@ -335,6 +335,32 @@ namespace BeeTravel.Controllers
             }
         }
 
+        public async Task<IActionResult> ConfirmEmail(string id)
+        {
+            if (ModelState.IsValid)
+            {
+                DbUser user = await _userManager.FindByIdAsync(id);
+                if (user != null)
+                {
+                    user.EmailConfirmed = true;
+
+
+                    var result = await _userManager.UpdateAsync(user);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
+                    }
+                }
+            }
+            return View();
+        }
     }
 
 }

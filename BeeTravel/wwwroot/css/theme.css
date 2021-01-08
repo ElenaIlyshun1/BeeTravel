@@ -4443,6 +4443,7 @@ section {
     -moz-border-radius: 3px;
     border-radius: 3px;
     text-transform: capitalize;
+    margin: 2px;
 }
 
 .role.admin {

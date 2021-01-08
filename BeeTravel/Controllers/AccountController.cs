@@ -93,7 +93,8 @@ namespace BeeTravel.Controllers
                     Lastname = model.Lastname,
                     Email = model.Email,
                     UserName = model.Email,
-                    PhoneNumber = model.PhoneNumber
+                    PhoneNumber = model.PhoneNumber,
+                    CreateDate = DateTimeOffset.UtcNow
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

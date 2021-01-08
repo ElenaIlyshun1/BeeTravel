@@ -1,14 +1,13 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
-    ViewBag.Title = " - User List";
-}
-
-@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity
 @using BeeTravel.Entities
 @inject SignInManager<DbUser> SignInManager
 @inject RoleManager<DbRole> RoleManager
 @inject UserManager<DbUser> UserManager
 @model IEnumerable<BeeTravel.Entities.DbUser>
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    ViewBag.Title = " - User List";
+}
 
 <div class="section__content section__content--p30">
     <div class="container-fluid">
@@ -43,6 +42,7 @@
                                 <th>phone</th>
                                 <th>role</th>
                                 <th>status</th>
+                                <th>Date</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -108,6 +108,9 @@
                                         }
                                     </td>
                                     <td>
+                                        <span class="block-email" title="@user.CreateDate.DateTime.ToShortTimeString()" data-toggle="tooltip" data-placement="top">@user.CreateDate.DateTime.ToShortDateString()</span>
+                                    </td>
+                                    <td>
                                         <form asp-action="Delete" asp-route-id="@user.Id" method="post">
                                             <div class="table-data-feature">
                                                 <a class="item" title="Edit" data-toggle="tooltip" data-placement="top" asp-action="Edit" asp-route-id="@user.Id">
@@ -116,9 +119,9 @@
                                                 <button type="submit" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
                                                 </button>
-                                                <button class="item" title="View">
-                                                    <i class="zmdi zmdi-eye"></i>
-                                                </button>
+                                                <a class="item" title="Role" data-toggle="tooltip" data-placement="top" asp-action="ManageUserRoles" asp-route-userId="@user.Id">
+                                                    <i class="zmdi zmdi-shield-security"></i>
+                                                </a>
                                             </div>
                                         </form>
 

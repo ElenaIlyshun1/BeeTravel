@@ -47,7 +47,7 @@ namespace BeeTravel.Entities
                     PhoneNumber = "+11(111)111-11-11"
                 };
                 result = manager.CreateAsync(user, "33Ki9x66-3of+s").Result;
-                result = manager.AddToRoleAsync(user, roleName).Result;
+                result = manager.AddToRoleAsync(user, "Admin").Result;
             }
         }
         public static void SeedTourData(ApplicationDbContext context)

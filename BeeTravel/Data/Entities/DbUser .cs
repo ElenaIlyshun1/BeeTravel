@@ -11,6 +11,8 @@ namespace BeeTravel.Entities
         public virtual ICollection<DbUserRole> UserRoles { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
+        [PersonalData]
+        public DateTimeOffset CreateDate { get; set; }
 
     }
 }

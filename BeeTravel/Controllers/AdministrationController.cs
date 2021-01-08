@@ -3,6 +3,7 @@ using BeeTravel.Models.AdministrationViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,6 @@ namespace BeeTravel.Controllers
             _roleManager = roleManager;
         }
         public IActionResult Index() => View(_userManager.Users.ToList());
-
         public IActionResult Create() => View();
         [HttpPost]
         public async Task<IActionResult> Create(CreateUserViewModel model)

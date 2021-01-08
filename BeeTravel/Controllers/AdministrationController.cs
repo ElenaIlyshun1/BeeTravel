@@ -23,7 +23,43 @@ namespace BeeTravel.Controllers
             _userManager = userManager;
             _roleManager = roleManager;
         }
-        public IActionResult Index() => View(_userManager.Users.ToList());
+        //   public IActionResult Index() => View(_userManager.Users.ToList());
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
+        {
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["EmailSortParm"] = sortOrder == "Email" ? "email_desc" : "Email";
+            ViewData["CurrentFilter"] = searchString;
+            var users = from u in _userManager.Users
+                           select u;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                users = users.Where(u => u.Lastname.Contains(searchString)
+                                       || u.Firstname.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    users = users.OrderBy(u => u.Firstname);
+                    break;
+                case "Date":
+                    users = users.OrderBy(u => u.CreateDate);
+                    break;
+                case "date_desc":
+                    users = users.OrderByDescending(u => u.CreateDate);
+                    break;
+                case "Email":
+                    users = users.OrderBy(u => u.Email);
+                    break;
+                case "email_desc":
+                    users = users.OrderByDescending(u => u.Email);
+                    break;
+                default:
+                    users = users.OrderBy(u => u.Firstname);
+                    break;
+            }
+            return View(await users.AsNoTracking().ToListAsync());
+        }
         public IActionResult Create() => View();
         [HttpPost]
         public async Task<IActionResult> Create(CreateUserViewModel model)

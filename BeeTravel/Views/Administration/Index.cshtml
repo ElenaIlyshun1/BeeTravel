@@ -3,7 +3,8 @@
 @inject SignInManager<DbUser> SignInManager
 @inject RoleManager<DbRole> RoleManager
 @inject UserManager<DbUser> UserManager
-@model IEnumerable<BeeTravel.Entities.DbUser>
+@model PaginatedList<BeeTravel.Entities.DbUser>
+
 @{
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
     ViewBag.Title = " - User List";
@@ -16,23 +17,11 @@
                 <!-- DATA TABLE -->
                 <h3 class="title-5 m-b-35">user table</h3>
                 <div class="table-data__tool">
-                    <div >
-                        <div>
-                            <form asp-action="Index" method="get">
-                                <div class="row form-group">
-                                    <div class="col col-md-12">
-                                        <div class="input-group">
-                                            <input type="text" id="input1-group2" name="SearchString" placeholder="Search.." class="form-control" value="@ViewData["CurrentFilter"]">
-                                            <div class="input-group-btn">
-                                                <button type="submit" class="btn btn-primary">
-                                                    <i class="fa fa-search"></i> Search
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="table-data__tool-left">
+                        <button class="au-btn au-btn-icon au-btn--blue2 au-btn--small">
+                            <i class="fas fa-refresh"></i>
+                            <a style="color:white;" asp-action="Index">Reload</a>
+                        </button>
                     </div>
                     <div class="table-data__tool-right">
                         <button class="au-btn au-btn-icon au-btn--green au-btn--small">
@@ -145,4 +134,28 @@
             </div>
         </div>
     </div>
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+<div class="user-data__footer">
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="au-btn au-btn-load @prevDisabled">
+        <i class="zmdi zmdi-arrow-left"></i>
+        Previous
+
+    </a>
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="au-btn au-btn-load @nextDisabled">
+        Next
+        <i class="zmdi zmdi-arrow-right"></i>
+    </a>
+</div>
+   
 </div>

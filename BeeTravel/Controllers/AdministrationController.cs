@@ -24,12 +24,21 @@ namespace BeeTravel.Controllers
             _roleManager = roleManager;
         }
         //   public IActionResult Index() => View(_userManager.Users.ToList());
-        public async Task<IActionResult> Index(string sortOrder, string searchString)
+        public async Task<IActionResult> Index(string sortOrder,string currentFilter,string searchString,int? pageNumber)
         {
+            ViewData["CurrentSort"] = sortOrder;
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["EmailSortParm"] = sortOrder == "Email" ? "email_desc" : "Email";
             ViewData["CurrentFilter"] = searchString;
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
             var users = from u in _userManager.Users
                            select u;
             if (!String.IsNullOrEmpty(searchString))
@@ -58,7 +67,8 @@ namespace BeeTravel.Controllers
                     users = users.OrderBy(u => u.Firstname);
                     break;
             }
-            return View(await users.AsNoTracking().ToListAsync());
+            int pageSize = 8;
+            return View(await PaginatedList<DbUser>.CreateAsync(users.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
         public IActionResult Create() => View();
         [HttpPost]
@@ -66,8 +76,9 @@ namespace BeeTravel.Controllers
         {
             if (ModelState.IsValid)
             {
-                DbUser user = new DbUser { Email = model.Email ,Firstname = model.Firstname, Lastname = model.Lastname, PhoneNumber = model.PhoneNumber, UserName = model.Email};
+                DbUser user = new DbUser { Email = model.Email ,Firstname = model.Firstname, Lastname = model.Lastname, PhoneNumber = model.PhoneNumber, UserName = model.Email , CreateDate = DateTime.UtcNow};
                 var result = await _userManager.CreateAsync(user, model.Password);
+                result = _userManager.AddToRoleAsync(user, "User").Result;
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index");

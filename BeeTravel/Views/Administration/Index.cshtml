@@ -67,23 +67,8 @@
 
                                                 if (await UserManager.IsInRoleAsync(user, role.Name))
                                                 {
-                                                    if (role.NormalizedName == "ADMIN")
-                                                    {
-                                                        <span class="role admin">@role.Name</span>
+                                                    <span class="role admin" style="background-color:@role.RoleColor">@role.Name</span>
 
-                                                    }
-                                                    if (role.NormalizedName == "USER")
-                                                    {
-                                                        <span class="role user">@role.Name</span>
-                                                    }
-                                                    if (role.NormalizedName == "VIP")
-                                                    {
-                                                        <span class="role vip">@role.Name</span>
-                                                    }
-                                                    if ((role.NormalizedName != "ADMIN") && (role.NormalizedName != "USER") && (role.NormalizedName != "VIP"))
-                                                    {
-                                                        <span class="role other">@role.Name</span>
-                                                    }
                                                 }
                                                 else
                                                 {

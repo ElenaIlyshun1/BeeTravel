@@ -170,7 +170,8 @@ namespace BeeTravel.Controllers
                 // We just need to specify a unique role name to create a new role
                 DbRole identityRole = new DbRole
                 {
-                    Name = model.RoleName
+                    Name = model.RoleName,
+                    RoleColor = model.RoleColor
                 };
 
                 // Saves the role in the underlying AspNetRoles table

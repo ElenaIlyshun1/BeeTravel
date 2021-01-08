@@ -9,6 +9,8 @@ namespace BeeTravel.Models.AdministrationViewModels
     public class CreateRoleViewModel
     {
         [Display(Name = "Role")]
-        public string RoleName { get; set; }
+        public string RoleName { get; set; } 
+        [Display(Name = "Color")]
+        public string RoleColor { get; set; }
     }
 }

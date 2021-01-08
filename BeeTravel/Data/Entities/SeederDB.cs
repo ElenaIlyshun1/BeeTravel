@@ -25,13 +25,15 @@ namespace BeeTravel.Entities
                 var roleName = "Admin";
                 var result = managerRole.CreateAsync(new DbRole
                 {
-                    Name = roleName
+                    Name = roleName,
+                    RoleColor = "#fa4251"
                 }).Result;
 
                 roleName = "User";
                 result = managerRole.CreateAsync(new DbRole
                 {
-                    Name = roleName
+                    Name = roleName,
+                    RoleColor = "#00b5e9"
                 }).Result;
 
                 string email = "admin@gmail.com";

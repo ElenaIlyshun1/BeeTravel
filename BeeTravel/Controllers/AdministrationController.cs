@@ -306,7 +306,7 @@ namespace BeeTravel.Controllers
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> EditRole(EditRoleViewModel model)
+        public async Task<IActionResult> EditRole(EditRoleViewModel model,string returnUrl)
         {
             var role = await _roleManager.FindByIdAsync(model.Id.ToString());
 
@@ -323,7 +323,15 @@ namespace BeeTravel.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("RoleIndex");
+                    if (!string.IsNullOrEmpty(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("RoleIndex");
+                    }
+                    
                 }
 
                 foreach (var error in result.Errors)

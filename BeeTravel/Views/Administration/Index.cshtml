@@ -67,7 +67,7 @@
 
                                                 if (await UserManager.IsInRoleAsync(user, role.Name))
                                                 {
-                                                    <span class="role admin" style="background-color:@role.RoleColor">@role.Name</span>
+                                                    <a class="role admin" style="background-color:@role.RoleColor"  asp-action="EditRole" asp-route-id="@role.Id">@role.Name</a>
 
                                                 }
                                                 else

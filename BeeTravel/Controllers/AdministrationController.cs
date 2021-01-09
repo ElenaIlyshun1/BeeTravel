@@ -369,6 +369,112 @@ namespace BeeTravel.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> BanUser(string id)
+        {
+            if (ModelState.IsValid)
+            {
+                DbUser user = await _userManager.FindByIdAsync(id);
+                if (user != null)
+                {
+                    await _userManager.SetLockoutEnabledAsync(user, true);
+
+                    var result = await _userManager.SetLockoutEndDateAsync(user, DateTime.UtcNow.AddMinutes(10));
+                    
+                    if(result.Succeeded)
+                    {
+                        return RedirectToAction("Index");
+                    }
+
+                }
+            }
+            return View();
+        }
+        public async Task<IActionResult> BanList(string sortOrder, string currentFilter, string searchString, int? pageNumber)
+        {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["BlockSortParm"] = sortOrder == "Block" ? "block_desc" : "Block";
+            ViewData["EmailSortParm"] = sortOrder == "Email" ? "email_desc" : "Email";
+            ViewData["CurrentFilter"] = searchString;
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            var users = from u in _userManager.Users
+                        select u;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                users = users.Where(u => u.LockoutEnd >= DateTime.UtcNow);
+                users = users.Where(u => u.Lastname.Contains(searchString)
+                                       || u.Firstname.Contains(searchString));
+            }
+            else
+            {
+                users = users.Where(u => u.LockoutEnd >= DateTime.UtcNow);
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    users = users.OrderBy(u => u.Firstname);
+                    break;
+                case "Date":
+                    users = users.OrderBy(u => u.CreateDate);
+                    break;
+                case "date_desc":
+                    users = users.OrderByDescending(u => u.CreateDate);
+                    break;
+                case "Block":
+                    users = users.OrderBy(u => u.LockoutEnd >= DateTime.UtcNow);
+                    break;
+                case "block_desc":
+                    users = users.OrderByDescending(u => u.LockoutEnd >= DateTime.UtcNow);
+                    break;
+                case "Email":
+                    users = users.OrderBy(u => u.Email);
+                    break;
+                case "email_desc":
+                    users = users.OrderByDescending(u => u.Email);
+                    break;
+                default:
+                    users = users.OrderBy(u => u.Firstname);
+                    break;
+            }
+            int pageSize = 8;
+            return View(await PaginatedList<DbUser>.CreateAsync(users.AsNoTracking(), pageNumber ?? 1, pageSize));
+        }
+        public async Task<IActionResult> UnBanUser(string id, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                DbUser user = await _userManager.FindByIdAsync(id);
+                if (user != null)
+                {
+                    if(await _userManager.IsLockedOutAsync(user))
+                    {
+                        var result =  await _userManager.SetLockoutEndDateAsync(user, DateTimeOffset.UtcNow);
+                        if (result.Succeeded)
+                        {
+                            if (!string.IsNullOrEmpty(returnUrl))
+                            {
+                                return Redirect(returnUrl);
+                            }
+                            else
+                            {
+                                return RedirectToAction("BanList");
+                            } 
+                        }
+                    }
+                  
+
+                }
+            }
+            return View();
+        }
     }
 
 }

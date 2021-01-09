@@ -24,6 +24,10 @@
                         </button>
                     </div>
                     <div class="table-data__tool-right">
+                        <button class="au-btn au-btn-icon au-btn--red au-btn--small">
+                            <i class="fas fa-ban"></i>
+                            <a style="color:white;" asp-action="BanList">BanList</a>
+                        </button>
                         <button class="au-btn au-btn-icon au-btn--green au-btn--small">
                             <i class="fas fa-user-plus"></i>
                             <a style="color:white;" asp-action="Create">Add User</a>
@@ -117,6 +121,19 @@
                                                     </button>
                                                 </form>
                                             }
+                                            @if (user.LockoutEnd > DateTime.UtcNow)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                <form asp-action="BanUser" asp-route-id="@user.Id" method="post">
+                                                    <button type="submit" class="item" data-toggle="tooltip" data-placement="top" title="Block" style="background: #ff6868;">
+                                                        <i class="zmdi zmdi-block" style="color:white"></i>
+                                                    </button>
+                                                </form>
+                                            }
+
                                         </div>
 
                                     </td>

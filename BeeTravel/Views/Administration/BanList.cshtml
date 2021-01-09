@@ -1,0 +1,139 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using BeeTravel.Entities
+@inject SignInManager<DbUser> SignInManager
+@inject RoleManager<DbRole> RoleManager
+@inject UserManager<DbUser> UserManager
+@model PaginatedList<BeeTravel.Entities.DbUser>
+
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    ViewBag.Title = " - User BanList";
+}
+
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- DATA TABLE -->
+                <h3 class="title-5 m-b-35">banlist table</h3>
+                <div class="table-data__tool">
+                    <div class="table-data__tool-right">
+                        <button class="au-btn au-btn-icon au-btn--blue2 au-btn--small">
+                            <i class="fas fa-refresh"></i>
+                            <a style="color:white;" asp-action="BanList">Reload</a>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive table-responsive-data2">
+                    <table class="table table-data2">
+                        <thead>
+                            <tr>
+                                <th><a asp-action="BanList" asp-route-sortOrder="@ViewData["NameSortParm"]" title="Sort by Name" data-toggle="tooltip" data-placement="top">name</a></th>
+                                <th><a asp-action="BanList" asp-route-sortOrder="@ViewData["EmailSortParm"]" title="Sort by Email" data-toggle="tooltip" data-placement="top">email </a></th>
+                                <th>phone</th>
+                                <th><a asp-action="BanList" asp-route-sortOrder="@ViewData["DateSortParm"]" title="Sort by Date" data-toggle="tooltip" data-placement="top">date reg</a></th>
+                                <th><a asp-action="BanList" asp-route-sortOrder="@ViewData["BlockSortParm"]" title="Sort by Date" data-toggle="tooltip" data-placement="top">date block</a></th>
+                                <th>status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model)
+                            {
+                                <tr class="tr-shadow">
+                                    <td>@user.Firstname @user.Lastname</td>
+                                    <td>
+                                        <span class="block-email">@user.Email</span>
+                                    </td>
+                                    <td class="desc">
+                                        <span>@user.PhoneNumber</span>
+                                    </td>
+                                    <td>
+                                        <span class="block-email" title="@user.CreateDate.DateTime.ToShortTimeString()" data-toggle="tooltip" data-placement="top">@user.CreateDate.DateTime.ToShortDateString()</span>
+                                    </td>
+                                    <td>
+                                        @if (user.LockoutEnd > DateTimeOffset.UtcNow)
+                                        {
+                                   
+                                            TimeSpan timeToEnd = user.LockoutEnd.Value.Subtract(DateTime.UtcNow);
+                                            string timeEndTitle = string.Format("Days : {0}, Hours : {1}, Minutes : {2}",
+                               timeToEnd.Days, timeToEnd.Hours, timeToEnd.Minutes);
+                                         
+                                            <span class="block-email" title="@timeEndTitle" data-toggle="tooltip" data-placement="top">@user.LockoutEnd</span>
+
+                                        }
+                                        else
+                                        {
+                                            <span class="block-email" >@user.LockoutEnd</span>
+
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (user.LockoutEnd > DateTimeOffset.UtcNow)
+                                        {
+                                            <span class="status--denied">Bloked</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="status--process">Un Bloked</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="table-data-feature">
+                                            <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+                                                <button type="submit" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </button>
+                                            </form>
+                                            @if (user.LockoutEnd > DateTimeOffset.UtcNow)
+                                            {
+                                                <form asp-action="UnBanUser" asp-route-id="@user.Id" method="post" asp-route-returnurl="@Context.Request.Headers["Referer"].ToString()">
+                                                    <button type="submit" class="item" data-toggle="tooltip" data-placement="top" title="UnBloked" style="background: #5bba5e;">
+                                                        <i class="zmdi zmdi-block" style="color:white"></i>
+                                                    </button>
+                                                </form>
+                                            }
+                                            else
+                                            {
+                                              
+                                            }
+
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr class="spacer"></tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- END DATA TABLE -->
+            </div>
+        </div>
+    </div>
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+    <div class="user-data__footer">
+        <a asp-action="BanList"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="au-btn au-btn-load @prevDisabled">
+            <i class="zmdi zmdi-arrow-left"></i>
+            Previous
+
+        </a>
+        <a asp-action="BanList"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="au-btn au-btn-load @nextDisabled">
+            Next
+            <i class="zmdi zmdi-arrow-right"></i>
+        </a>
+    </div>
+
+</div>

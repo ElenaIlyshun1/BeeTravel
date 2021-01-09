@@ -4,7 +4,7 @@
 @inject UserManager<DbUser> UserManager
 @{
     var user = await UserManager.GetUserAsync(User);
-    var fullname = user.Firstname +" "+ user.Lastname;
+    var fullname = user.Firstname + " " + user.Lastname;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -175,11 +175,19 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
-                            <a asp-action="Index">
-                                <i class="fas fa-user"></i>Users
+                        <li class="has-sub @(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-users"></i>Users
                             </a>
-                        </li>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a asp-action="Index"><i class="fas fa-user"></i>User Table</a>
+                                </li>
+                                <li>
+                                    <a asp-action="BanList"><i class="fas fa-ban"></i>Ban List</a>
+                                </li>
+                            </ul>
+                        </li>      
                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "RoleIndex" ? "active" : "")">
                             <a asp-action="RoleIndex">
                                 <i class="fas fa-shield-alt"></i>Roles
@@ -212,12 +220,27 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" asp-action="Index" method="get">
-                                <input class="au-input au-input--xl" type="text" name="SearchString" placeholder="Search ..." value="@ViewData["CurrentFilter"]"/>
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
-                            </form>
+                            @{
+                                if (Context.Request.Path.ToString().Contains("BanList"))
+                                {
+                                    <form class="form-header" asp-action="BanList" method="get">
+                                        <input class="au-input au-input--xl" type="text" name="SearchString" placeholder="Search ..." value="@ViewData["CurrentFilter"]" />
+                                        <button class="au-btn--submit" type="submit">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form class="form-header" asp-action="Index" method="get">
+                                        <input class="au-input au-input--xl" type="text" name="SearchString" placeholder="Search ..." value="@ViewData["CurrentFilter"]" />
+                                        <button class="au-btn--submit" type="submit">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </button>
+                                    </form>
+                                }
+
+                            }
                             <div class="header-button">
                                 <div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
@@ -363,10 +386,10 @@
                                                     <a asp-controller="Administration" asp-action="Edit" asp-route-id="@user.Id">
                                                         <i class="zmdi zmdi-account"></i>Account
                                                     </a>
-                                                </div>                         
+                                                </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                               
+
                                                 <a href="#">
                                                     <form asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                                                         <button type="submit"><i class="zmdi zmdi-power"></i> Logout </button>

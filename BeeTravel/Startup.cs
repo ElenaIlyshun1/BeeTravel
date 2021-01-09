@@ -21,6 +21,7 @@ using BeeTravel.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using BeeTravel.Interfaces;
 using BeeTravel.Data.Repository;
+using BeeTravel.Data.Entities;
 
 namespace BeeTravel
 {
@@ -101,6 +102,7 @@ namespace BeeTravel
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseUserDestroyer();
 
             app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 

@@ -47,14 +47,26 @@ namespace BeeTravel.Controllers
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user != null)
                 {
+                    //================================
                     var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, false);
                     if (result.Succeeded)
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return RedirectToAction("Index", "Administration");
+                        if (result.IsLockedOut)
+                        {
+
+                            ModelState.AddModelError("", "Дані вкажано не коректно");
+                            return View();
+
+                        }
+                        else
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                            return RedirectToAction("Index","Home");
+                        }
                     }
                 }
             }
+
             ModelState.AddModelError("", "Дані вкажано не коректно");
             return View(model);
         }

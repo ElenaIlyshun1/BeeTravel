@@ -4445,6 +4445,10 @@ section {
     text-transform: capitalize;
     margin: 2px;
 }
+    .role:hover {
+        color: #cfcfcf;
+        font: bold;
+    }
 
 .role.admin {
     background: #fa4251;

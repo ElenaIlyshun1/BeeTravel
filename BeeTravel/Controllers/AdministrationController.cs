@@ -539,7 +539,7 @@ namespace BeeTravel.Controllers
 
                 _tourRepository.CreateTour(newTour);
 
-                return Redirect("/Home/Index");
+                return Redirect("/Administration/TourList");
             }
             return View();
         }
@@ -616,7 +616,8 @@ namespace BeeTravel.Controllers
                 };
 
                 _tourRepository.EditTour(newTour);
-                return Redirect("/Home/Index");
+                return Redirect("/Administration/TourList");
+
             }
             return View();
         }
@@ -637,6 +638,20 @@ namespace BeeTravel.Controllers
             return old;
         }
         #endregion
+        public async Task<IActionResult> MapCountries(string searchString)
+        {
+            var Tours =  _tourRepository.GetAllTours().ToList();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Tours = _tourRepository.GetAllTours().Where(t=>t.Countries.Contains(searchString)).ToList();
+
+            }
+            else
+            {
+
+            }
+            return View(Tours);
+        }
     }
 
 }

@@ -33,7 +33,7 @@
     <link href="~/vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="~/vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="~/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
-
+    <link href="~/vendor/vector-map/jqvmap.min.css" rel="stylesheet" media="all">
     <!-- Main CSS-->
     <link href="~/css/theme.css" rel="stylesheet" media="all">
 
@@ -187,7 +187,7 @@
                                     <a asp-action="BanList"><i class="fas fa-ban"></i>Ban List</a>
                                 </li>
                             </ul>
-                        </li>      
+                        </li>
                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "RoleIndex" ? "active" : "")">
                             <a asp-action="RoleIndex">
                                 <i class="fas fa-shield-alt"></i>Roles
@@ -204,7 +204,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="map.html">
+                            <a asp-action="MapCountries">
                                 <i class="fas fa-map-marker-alt"></i>Maps
                             </a>
                         </li>
@@ -224,6 +224,15 @@
                                 if (Context.Request.Path.ToString().Contains("BanList"))
                                 {
                                     <form class="form-header" asp-action="BanList" method="get">
+                                        <input class="au-input au-input--xl" type="text" name="SearchString" placeholder="Search ..." value="@ViewData["CurrentFilter"]" />
+                                        <button class="au-btn--submit" type="submit">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </button>
+                                    </form>
+                                }
+                                if (Context.Request.Path.ToString().Contains("TourList"))
+                                {
+                                    <form class="form-header" asp-action="MapCountries" method="get">
                                         <input class="au-input au-input--xl" type="text" name="SearchString" placeholder="Search ..." value="@ViewData["CurrentFilter"]" />
                                         <button class="au-btn--submit" type="submit">
                                             <i class="zmdi zmdi-search"></i>
@@ -430,8 +439,17 @@
     <script src="~/vendor/circle-progress/circle-progress.min.js"></script>
     <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="~/vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="~/vendor/select2/select2.min.js">
-    </script>
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <script src="~/vendor/vector-map/jquery.vmap.js"></script>
+    <script src="~/vendor/vector-map/jquery.vmap.min.js"></script>
+    <script src="~/vendor/vector-map/jquery.vmap.sampledata.js"></script>
+    <script src="~/vendor/vector-map/jquery.vmap.world.js"></script>
+    <script src="~/vendor/vector-map/jquery.vmap.brazil.js"></script>
+    <script src="~/vendor/vector-map/jquery.vmap.europe.js"></script>
+    <script src="~/vendor/vector-map/jquery.vmap.france.js"></script>
+    <script src="~/vendor/vector-map/jquery.vmap.germany.js"></script>
+    <script src="~/vendor/vector-map/jquery.vmap.russia.js"></script>
+    <script src="~/vendor/vector-map/jquery.vmap.usa.js"></script>
 
     <!-- Main JS-->
     <script src="~/js/main.js"></script>

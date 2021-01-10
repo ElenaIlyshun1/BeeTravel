@@ -27,7 +27,6 @@ namespace BeeTravel.Controllers
         {
             return View();
         }
-        /////////////////////Create
 
         [HttpGet]
         public ViewResult CreateTour()
@@ -65,7 +64,6 @@ namespace BeeTravel.Controllers
             return View();
         }
 
-        /////////////////////Delete
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteTour(int id)
         {
@@ -78,7 +76,6 @@ namespace BeeTravel.Controllers
             return Redirect("/Home/Index");
         }
 
-        /////////////////////Edit
         [HttpGet]
         public ViewResult EditTour(int id)
         {

@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using BeeTravel.Entities
+@inject SignInManager<DbUser> SignInManager
+@inject RoleManager<DbRole> RoleManager
+@inject UserManager<DbUser> UserManager
+@model List<Tour>
+
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    ViewBag.Title = " - Tour List";
+}
+
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- DATA TABLE -->
+                <h3 class="title-5 m-b-35">user table</h3>
+                <div class="table-data__tool">
+                    <div class="table-data__tool-left">
+                        <button class="au-btn au-btn-icon au-btn--blue2 au-btn--small">
+                            <i class="fas fa-refresh"></i>
+                            <a style="color:white;" asp-action="TourList">Reload</a>
+                        </button>
+                    </div>
+                    <div class="table-data__tool-right">
+                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="fas fa-user-plus"></i>
+                            <a style="color:white;" asp-action="Create">Add Tour</a>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    @{
+                        foreach (var tour in Model)
+                        {
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top" src="~/img/@tour.Img" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-3">@tour.Name</h4>
+                                        <div class="location text-sm-center">
+                                            <i class="fa fa-map-marker"></i> @tour.Countries
+                                        </div>
+                                        <p class="card-text">
+                                            @tour.Description
+                                        </p>
+                                    </div>
+                                    <div class="card-footer" style="display:inline-flex">
+                                        <a class="btn btn-outline-success" asp-action="OpenTour" asp-route-id="@tour.Id" style="margin:3px;">
+                                            <i class="fa fa-folder-open"></i> More
+                                        </a>
+                                        <a class="btn btn-outline-warning" asp-action="EditTour" asp-route-id="@tour.Id" style="margin:3px;">
+                                            <i class="fa fa-magic"></i> Edit
+                                        </a>
+                                        <form asp-controller="Administration" asp-action="DeleteTour" asp-route-id="@tour.Id" method="post" asp-route-returnurl="@Context.Request.Headers["Referer"].ToString()">
+                                            <button type="submit" class="btn btn-outline-danger" style="margin:3px;">
+                                                <i class="fa fa-ban"></i> Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </div>
+
+            </div>
+            <!-- END DATA TABLE -->
+        </div>
+    </div>
+</div>
+
+
+</div>

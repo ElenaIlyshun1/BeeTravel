@@ -2,6 +2,7 @@
 @using BeeTravel.Entities
 @inject SignInManager<DbUser> SignInManager
 @inject UserManager<DbUser> UserManager
+
 @{
     var user = await UserManager.GetUserAsync(User);
     var fullname = user.Firstname + " " + user.Lastname;
@@ -239,14 +240,9 @@
                                         </button>
                                     </form>
                                 }
-                              else
+                                else
                                 {
-                                    <form class="form-header" asp-action="Index" method="get">
-                                        <input class="au-input au-input--xl" type="text" name="SearchString" placeholder="Search ..." value="@ViewData["CurrentFilter"]" />
-                                        <button class="au-btn--submit" type="submit">
-                                            <i class="zmdi zmdi-search"></i>
-                                        </button>
-                                    </form>
+                                  
                                 }
 
                             }
@@ -453,7 +449,7 @@
 
     <!-- Main JS-->
     <script src="~/js/main.js"></script>
-
+    @RenderSection("Scripts", required: false)
 </body>
 
 </html>

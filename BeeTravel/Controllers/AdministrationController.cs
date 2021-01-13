@@ -1,4 +1,5 @@
-﻿using BeeTravel.Entities;
+﻿using BeeTravel.Data;
+using BeeTravel.Entities;
 using BeeTravel.Helpers;
 using BeeTravel.Interfaces;
 using BeeTravel.Models;
@@ -23,41 +24,35 @@ namespace BeeTravel.Controllers
         private readonly ITourRepository _tourRepository;
         private readonly UserManager<DbUser> _userManager;
         private readonly RoleManager<DbRole> _roleManager;
+        private readonly ApplicationDbContext _dbcontext;
         private IHostingEnvironment _hostingEnvironment;
 
         public AdministrationController(UserManager<DbUser> userManager,
-            RoleManager<DbRole> roleManager,ITourRepository tourRepository, IHostingEnvironment hostingEnvironment)
+            RoleManager<DbRole> roleManager,ITourRepository tourRepository, IHostingEnvironment hostingEnvironment, ApplicationDbContext dbContext)
         {
             _tourRepository = tourRepository;
             _userManager = userManager;
             _roleManager = roleManager;
             _hostingEnvironment = hostingEnvironment;
+            _dbcontext = dbContext;
         }
         #region User
         //   public IActionResult Index() => View(_userManager.Users.ToList());
-        public async Task<IActionResult> Index(string sortOrder,string currentFilter,string searchString,int? pageNumber)
+        public IActionResult Index(SearchUser search)
         {
-            ViewData["CurrentSort"] = sortOrder;
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewData["EmailSortParm"] = sortOrder == "Email" ? "email_desc" : "Email";
-            ViewData["CurrentFilter"] = searchString;
-            if (searchString != null)
+            ViewData["CurrentSort"] = search.sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(search.sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = search.sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["EmailSortParm"] = search.sortOrder == "Email" ? "email_desc" : "Email";
+            ViewData["CurrentFilter"] = search.searchString;
+            var users = from u in _dbcontext.Users.Include(x => x.UserRoles).ThenInclude(x=> x.Role)
+                        select u;
+            if (!String.IsNullOrEmpty(search.searchString))
             {
-                pageNumber = 1;
+                users = users.Where(u => u.Lastname.Contains(search.searchString)
+                                       || u.Firstname.Contains(search.searchString));
             }
-            else
-            {
-                searchString = currentFilter;
-            }
-            var users = from u in _userManager.Users
-                           select u;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                users = users.Where(u => u.Lastname.Contains(searchString)
-                                       || u.Firstname.Contains(searchString));
-            }
-            switch (sortOrder)
+            switch (search.sortOrder)
             {
                 case "name_desc":
                     users = users.OrderBy(u => u.Firstname);
@@ -78,8 +73,50 @@ namespace BeeTravel.Controllers
                     users = users.OrderBy(u => u.Firstname);
                     break;
             }
-            int pageSize = 8;
-            return View(await PaginatedList<DbUser>.CreateAsync(users.AsNoTracking(), pageNumber ?? 1, pageSize));
+            HomeVM model = new HomeVM()
+            {
+                Users = users.ToList(),
+                Search = search
+            };
+            return View(model);
+        }
+        public IActionResult SearchUser(SearchUser search)
+        {
+            ViewData["CurrentSort"] = search.sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(search.sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = search.sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["EmailSortParm"] = search.sortOrder == "Email" ? "email_desc" : "Email";
+            ViewData["CurrentFilter"] = search.searchString;
+
+            var users = from u in _dbcontext.Users.Include(x => x.UserRoles).ThenInclude(x => x.Role)
+                        select u;
+            if (!String.IsNullOrEmpty(search.searchString))
+            {
+                users = users.Where(u => u.Lastname.Contains(search.searchString)
+                                       || u.Firstname.Contains(search.searchString));
+            }
+            switch (search.sortOrder)
+            {
+                case "name_desc":
+                    users = users.OrderBy(u => u.Firstname);
+                    break;
+                case "Date":
+                    users = users.OrderBy(u => u.CreateDate);
+                    break;
+                case "date_desc":
+                    users = users.OrderByDescending(u => u.CreateDate);
+                    break;
+                case "Email":
+                    users = users.OrderBy(u => u.Email);
+                    break;
+                case "email_desc":
+                    users = users.OrderByDescending(u => u.Email);
+                    break;
+                default:
+                    users = users.OrderBy(u => u.Firstname);
+                    break;
+            }
+            return PartialView("_TableUser", users);
         }
         public IActionResult Create() => View();
         [HttpPost]

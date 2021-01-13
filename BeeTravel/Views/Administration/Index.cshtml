@@ -23,6 +23,7 @@
                             <a style="color:white;" asp-action="Index">Reload</a>
                         </button>
                     </div>
+                    @await Html.PartialAsync("_UserSearch", Model.Search)
                     <div class="table-data__tool-right">
                         <button class="au-btn au-btn-icon au-btn--red au-btn--small">
                             <i class="fas fa-ban"></i>
@@ -35,7 +36,7 @@
                     </div>
                 </div>
                 <div class="table-responsive table-responsive-data2">
-                        @await Html.PartialAsync("_UserSearch", Model.Search)
+                      
                     <div id="content-user-table">
                         @await Html.PartialAsync("_TableUser", Model.Users)
 

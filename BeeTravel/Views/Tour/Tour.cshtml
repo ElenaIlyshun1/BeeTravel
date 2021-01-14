@@ -1,4 +1,8 @@
-﻿
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Tours";
+}
+
 <div class="tour-image" style="background: url(/img/@Model.ImgLarge) no-repeat; background-size: cover;">
     <div class="container">
         <div class="tour-image__inner">
@@ -42,6 +46,8 @@
             </div>
         </div>
         <div class="row">
+            @if(User.IsInRole("Admin"))
+            {
             <div class="col-md-2">
                 <a asp-controller="TourManage" asp-action="EditTour" asp-route-id="@Model.Id"
                    class=" btn btn-warning btn-default">
@@ -55,6 +61,11 @@
                     Видалити
                 </a>
             </div>
+            }
+            else
+            {
+
+            }
         </div>
     </div>
 </section>

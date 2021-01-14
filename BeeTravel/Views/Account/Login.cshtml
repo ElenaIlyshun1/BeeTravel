@@ -3,6 +3,7 @@
 @inject IViewLocalizer Localizer
 
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Login";
 }
 
@@ -53,7 +54,7 @@
                 <a asp-controller="Account" asp-action="Registration" class="button" style="border-radius: 10px 10px 10px 10px; text-decoration:none;">@Localizer["button_register_user"]</a>
             </p>
         </div>
-       
+
     </div>
 </section>
 

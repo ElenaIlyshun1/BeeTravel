@@ -1,0 +1,280 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using BeeTravel.Entities
+@inject SignInManager<DbUser> SignInManager
+@inject RoleManager<DbRole> RoleManager
+@inject UserManager<DbUser> UserManager
+
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    ViewBag.Title = " - Tour";
+}
+<style>
+    /*All tours*/
+    .contant__tour-item {
+        height: 250px;
+        box-shadow: 0px 0px 30px #ccc;
+        background: #fff;
+        position: relative;
+        margin: 50px 0;
+        transition: box-shadow .2s linear;
+    }
+
+        .contant__tour-item:hover {
+            box-shadow: 0px 0px 30px 20px #071b4e;
+        }
+
+    .contant__tour-link {
+        display: block;
+        height: 100%;
+        text-decoration: none;
+        color: #071b4e;
+    }
+
+        .contant__tour-link:hover {
+            text-decoration: none;
+            font-weight: 700;
+            color: #071b4e;
+        }
+
+    .contant__tour-image {
+        width: 100%;
+        max-width: 380px;
+        max-height: 250px;
+        float: left;
+    }
+
+    .contant__tour-name {
+        font-size: 28px;
+    }
+
+    .contant__tour-description {
+        float: left;
+        padding: 20px 30px;
+        width: 57%;
+    }
+
+        .contant__tour-description h2 {
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 28px;
+            z-index: 10;
+        }
+
+    .contant__tour-info {
+        position: absolute;
+        bottom: 25px;
+        font-weight: 600;
+    }
+
+    .tour-info-item {
+        display: inline;
+        margin-right: 30px;
+    }
+
+    .contant__tour-countries {
+        margin-top: 15px;
+    }
+
+    .tour-data-price {
+        float: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-bottom: 20px;
+        padding: 5px;
+        text-align: center;
+        color: #fff;
+        height: 250px;
+        width: 200px;
+        background: #071b4e;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .tour-price {
+        font-size: 60px;
+    }
+
+    /*Single tour*/
+    .tour-image {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 90vh;
+    }
+
+    .tour-image__inner {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .tour-image__title {
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #fff;
+        text-align: center;
+        text-shadow: 5px 5px 10px black;
+    }
+
+    .single__tour-item {
+        padding: 50px 0;
+    }
+
+    .single__tour-name {
+        font-size: 36px;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 1.5em;
+        letter-spacing: -2px;
+        margin-bottom: 25px;
+    }
+
+    .single__tour-counties {
+        font-family: 'Gotham Pro',Sans-Serif;
+        color: #071b4e;
+        font-size: 18px;
+        font-weight: 700;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #d7d7d7;
+        max-width: 500px;
+    }
+
+    .single__tour-order-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+
+    .single__tour-datetime {
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 40px;
+    }
+
+    /*Admin*/
+    .admin-background {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        background: url(../img/back_admin.jpg) no-repeat center;
+        background-size: cover;
+    }
+
+    .admin__crud-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 0 100px;
+    }
+
+
+    /*Create tour*/
+    .tour__form {
+        background-color: #fff;
+        opacity: 0.92;
+        border-radius: 10px;
+        margin: 100px auto;
+    }
+
+        .tour__form * {
+            font-size: 24px;
+        }
+
+    .tour__form-btn-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 30%;
+    }
+
+    /*Account*/
+    .register-login-form {
+        margin: 100px auto;
+    }
+</style>
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container col-md-12">
+                <div class="row">
+                    <div class="tour-image" style="background: url(/img/@Model.Img) no-repeat; background-size: cover;">
+                        <div class="container">
+                            <div class="tour-image__inner">
+                                <h1 class="tour-image__title">@Model.Name</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section class="contant">
+                        <div class="container">
+                            <div class="row single__tour-item">
+                                <div class="col-md-8">
+                                    <h2 class="single__tour-name">@Model.Name</h2>
+                                    <div class="single__tour-counties">@Model.Countries</div>
+                                    <div class="single__tour-datetime">
+                                        <span> @Model.DepartureTown</span>
+                                        <span>@Model.Period дні</span>
+                                        @if (Model.IsNightCrossing)
+                                        {
+                                            <span>"З нічним переїздом"</span>
+                                        }
+                                        else
+                                        {
+                                            <span>"Без нічного переїзду"</span>
+                                        }
+                                    </div>
+
+                                    <div class="single__tour-description">
+                                        @Model.Description
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="single__tour-order-info">
+                                        <div class="tour-data-price">
+                                            <div class="tour-price"> @Model.Price<small>€</small></div>
+                                            <div>@Model.DepartureDate</div>
+                                        </div>
+                                        <button class="btn btn-light btn-default">Замовити</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="col-md-2">
+                                        <a asp-controller="TourManage" asp-action="EditTour" asp-route-id="@Model.Id"
+                                           class=" btn btn-warning btn-default">
+                                            Редагувати
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2">
+
+                                        <a asp-controller="TourManage" asp-action="DeleteTour" asp-route-id="@Model.Id" method="post"
+                                           class=" btn btn-danger btn-default">
+                                            Видалити
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+
+                                }
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+            <!-- END DATA TABLE -->
+        </div>
+    </div>
+</div>
+
+

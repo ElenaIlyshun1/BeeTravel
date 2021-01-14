@@ -3,12 +3,9 @@
 @inject IViewLocalizer Localizer
 
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Registration";
 }
-
-
-
-
 <section id="banner-lr">
     <div class="content">
         <div class="row">
@@ -51,7 +48,7 @@
                     <div class="form-group form-lr">
                         <input type="submit" value="Создать" class="button special" style="border-radius: 10px 10px 10px 10px;" />
                     </div>
-                </form> 
+                </form>
             </div>
             <div class="col-md-6 col-md-offset-2">
                 <section>
@@ -71,5 +68,5 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-   
+
 }

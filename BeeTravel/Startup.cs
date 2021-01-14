@@ -21,6 +21,7 @@ using BeeTravel.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using BeeTravel.Interfaces;
 using BeeTravel.Data.Repository;
+using BeeTravel.Data.Entities;
 
 namespace BeeTravel
 {
@@ -101,6 +102,7 @@ namespace BeeTravel
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseUserDestroyer();
 
             app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 
@@ -114,7 +116,7 @@ namespace BeeTravel
             using (var scope = app.ApplicationServices.CreateScope())
             {
                 ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                SeederDB.SeedData(app.ApplicationServices, env, this.Configuration);
+               // SeederDB.SeedData(app.ApplicationServices, env, this.Configuration);
             }
         }
     }

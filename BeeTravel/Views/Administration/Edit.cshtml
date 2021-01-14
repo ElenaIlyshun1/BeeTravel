@@ -1,0 +1,64 @@
+﻿@model EditUserViewModel
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    ViewBag.Title = " - User Manage";
+
+}
+<div class="section__content section__content--p30">
+    <div class="container-fluid" style="text-align:center;">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">Edit User</div>
+                    <div class="card-body card-block">
+                        <form asp-action="Edit" asp-controller="Administration">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <input asp-for="Firstname" type="text" id="firstname" placeholder="First Name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <input asp-for="Lastname" type="text" id="lastname" placeholder="Last Name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <input asp-for="Email" type="email" id="email" placeholder="Email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <input asp-for="PhoneNumber" type="text" id="phone" placeholder="Phone Number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-actions form-group">
+                                <button type="submit" class="btn btn-success btn-sm">Save</button>
+                                <button asp-action="Index" class="btn btn-danger btn-sm">Cancel</button>
+                            </div>
+                        </form>
+                        <div class="card-footer">
+                            <a asp-action="ManageUserRoles" asp-route-userId="@Model.Id"
+                               class="btn btn-primary">
+                                Manage Roles
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

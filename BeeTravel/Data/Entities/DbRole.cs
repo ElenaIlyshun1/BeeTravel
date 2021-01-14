@@ -9,5 +9,6 @@ namespace BeeTravel.Entities
     public class DbRole : IdentityRole<long>
     {
         public virtual ICollection<DbUserRole> UserRoles { get; set; }
+        public string RoleColor { get; set; }
     }
 }

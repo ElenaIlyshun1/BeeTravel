@@ -13,6 +13,7 @@ namespace BeeTravel.Entities
         public string Lastname { get; set; }
         [PersonalData]
         public DateTimeOffset CreateDate { get; set; }
+        public string Image { get; set; }
 
     }
 }

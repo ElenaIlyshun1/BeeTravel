@@ -46,7 +46,8 @@ namespace BeeTravel.Entities
                     UserName = user_name,
                     Firstname = firstlast,
                     Lastname = lastname,
-                    PhoneNumber = "+11(111)111-11-11"
+                    PhoneNumber = "+11(111)111-11-11",
+                    Image = "admin.png"
                 };
                 result = manager.CreateAsync(user, "33Ki9x66-3of+s").Result;
                 result = manager.AddToRoleAsync(user, "Admin").Result;

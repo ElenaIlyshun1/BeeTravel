@@ -9,6 +9,13 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card">
+                    <div class="card-header">User Photo</div>
+                    <div class="card-body card-block">
+
+                        <img src="/Files/@Model.Image" class="avatar img-circle img-thumbnail" alt="avatar" id="output">
+                    </div>
+                </div>
+                <div class="card">
                     <div class="card-header">Edit User</div>
                     <div class="card-body card-block">
                         <form asp-action="Edit" asp-controller="Administration">
@@ -58,7 +65,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

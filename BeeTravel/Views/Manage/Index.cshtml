@@ -14,7 +14,7 @@
                     <div class="col-sm-3">
                         <div class="text-center">
                             <hr>
-                            <img src="/Files/@Model.Image" class="avatar img-circle img-thumbnail" alt="avatar" id="output">
+                                <img src="/Files/@Model.Image" class="avatar img-circle img-thumbnail" alt="avatar" id="output">
                             <label class="btn button profile-button" style="width: 170px;padding-left: 58px;">
                                 Upload
                                 <input asp-for="PhotoBase64" type="file" style="visibility: hidden;" accept="image/jpeg, image/png" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0]), showButton()" value="@Model.Image" />
@@ -83,18 +83,19 @@
 
                                 <hr>
                                 <div class="form-group form-lr">
-                                    <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                        <div style="text-align: center; width: 100%;">
-                                            <button type="submit" class="button special profile-button"> Выйти </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </form>
+            <form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <div style="text-align: center; width: 100%;">
+                    <button type="submit" class="button special profile-button"> Выйти </button>
                 </div>
             </form>
         </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    </div>
     </div>
 </section>
 

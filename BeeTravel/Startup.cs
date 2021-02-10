@@ -24,6 +24,7 @@ using BeeTravel.Data.Repository;
 using BeeTravel.Data.Entities;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using BeeTravel.SMTPSend;
 
 namespace BeeTravel
 {
@@ -78,9 +79,11 @@ namespace BeeTravel
                     opt.SupportedUICultures = supportedCulteres;
 
                 });
-
+            //відправка листів
+            services.AddTransient<IEmailSender, EmailSender>();
             services.AddControllersWithViews()
                 .AddViewLocalization();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

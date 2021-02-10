@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using BeeTravel.Entities;
 using BeeTravel.Helpers;
+using BeeTravel.Interfaces;
 using BeeTravel.Models;
 using BeeTravel.Models.AccountViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -21,16 +23,20 @@ namespace BeeTravel.Controllers
         private readonly SignInManager<DbUser> _signInManager;
         private readonly RoleManager<DbRole> _roleManager;
         private readonly IWebHostEnvironment _env;
+        private readonly IEmailSender _emailSender;
 
 
         public AccountController(UserManager<DbUser> userManager,
             SignInManager<DbUser> signInManager,
             RoleManager<DbRole> roleManager,
+            IEmailSender emailSender,
             IWebHostEnvironment env)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _env = env;
+            _emailSender = emailSender;
+
         }
 
         [HttpGet]
@@ -84,6 +90,7 @@ namespace BeeTravel.Controllers
             return View();
         }
 
+
         [HttpPost]
         public async Task<IActionResult> Registration(RegistrationViewModel model)
         {
@@ -113,6 +120,21 @@ namespace BeeTravel.Controllers
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, "User");
+                    // генерация токена для пользователя
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //var code = await _userManager.GeneratePasswordResetTokenAsync(users.FirstOrDefault());
+                    var callbackUrl = Url.Action(
+                                     action: "Login",//realize method ConfirmEmail instead Login
+                                     controller: "Account",
+                                     values: new { user.Id, code },
+                                     protocol: Request.Scheme);
+                    //ConfirmEmailCallbackLink(user.Id.ToString(), code, Request.Scheme);
+
+                    callbackUrl += $"&email={WebUtility.UrlEncode(user.Email)}";
+
+                    await _emailSender.SendEmailAsync(user.Email, "Підтверження пошти",
+                        $"Ви можете підтвердити свій акаунт за посиланням нижче.<br />" +
+                        $"<a href='{callbackUrl}'>Підтвердити акаунт</a>");
                     return RedirectToAction("Index", "Home");
                 }
                 else

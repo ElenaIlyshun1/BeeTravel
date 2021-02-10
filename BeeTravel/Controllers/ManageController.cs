@@ -51,8 +51,9 @@ namespace BeeTravel.Controllers
                 PhoneNumber = user.PhoneNumber,
                 IsEmailConfirmed = user.EmailConfirmed,
                 FirstName = user.Firstname,
-                LastName = user.Lastname
-               
+                LastName = user.Lastname,
+                Image = user.Image
+
             };
 
             return View(model);
@@ -65,8 +66,40 @@ namespace BeeTravel.Controllers
             {
                 return View(model);
             }
+            //string base64 = model.PhotoBase64;
+            //if (base64.Contains(","))
+            //{
+            //    base64 = base64.Split(',')[1];
+            //}
+            //var bmp = base64.FromBase64StringToImage();
+                var user = await _userManager.GetUserAsync(User);
+            if (model.PhotoBase64 != null)
+            {
+                var serverPath = _env.ContentRootPath; //Directory.GetCurrentDirectory(); //_env.WebRootPath;
+                var folerName = "Uploads";
+                var path = Path.Combine(serverPath, folerName); //
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                string ext = ".jpg";
+                string fileName = Path.GetRandomFileName() + ext;
 
-            var user = await _userManager.GetUserAsync(User);
+                string filePathSave = Path.Combine(path, fileName);
+
+                //bmp.Save(filePathSave, ImageFormat.Jpeg);
+
+                using (var stream = System.IO.File.Create(filePathSave))
+                {
+                    await model.PhotoBase64.CopyToAsync(stream);
+                    user.Image = fileName;
+                    await _userManager.UpdateAsync(user);
+                }
+
+
+
+            }
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -76,7 +109,7 @@ namespace BeeTravel.Controllers
             {
                 user.Firstname = model.FirstName;
                 await _userManager.UpdateAsync(user);
-            } 
+            }
             var lastname = user.Lastname;
             if (model.LastName != lastname)
             {

@@ -22,7 +22,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using BeeTravel.Interfaces;
 using BeeTravel.Data.Repository;
 using BeeTravel.Data.Entities;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace BeeTravel
 {
@@ -99,6 +100,13 @@ namespace BeeTravel
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                 Path.Combine(env.ContentRootPath, "Uploads")),
+                RequestPath = "/Files"
+            });
+
             app.UseRouting();
 
             app.UseAuthentication();
@@ -117,7 +125,7 @@ namespace BeeTravel
             using (var scope = app.ApplicationServices.CreateScope())
             {
                 ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-               // SeederDB.SeedData(app.ApplicationServices, env, this.Configuration);
+                SeederDB.SeedData(app.ApplicationServices, env, this.Configuration);
             }
         }
     }

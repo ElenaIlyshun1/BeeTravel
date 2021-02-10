@@ -107,7 +107,7 @@ namespace BeeTravel.Controllers
                     UserName = model.Email,
                     PhoneNumber = model.PhoneNumber,
                     CreateDate = DateTimeOffset.UtcNow,
-                    Image = "default-user.png"
+                    Image = "default_user.png"
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

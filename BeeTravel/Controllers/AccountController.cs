@@ -124,18 +124,18 @@ namespace BeeTravel.Controllers
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     //var code = await _userManager.GeneratePasswordResetTokenAsync(users.FirstOrDefault());
                     var callbackUrl = Url.Action(
-                                     action: "Login",//realize method ConfirmEmail instead Login
-                                     controller: "Account",
-                                     values: new { user.Id, code },
-                                     protocol: Request.Scheme);
+                            "ConfirmEmail",
+                            "Account",
+                            new { userId = user.Id, code = code },
+                            protocol: HttpContext.Request.Scheme);
                     //ConfirmEmailCallbackLink(user.Id.ToString(), code, Request.Scheme);
 
-                    callbackUrl += $"&email={WebUtility.UrlEncode(user.Email)}";
+                   // callbackUrl += $"&email={WebUtility.UrlEncode(user.Email)}";
 
                     await _emailSender.SendEmailAsync(user.Email, "Підтверження пошти",
                         $"Ви можете підтвердити свій акаунт за посиланням нижче.<br />" +
                         $"<a href='{callbackUrl}'>Підтвердити акаунт</a>");
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "Account");
                 }
                 else
                 {
@@ -144,5 +144,25 @@ namespace BeeTravel.Controllers
             }
             return View(model);
         }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return View("Error");
+            }
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return View("Error");
+            }
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+            if (result.Succeeded)
+                return RedirectToAction("Index", "Home");
+            else
+                return View("Error");
+        }
+       
     }
 }

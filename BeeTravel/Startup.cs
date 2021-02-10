@@ -22,6 +22,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using BeeTravel.Interfaces;
 using BeeTravel.Data.Repository;
 using BeeTravel.Data.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BeeTravel
 {

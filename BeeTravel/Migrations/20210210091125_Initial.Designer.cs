@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BeeTravel.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210108145817_CreateRoleColor")]
-    partial class CreateRoleColor
+    [Migration("20210210091125_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -77,6 +77,9 @@ namespace BeeTravel.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("Firstname")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Image")
                         .HasColumnType("text");
 
                     b.Property<string>("Lastname")

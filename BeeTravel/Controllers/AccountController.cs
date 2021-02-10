@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
 
 namespace BeeTravel.Controllers
 {
@@ -128,13 +129,48 @@ namespace BeeTravel.Controllers
                             "Account",
                             new { userId = user.Id, code = code },
                             protocol: HttpContext.Request.Scheme);
+
+                    var webRoot = _env.WebRootPath; //get wwwroot Folder  
+
+                    //Get TemplateFile located at wwwroot/Templates/EmailTemplate/Register_EmailTemplate.html  
+                    var pathToFile = _env.WebRootPath
+                            + Path.DirectorySeparatorChar.ToString()
+                            + "Templates"
+                            + Path.DirectorySeparatorChar.ToString()
+                            + "EmailTemplate"
+                            + Path.DirectorySeparatorChar.ToString()
+                            + "Confirm_Account_Registration.html";
+
+                    var subject = "Confirm Account Registration";
+
+                    var builder = new BodyBuilder();
+                    using (StreamReader SourceReader = System.IO.File.OpenText(pathToFile))
+                    {
+                        builder.HtmlBody = SourceReader.ReadToEnd();
+                    }
+                    //{0} : Subject  
+                    //{1} : DateTime  
+                    //{2} : Email  
+                    //{3} : Username  
+                    //{4} : Password  
+                    //{5} : Message  
+                    //{6} : callbackURL  
+
+                    string messageBody = string.Format(builder.HtmlBody,
+                           subject,
+                           String.Format("{0:dddd, d MMMM yyyy}", DateTime.Now),
+                           model.Email,
+                           model.Firstname,
+                           model.Lastname,
+                           model.Password,
+                           callbackUrl
+                           );
+
                     //ConfirmEmailCallbackLink(user.Id.ToString(), code, Request.Scheme);
 
-                   // callbackUrl += $"&email={WebUtility.UrlEncode(user.Email)}";
+                    // callbackUrl += $"&email={WebUtility.UrlEncode(user.Email)}";
 
-                    await _emailSender.SendEmailAsync(user.Email, "Підтверження пошти",
-                        $"Ви можете підтвердити свій акаунт за посиланням нижче.<br />" +
-                        $"<a href='{callbackUrl}'>Підтвердити акаунт</a>");
+                    await _emailSender.SendEmailAsync(model.Email, subject, messageBody);
                     return RedirectToAction("Login", "Account");
                 }
                 else
@@ -163,6 +199,6 @@ namespace BeeTravel.Controllers
             else
                 return View("Error");
         }
-       
+
     }
 }

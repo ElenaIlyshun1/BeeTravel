@@ -33,7 +33,10 @@
                     </div>
                     <div class="form-group form-lr">
                         <input type="submit" value="Войти" class="button special" style="border-radius: 10px 10px 10px 10px;" />
+                        <a asp-controller="Account" asp-action="Registration" class="button" style="border-radius: 10px 10px 10px 10px; text-decoration:none;">@Localizer["button_register_user"]</a>
+
                     </div>
+                    <a asp-controller="Account" asp-action="ForgotPassword" style="text-decoration:none;">Forgot Password</a>
                 </form>
             </div>
             <div class="col-md-6 col-md-offset-2">
@@ -49,12 +52,6 @@
                 </section>
             </div>
         </div>
-        <div class="form-group form-lr reg-log-col">
-            <p>
-                <a asp-controller="Account" asp-action="Registration" class="button" style="border-radius: 10px 10px 10px 10px; text-decoration:none;">@Localizer["button_register_user"]</a>
-            </p>
-        </div>
-
     </div>
 </section>
 

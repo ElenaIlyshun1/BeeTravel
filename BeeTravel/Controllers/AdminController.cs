@@ -64,8 +64,8 @@ namespace BeeTravel.Controllers
             return View();
         }
 
-        [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteTour(int id)
+        [HttpPost]
+        public async Task<IActionResult> DeleteTour(int id)
         {
             Tour tour = _tourRepository.GetTourById(id);
             if (tour != null)
@@ -73,7 +73,7 @@ namespace BeeTravel.Controllers
                 ImageHelper.DeleteImage(_hostingEnvironment, tour.Img);
                 _tourRepository.DeleteTour(tour);
             }
-            return Redirect("/Home/Index");
+            return Redirect("/Tour/Index");
         }
 
         [HttpGet]

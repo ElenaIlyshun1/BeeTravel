@@ -25,9 +25,19 @@ namespace BeeTravel.Controllers
 
             return View(tour);
         }
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
-            List<Tour> Tours = _tourRepository.GetAllTours().ToList();
+            var Tours = _tourRepository.GetAllTours().ToList();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Tours = _tourRepository.GetAllTours().Where(t => t.Countries.Contains(searchString)).ToList();
+
+            }
+            else
+            {
+
+                Tours = _tourRepository.GetAllTours().ToList();
+            }
             return View(Tours);
         }
     }

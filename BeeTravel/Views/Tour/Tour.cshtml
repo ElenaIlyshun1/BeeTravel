@@ -46,21 +46,23 @@
             </div>
         </div>
         <div class="row">
-            @if(User.IsInRole("Admin"))
+            @if (User.IsInRole("Admin"))
             {
-            <div class="col-md-2">
-                <a asp-controller="TourManage" asp-action="EditTour" asp-route-id="@Model.Id"
-                   class=" btn btn-warning btn-default">
-                    Редагувати
-                </a>
-            </div>
-            <div class="col-md-2">
+                <div class="col-md-2">
+                    <a asp-controller="TourManage" asp-action="EditTour" asp-route-id="@Model.Id"
+                       class=" btn btn-warning btn-default">
+                        Редагувати
+                    </a>
+                </div>
+                <div class="col-md-2">
 
-                <a asp-controller="TourManage" asp-action="DeleteTour" asp-route-id="@Model.Id" method="post"
-                   class=" btn btn-danger btn-default">
-                    Видалити
-                </a>
-            </div>
+                    <form asp-controller="Admin" asp-action="DeleteTour" asp-route-id="@Model.Id" method="post">
+                        <button type="submit"
+                                class=" btn btn-danger btn-default">
+                            Видалити
+                        </button>
+                    </form>
+                </div>
             }
             else
             {

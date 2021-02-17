@@ -18,7 +18,7 @@ namespace BeeTravel.SMTPSend
 
                 emailMessage.From.Add(new MailboxAddress("Администрация сайта", "beetravelconfirm@gmail.com"));
                 emailMessage.To.Add(new MailboxAddress("lenailyshun@gmail.com", to));
-                emailMessage.Subject = "hello";
+                emailMessage.Subject = "no-reply";
                 emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
                 {
                     Text = text

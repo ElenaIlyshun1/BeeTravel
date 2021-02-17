@@ -124,7 +124,7 @@ namespace BeeTravel.Controllers
         {
             if (ModelState.IsValid)
             {
-                DbUser user = new DbUser { Email = model.Email ,Firstname = model.Firstname, Lastname = model.Lastname, PhoneNumber = model.PhoneNumber, UserName = model.Email , CreateDate = DateTime.UtcNow};
+                DbUser user = new DbUser { Email = model.Email ,Firstname = model.Firstname, Lastname = model.Lastname, PhoneNumber = model.PhoneNumber, UserName = model.Email , CreateDate = DateTime.UtcNow,Image= "default_user.png" };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 result = _userManager.AddToRoleAsync(user, "User").Result;
                 if (result.Succeeded)
@@ -153,7 +153,8 @@ namespace BeeTravel.Controllers
                     UserName = x.UserName,
                     Firstname = x.Firstname,
                     Lastname = x.Lastname,
-                    PhoneNumber = x.PhoneNumber
+                    PhoneNumber = x.PhoneNumber,
+                    Image = x.Image
                 })
                 .SingleOrDefault(x => x.Id == id);
             if (model == null)

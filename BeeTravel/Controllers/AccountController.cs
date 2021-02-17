@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
 
 namespace BeeTravel.Controllers
 {
@@ -114,7 +115,7 @@ namespace BeeTravel.Controllers
                     UserName = model.Email,
                     PhoneNumber = model.PhoneNumber,
                     CreateDate = DateTimeOffset.UtcNow,
-                    Image = "default-user.png"
+                    Image = "default_user.png"
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -124,23 +125,171 @@ namespace BeeTravel.Controllers
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     //var code = await _userManager.GeneratePasswordResetTokenAsync(users.FirstOrDefault());
                     var callbackUrl = Url.Action(
-                                     action: "Login",//realize method ConfirmEmail instead Login
-                                     controller: "Account",
-                                     values: new { user.Id, code },
-                                     protocol: Request.Scheme);
+                            "ConfirmEmail",
+                            "Account",
+                            new { userId = user.Id, code = code },
+                            protocol: HttpContext.Request.Scheme);
+
+                    var webRoot = _env.WebRootPath; //get wwwroot Folder  
+
+                    //Get TemplateFile located at wwwroot/Templates/EmailTemplate/Register_EmailTemplate.html  
+                    var pathToFile = _env.WebRootPath
+                            + Path.DirectorySeparatorChar.ToString()
+                            + "Templates"
+                            + Path.DirectorySeparatorChar.ToString()
+                            + "EmailTemplate"
+                            + Path.DirectorySeparatorChar.ToString()
+                            + "Confirm_Account_Registration.html";
+
+                    var subject = "Confirm Account Registration";
+
+                    var builder = new BodyBuilder();
+                    using (StreamReader SourceReader = System.IO.File.OpenText(pathToFile))
+                    {
+                        builder.HtmlBody = SourceReader.ReadToEnd();
+                    }
+                    //{0} : Subject  
+                    //{1} : DateTime  
+                    //{2} : Email  
+                    //{3} : Username  
+                    //{4} : Password  
+                    //{5} : Message  
+                    //{6} : callbackURL  
+
+                    string messageBody = string.Format(builder.HtmlBody,
+                           subject,
+                           String.Format("{0:dddd, d MMMM yyyy}", DateTime.Now),
+                           model.Email,
+                           model.Firstname,
+                           model.Lastname,
+                           model.Password,
+                           callbackUrl
+                           );
+
                     //ConfirmEmailCallbackLink(user.Id.ToString(), code, Request.Scheme);
 
-                    callbackUrl += $"&email={WebUtility.UrlEncode(user.Email)}";
+                    // callbackUrl += $"&email={WebUtility.UrlEncode(user.Email)}";
 
-                    await _emailSender.SendEmailAsync(user.Email, "Підтверження пошти",
-                        $"Ви можете підтвердити свій акаунт за посиланням нижче.<br />" +
-                        $"<a href='{callbackUrl}'>Підтвердити акаунт</a>");
-                    return RedirectToAction("Index", "Home");
+                    await _emailSender.SendEmailAsync(model.Email, subject, messageBody);
+                    return RedirectToAction("Login", "Account");
                 }
                 else
                 {
                     ModelState.AddModelError("", "Щось пішло не так.");
                 }
+            }
+            return View(model);
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return View("Error");
+            }
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return View("Error");
+            }
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+            if (result.Succeeded)
+                return RedirectToAction("Index", "Home");
+            else
+                return View("Error");
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+                {
+                    return View("ForgotPasswordConfirmation");
+                }
+
+                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                callbackUrl += $"&email={WebUtility.UrlEncode(model.Email)}";
+
+                var webRoot = _env.WebRootPath; 
+
+                var pathToFile = _env.WebRootPath
+                        + Path.DirectorySeparatorChar.ToString()
+                        + "Templates"
+                        + Path.DirectorySeparatorChar.ToString()
+                        + "EmailTemplate"
+                        + Path.DirectorySeparatorChar.ToString()
+                        + "Forgot_Password_Confirmation.html";
+
+                var subject = "Confirm Reset Password";
+
+                var builder = new BodyBuilder();
+                using (StreamReader SourceReader = System.IO.File.OpenText(pathToFile))
+                {
+                    builder.HtmlBody = SourceReader.ReadToEnd();
+                }
+                string messageBody = string.Format(builder.HtmlBody,
+                       subject,
+                       String.Format("{0:dddd, d MMMM yyyy}", DateTime.Now),
+                       model.Email,
+                       callbackUrl
+                       );
+
+                await _emailSender.SendEmailAsync(model.Email, subject, messageBody);
+                return View("ForgotPasswordConfirmation");
+            }
+            return View(model);
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ResetPassword(string code = null,string email = null)
+        {
+            ResetPasswordViewModel model = new ResetPasswordViewModel
+            {
+                Email = email,
+                Code = code
+            };
+
+
+            //  return code == null ? View("Error") : View();
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                return View("ResetPasswordConfirmation");
+            }
+            var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
+            if (result.Succeeded)
+            {
+                return View("ResetPasswordConfirmation");
+            }
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
             }
             return View(model);
         }

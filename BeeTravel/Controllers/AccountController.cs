@@ -222,6 +222,7 @@ namespace BeeTravel.Controllers
 
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                callbackUrl += $"&email={WebUtility.UrlEncode(model.Email)}";
 
                 var webRoot = _env.WebRootPath; 
 
@@ -254,9 +255,17 @@ namespace BeeTravel.Controllers
         }
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult ResetPassword(string code = null)
+        public IActionResult ResetPassword(string code = null,string email = null)
         {
-            return code == null ? View("Error") : View();
+            ResetPasswordViewModel model = new ResetPasswordViewModel
+            {
+                Email = email,
+                Code = code
+            };
+
+
+            //  return code == null ? View("Error") : View();
+            return View(model);
         }
 
         [HttpPost]

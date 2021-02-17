@@ -35,7 +35,7 @@
                             <input class="au-input au-input--xl" type="text" name="SearchString" placeholder="Search ..." value="@ViewData["CurrentFilter"]"style=" height: 2em;"/>
                         </form>
                     </li>
-                    <li><a asp-area="" asp-controller="Tour" asp-action="Index">Туры</a></li>
+                    <li><a asp-area="" asp-controller="Tour" asp-action="Index">@Localizer["Navbar_menu_item_4"]</a></li>
                     <li><a href="#">@Localizer["Navbar_menu_item_2"]</a></li>
                     <li><a href="elements.html">@Localizer["Navbar_menu_item_3"]</a></li>
                     @if (SignInManager.IsSignedIn(User))

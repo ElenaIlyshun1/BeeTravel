@@ -126,6 +126,9 @@
   <data name="Navbar_menu_item_3" xml:space="preserve">
     <value>Елементи</value>
   </data>
+  <data name="Navbar_menu_item_4" xml:space="preserve">
+    <value>Тури</value>
+  </data>
   <data name="Navbar_menu_login" xml:space="preserve">
     <value>Вхід</value>
   </data>

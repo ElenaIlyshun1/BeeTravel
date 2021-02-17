@@ -2,73 +2,84 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Tours";
 }
+<div style="
+    border: solid 2px rgba(255, 255, 255, 0.3);
+    margin: 70px 15px 10px 15px;
+    border-radius: 27px;
+">
 
-<div class="tour-image" style="background: url(/img/@Model.ImgLarge) no-repeat; background-size: cover;">
-    <div class="container">
-        <div class="tour-image__inner">
-            <h1 class="tour-image__title">@Model.Name</h1>
+    <div class="tour-image" style="background-size: cover;">
+        <div class="container">
+            <div>
+
+                <img src="~/img/@Model.Img" style="width:100%; padding-top:20px" />
+            </div>
+            <div class="tour-image__inner">
+                <h1 class="tour-image__title">@Model.Name</h1>
+            </div>
         </div>
     </div>
-</div>
 
-<section class="contant">
-    <div class="container">
-        <div class="row single__tour-item">
-            <div class="col-md-8">
-                <h2 class="single__tour-name">@Model.Name</h2>
-                <div class="single__tour-counties">@Model.Countries</div>
-                <div class="single__tour-datetime">
-                    <span> @Model.DepartureTown</span>
-                    <span>@Model.Period дні</span>
-                    @if (Model.IsNightCrossing)
-                    {
-                        <span>"З нічним переїздом"</span>
-                    }
-                    else
-                    {
-                        <span>"Без нічного переїзду"</span>
-                    }
-                </div>
-
-                <div class="single__tour-description">
-                    @Model.Description
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="single__tour-order-info">
-                    <div class="tour-data-price">
-                        <div class="tour-price"> @Model.Price<small>€</small></div>
-                        <div>@Model.DepartureDate</div>
+    <section class="contant" style=" padding-bottom: 16px; ">
+        <div class="container">
+            <div class="row single__tour-item">
+                <div class="col-md-8">
+                    <h2 class="single__tour-name">@Model.Name</h2>
+                    <div class="single__tour-counties">@Model.Countries</div>
+                    <div class="single__tour-datetime">
+                        <span> @Model.DepartureTown</span>
+                        <span>@Model.Period дні</span>
+                        @if (Model.IsNightCrossing)
+                        {
+                            <span>"З нічним переїздом"</span>
+                        }
+                        else
+                        {
+                            <span>"Без нічного переїзду"</span>
+                        }
                     </div>
-                    <button class="btn btn-light btn-default">Замовити</button>
+
+                    <div class="single__tour-description">
+                        @Model.Description
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="single__tour-order-info">
+                        <div class="tour-data-price">
+                            <div class="tour-price"> @Model.Price<small>€</small></div>
+                            <div>@Model.DepartureDate</div>
+                        </div>
+                        <button class="btn btn-light btn-default">Замовити</button>
+                    </div>
                 </div>
             </div>
+            <div class="row">
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="col-md-2">
+                        <a asp-controller="TourManage" asp-action="EditTour" asp-route-id="@Model.Id"
+                           class=" btn btn-warning btn-default">
+                            Редагувати
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+
+                        <form asp-controller="Admin" asp-action="DeleteTour" asp-route-id="@Model.Id" method="post">
+                            <button type="submit"
+                                    class=" btn btn-danger btn-default">
+                                Видалити
+                            </button>
+                        </form>
+                    </div>
+                }
+                else
+                {
+
+                }
+            </div>
         </div>
-        <div class="row">
-            @if (User.IsInRole("Admin"))
-            {
-                <div class="col-md-2">
-                    <a asp-controller="TourManage" asp-action="EditTour" asp-route-id="@Model.Id"
-                       class=" btn btn-warning btn-default">
-                        Редагувати
-                    </a>
-                </div>
-                <div class="col-md-2">
+    </section>
 
-                    <form asp-controller="Admin" asp-action="DeleteTour" asp-route-id="@Model.Id" method="post">
-                        <button type="submit"
-                                class=" btn btn-danger btn-default">
-                            Видалити
-                        </button>
-                    </form>
-                </div>
-            }
-            else
-            {
 
-            }
-        </div>
-    </div>
-</section>
-
+</div>

@@ -32,7 +32,7 @@
                     <li><a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Navbar_menu_item_1"]</a></li>
                     <li>
                         <form class="form-header" asp-action="Index" asp-controller="Tour" method="get">
-                            <input class="au-input au-input--xl" type="text" name="SearchString" placeholder="Search ..." value="@ViewData["CurrentFilter"]"style=" height: 2em;"/>
+                            <input class="au-input au-input--xl" type="text" name="SearchString" placeholder="Search ..." value="@ViewData["CurrentFilter"]" style=" height: 2em;" />
                         </form>
                     </li>
                     <li><a asp-area="" asp-controller="Tour" asp-action="Index">@Localizer["Navbar_menu_item_4"]</a></li>

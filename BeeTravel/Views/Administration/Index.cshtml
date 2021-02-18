@@ -51,6 +51,26 @@
     <script>
     $(function () {
         const form = $("#formSearchUser");
+        const input = $("#inputSearchUser");
+
+        input.change(function (e) {
+            e.preventDefault();
+                        //console.log("Form serialize", $(this).serialize());
+
+            var formData = form.serialize();
+
+            $.ajax({
+                url: '@Url.Action("SearchUser", "Administration")',
+                type: "GET",
+                data: formData,
+                success: function (data) {
+                    $("#content-user-table").html(data);
+                  // console.log("Result", data);
+                }
+            });
+          //  alert("Search");
+        });
+
         form.submit(function (e) {
             e.preventDefault();
                         //console.log("Form serialize", $(this).serialize());

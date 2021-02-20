@@ -134,7 +134,7 @@ var bg = [Math.floor(Math.random() * 25) + 1];
 document.getElementsByClassName('front-card')[0].style.backgroundImage = 'url(/css/resource_card/' + bg.toString() + ".jpeg" + ')';
 document.getElementsByClassName('back-card')[0].style.backgroundImage = 'url(/css/resource_card/' + bg.toString() + ".jpeg" + ')';
 
-const regex = /[A-Za-z]/;
+const regex = /[a-zA-Z\s]+$/;
 function validate(e) {
     const chars = e.target.value.split('');
     const char = chars.pop();

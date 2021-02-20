@@ -700,6 +700,15 @@ namespace BeeTravel.Controllers
             }
             return View(Tours);
         }
+
+        #region Dashboard
+        [HttpGet]
+        public IActionResult Dashboard()
+        {
+
+            return View();
+        }
+        #endregion
     }
 
 }

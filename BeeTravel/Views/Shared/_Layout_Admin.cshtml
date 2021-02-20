@@ -109,6 +109,11 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
+                        <li>
+                            <a asp-action="Dashboard">
+                                <i class="fas fa-bar-chart-o"></i>Dashboard
+                            </a>
+                        </li>
                         <li class="has-sub @(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-users"></i>Users

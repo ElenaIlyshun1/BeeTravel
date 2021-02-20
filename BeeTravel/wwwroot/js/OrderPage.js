@@ -64,14 +64,29 @@ numberCardForm.addEventListener('keyup', e => {
     if (valueNumberCardForm[0] === '4') {
         logoCard.innerHTML = '';
         let imgLogo = document.createElement('img');
-        imgLogo.src = 'https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fvisa.png?alt=media&token=d1324d01-81f6-42d4-a37c-1edc19e1e0b1';
+        imgLogo.src = "/css/resource_card/visa.png";
         logoCard.appendChild(imgLogo);
     } else if (valueNumberCardForm[0] === '5') {
         logoCard.innerHTML = '';
         let imgLogo = document.createElement('img');
-        imgLogo.src = 'https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fmastercard.png?alt=media&token=1a5347d2-a282-436f-87a8-f193458830f4';
+        imgLogo.src = "/css/resource_card/mastercard.png";
         logoCard.appendChild(imgLogo);
-    }
+    } else if (valueNumberCardForm[0] === '3' && valueNumberCardForm[1] === '4' || valueNumberCardForm[0] === '3' && valueNumberCardForm[1] === '7') {
+        logoCard.innerHTML = '';
+        let imgLogo = document.createElement('img');
+        imgLogo.src = "/css/resource_card/amex.png";
+        logoCard.appendChild(imgLogo);
+    } else if (valueNumberCardForm[0] === '6' && valueNumberCardForm[1] === '0' && valueNumberCardForm[2] === '1' && valueNumberCardForm[3] === '1') {
+        logoCard.innerHTML = '';
+        let imgLogo = document.createElement('img');
+        imgLogo.src = "/css/resource_card/discover.png";
+        logoCard.appendChild(imgLogo);
+    } else if (valueNumberCardForm[0] === '9' && valueNumberCardForm[1] === '7' && valueNumberCardForm[2] === '9' && valueNumberCardForm[3] === '2') {
+        logoCard.innerHTML = '';
+        let imgLogo = document.createElement('img');
+        imgLogo.src = "/css/resource_card/troy.png";
+        logoCard.appendChild(imgLogo);
+    } 
 
     showFrontCard();
 
@@ -114,3 +129,9 @@ ccvCardForm.addEventListener('keyup', e => {
 
     ccvCard.textContent = ccvCardForm.value;
 });
+
+var bg = [Math.floor(Math.random() * 25) + 1];
+document.getElementsByClassName('front-card')[0].style.backgroundImage = 'url(/css/resource_card/' + bg.toString() + ".jpeg" + ')';
+document.getElementsByClassName('back-card')[0].style.backgroundImage = 'url(/css/resource_card/' + bg.toString() + ".jpeg" + ')';
+
+

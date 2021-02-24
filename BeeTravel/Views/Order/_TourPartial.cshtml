@@ -1,0 +1,52 @@
+﻿@model BeeTravel.Models.Tour
+<div class="col-6">
+    <div>
+        <div class="tour-image" style="background-size: cover;">
+            <div>
+                <div>
+
+                    <img src="~/img/@Model.Img" style="width:100%; padding-top:20px" />
+                </div>
+                <div class="tour-image__inner">
+                    <h1 class="tour-image__title">@Model.Name</h1>
+                </div>
+            </div>
+        </div>
+
+        <section class="contant" style=" padding-bottom: 16px; ">
+            <div>
+                <div class="row single__tour-item">
+                    <div class="col-md-8">
+                        <h2 class="single__tour-name">@Model.Name</h2>
+                        <div class="single__tour-counties">@Model.Countries</div>
+                        <div class="single__tour-datetime">
+                            <span> @Model.DepartureTown</span>
+                            <span>@Model.Period дні</span>
+                            @if (Model.IsNightCrossing)
+                            {
+                                <span>"З нічним переїздом"</span>
+                            }
+                            else
+                            {
+                                <span>"Без нічного переїзду"</span>
+                            }
+                        </div>
+
+                        <div class="single__tour-description">
+                            @Model.Description
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="single__tour-order-info">
+                            <div class="tour-data-price">
+                                <div class="tour-price"> @Model.Price<small>€</small></div>
+                                <div>@Model.DepartureDate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@model BeeTravel.Models.OrderViewModels.OrderViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Order";
+    
+}
+<section id="banner-lr">
+    <div class="content content-profile">
+        <div class="row">
+            @Html.Partial("_TourPartial",Model.Tour)
+            @Html.Partial("_UserPartial",Model.User)
+            
+        </div>
+
+    </div>
+
+
+
+</section>

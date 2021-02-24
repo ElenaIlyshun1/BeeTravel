@@ -1,4 +1,5 @@
-﻿@{
+﻿@model BeeTravel.Models.Tour
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Tours";
 }
@@ -50,7 +51,11 @@
                             <div class="tour-price"> @Model.Price<small>€</small></div>
                             <div>@Model.DepartureDate</div>
                         </div>
-                        <button class="btn btn-light btn-default" style=" margin: 10px 10px 10px 10px;">Замовити</button>
+                        <form asp-action="GetOrder" asp-controller="Order" method="post" asp-route-id="@Model.Id" >
+                            <input type="hidden" name="id" value="@Model.Id"/>
+                            <button type="submit" class="btn btn-light btn-default" style=" margin: 10px 10px 10px 10px;">Замовити</button>
+
+                        </form>
                     </div>
                 </div>
             </div>

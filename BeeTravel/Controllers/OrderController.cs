@@ -5,11 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using BeeTravel.Data;
 using BeeTravel.Entities;
 using BeeTravel.Helpers;
 using BeeTravel.Interfaces;
 using BeeTravel.Models;
 using BeeTravel.Models.AccountViewModels;
+using BeeTravel.Models.OrderViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -21,20 +23,19 @@ namespace BeeTravel.Controllers
     public class OrderController : Controller
     {
         private readonly UserManager<DbUser> _userManager;
-        private readonly SignInManager<DbUser> _signInManager;
-        private readonly RoleManager<DbRole> _roleManager;
-        private readonly IWebHostEnvironment _env;
         private readonly IEmailSender _emailSender;
-        public OrderController(UserManager<DbUser> userManager,
-            SignInManager<DbUser> signInManager,
-            RoleManager<DbRole> roleManager,
-            IEmailSender emailSender,
-            IWebHostEnvironment env)
+        private readonly ITourRepository _tourRepository;
+        private readonly ApplicationDbContext _applicationDbContext;
+        public OrderController( IEmailSender emailSender,
+               UserManager<DbUser> userManager,
+            ITourRepository tourRepository,
+            ApplicationDbContext applicationDbContext
+            )
         {
             _userManager = userManager;
-            _signInManager = signInManager;
-            _env = env;
+            _tourRepository = tourRepository;
             _emailSender = emailSender;
+            _applicationDbContext = applicationDbContext;
         }
 
         [HttpGet]
@@ -43,6 +44,21 @@ namespace BeeTravel.Controllers
           
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult>  GetOrder(int id)
+        {
+            var tour = _tourRepository.GetTourById(id);
+            var user = await _userManager.GetUserAsync(User);
+            var userapp = _applicationDbContext.Users.SingleOrDefault(x => x.Id == user.Id);
+            var model = new OrderViewModel
+            {
+                Tour = tour,
+                User = userapp
+            };
+
+            return View(model);
+        }
+        
 
     }
 }

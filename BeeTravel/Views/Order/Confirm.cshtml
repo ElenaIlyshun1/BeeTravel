@@ -1,0 +1,157 @@
+﻿<link href="~/css/OrderPage.css" rel="stylesheet" type="text/css" />
+<link href="~/css/font-face.css" rel="stylesheet" media="all">
+<link href="~/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+<link href="~/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+
+<div class="container">
+    <section id="card" class="card">
+        <div class="front-card">
+            <div style="display: flex;">
+            <img src="~/css/resource_card/chip.png" alt="Chip" title="Chip" class="chip">
+            <div id="logo-card" class="logo-card"></div>
+
+            </div>
+
+
+            <div class="info-card-front">
+                <div id="group-number-card" class="group-number-card">
+                    <p class="label-card">
+                        Card Number
+                    </p>
+
+                    <p class="number-card" style=" font-size: 40px;">
+                        #### #### #### ####
+                    </p>
+                </div>
+
+                <div class="flexbox">
+                    <div id="group-name-card" class="group-name-card">
+                        <p class="label-card">
+                            Card Holder
+                        </p>
+
+                        <p class="name-card">
+                            John Doe
+                        </p>
+                    </div>
+
+                    <div id="group-expiration-card" class="group-expiration-card">
+                        <p class="label-card">
+                            Month/Year
+                        </p>
+
+                        <p class="expiration-card">
+                            <span class="mounth-expiration-card">
+                                MM
+                            </span>
+                            /
+                            <span class="year-expiration-card">
+                                YY
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-card">
+            <div class="magnetic-bar-card"></div>
+
+            <div class="info-card-back">
+                <div id="group-firm-card" class="group-firm-card">
+                    <p class="label-card">
+                        Signature
+                    </p>
+
+                    <div class="firm-card">
+                        <p>
+                            John Doe
+                        </p>
+                    </div>
+                </div>
+
+                <div id="group-ccv-card" class="group-ccv-card">
+                    <p class="label-card">
+                        CCV
+                    </p>
+
+                    <p class="ccv-card"></p>
+                </div>
+            </div>
+
+            <p class="legend-card">
+                All rights reserved © 2020
+            </p>
+
+            <a class="link-bank-card" href="javascript:void(0);">
+                www.BeeTravel.com
+            </a>
+        </div>
+    </section>
+
+
+    <div class="ctn-btn">
+        <button type="button" id="btn-open-form-card" class="btn-open-form-card">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+
+    <form action="javascript:void(0);" id="form-card" class="form-card active">
+        <div>
+            <label for="number-card-form">
+                Card Number
+            </label>
+
+            <input type="text" id="number-card-form" maxlength="19" autocomplete="off">
+        </div>
+
+        <div>
+            <label for="name-card-form">
+                Card Holder
+            </label>
+
+            <input type="text" id="name-card-form" maxlength="20" autocomplete="off" >
+        </div>
+
+        <div class="flexbox">
+            <div class="group-expiration-card-form">
+                <label for="mounth-expiration-card-form">
+                    Month/Year
+                </label>
+
+                <div class="flexbox">
+                    <div class="group-select">
+                        <select id="mounth-expiration-card-form">
+                            <option disabled="disabled" selected="selected">
+                                Month
+                            </option>
+                        </select>
+                        <i class="fas fa-angle-down"></i>
+                    </div>
+
+                    <div class="group-select">
+                        <select id="year-expiration-card-form">
+                            <option disabled="disabled" selected="selected">
+                                Year
+                            </option>
+                        </select>
+                        <i class="fas fa-angle-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group-ccv-card-form">
+                <label for="ccv-card-form">
+                    CCV
+                </label>
+
+                <input type="text" id="ccv-card-form" maxlength="3" autocomplete="off">
+            </div>
+        </div>
+
+        <button type="submit" class="btn-send-form-card">
+            Confirm
+        </button>
+    </form>
+</div>
+<script src="~/js/OrderPage.js"></script>

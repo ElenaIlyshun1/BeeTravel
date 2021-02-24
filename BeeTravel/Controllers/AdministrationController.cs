@@ -535,9 +535,19 @@ namespace BeeTravel.Controllers
         #endregion
 
         #region Tour
-        public IActionResult TourList()
+        public IActionResult TourList(string searchString)
         {
-            List<Tour> Tours = _tourRepository.GetAllTours().ToList();
+          var Tours = _tourRepository.GetAllTours().ToList();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Tours = _tourRepository.GetAllTours().Where(t => t.Countries.Contains(searchString)).ToList();
+
+            }
+            else
+            {
+
+             Tours = _tourRepository.GetAllTours().ToList();
+            }
             return View(Tours);
         }
         [Route("Administration/TourList/{id}")]
@@ -690,6 +700,15 @@ namespace BeeTravel.Controllers
             }
             return View(Tours);
         }
+
+        #region Dashboard
+        [HttpGet]
+        public IActionResult Dashboard()
+        {
+
+            return View();
+        }
+        #endregion
     }
 
 }

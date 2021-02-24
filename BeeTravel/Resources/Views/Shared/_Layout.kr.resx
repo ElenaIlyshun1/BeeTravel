@@ -126,6 +126,9 @@
   <data name="Navbar_menu_item_3" xml:space="preserve">
     <value>집단</value>
   </data>
+  <data name="Navbar_menu_item_4" xml:space="preserve">
+    <value>여행</value>
+  </data>
   <data name="Navbar_menu_login" xml:space="preserve">
     <value>로그인</value>
   </data>

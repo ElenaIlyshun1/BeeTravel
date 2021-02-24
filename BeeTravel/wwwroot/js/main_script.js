@@ -68,8 +68,8 @@
 			// Navigation Panel.
 				$(
 					'<div id="navPanel">' +
-						'<nav>' +
-							$('#nav').navList() +
+					'<nav>' +
+					     $('#nav').navList() +
 						'</nav>' +
 					'</div>'
 				)
@@ -84,6 +84,8 @@
 						target: $body,
 						visibleClass: 'navPanel-visible'
 					});
+		$("nav a:nth-child(5)").addClass("button special");
+
 
 			// Fix: Remove navPanel transitions on WP<10 (poor/buggy performance).
 				if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)

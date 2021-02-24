@@ -18,13 +18,13 @@
                 <h3 class="title-5 m-b-35">user table</h3>
                 <div class="table-data__tool">
                     <div class="table-data__tool-left">
-                        <button class="au-btn au-btn-icon au-btn--blue2 au-btn--small">
+                        <button class="au-btn au-btn-icon au-btn--blue2 au-btn--small"style=" margin-top: 11px;">
                             <i class="fas fa-refresh"></i>
                             <a style="color:white;" asp-action="Index">Reload</a>
                         </button>
                     </div>
                     @await Html.PartialAsync("_UserSearch", Model.Search)
-                    <div class="table-data__tool-right">
+                    <div class="table-data__tool-right" style=" margin-top: 11px;">
                         <button class="au-btn au-btn-icon au-btn--red au-btn--small">
                             <i class="fas fa-ban"></i>
                             <a style="color:white;" asp-action="BanList">BanList</a>
@@ -51,6 +51,26 @@
     <script>
     $(function () {
         const form = $("#formSearchUser");
+        const input = $("#inputSearchUser");
+
+        input.change(function (e) {
+            e.preventDefault();
+                        //console.log("Form serialize", $(this).serialize());
+
+            var formData = form.serialize();
+
+            $.ajax({
+                url: '@Url.Action("SearchUser", "Administration")',
+                type: "GET",
+                data: formData,
+                success: function (data) {
+                    $("#content-user-table").html(data);
+                  // console.log("Result", data);
+                }
+            });
+          //  alert("Search");
+        });
+
         form.submit(function (e) {
             e.preventDefault();
                         //console.log("Form serialize", $(this).serialize());

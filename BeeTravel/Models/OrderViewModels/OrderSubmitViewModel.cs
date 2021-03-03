@@ -11,7 +11,7 @@ namespace BeeTravel.Models.OrderViewModels
         public string Lastname { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public string IdTour { get; set; }
+        public int IdTour { get; set; }
 
     }
 }

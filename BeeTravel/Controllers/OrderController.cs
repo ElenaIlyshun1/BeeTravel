@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using BeeTravel.Data;
 using BeeTravel.Entities;
@@ -16,6 +17,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http; // Needed for the SetString and GetString extension methods
 using MimeKit;
 
 namespace BeeTravel.Controllers
@@ -36,17 +38,27 @@ namespace BeeTravel.Controllers
             _tourRepository = tourRepository;
             _emailSender = emailSender;
             _applicationDbContext = applicationDbContext;
+            
         }
 
         [HttpPost]
-        public IActionResult Confirm(OrderViewModel model)
+        public IActionResult Confirm(OrderSubmitViewModel model)
         {
-          
+            HttpContext.Session.SetString("Peter","Tom");
+            
+            //if (HttpContext.Session.Keys.Contains("name"))
+            //    await HttpContext.Response.WriteAsync($"Hello {HttpContext.Session.GetString("name")}!");
+            //else
+            //{
+            //    HttpContext.Session.SetString("name", "Tom");
+            //    await HttpContext.Response.WriteAsync("Hello World!");
+            //}
             return View();
         }
         [HttpPost]
         public async Task<IActionResult>  GetOrder(int id)
         {
+            
             var tour = _tourRepository.GetTourById(id);
             var user = await _userManager.GetUserAsync(User);
             var userapp = _applicationDbContext.Users.SingleOrDefault(x => x.Id == user.Id);

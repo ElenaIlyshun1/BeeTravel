@@ -83,7 +83,8 @@ namespace BeeTravel
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddControllersWithViews()
                 .AddViewLocalization();
-            
+            services.AddSession();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -114,6 +115,7 @@ namespace BeeTravel
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseSession();
             app.UseUserDestroyer();
 
             app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);

@@ -61,39 +61,66 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
+
                         <li class="has-sub @(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-users"></i>Users
                             </a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a asp-action="Index"><i class="fas fa-user"></i>User Table</a>
-                                </li>
-                                <li>
-                                    <a asp-action="BanList"><i class="fas fa-ban"></i>Ban List</a>
-                                </li>
+                                @if (User.IsInRole("Manager"))
+                                {
+                                    <li>
+                                        <a asp-action="BanList"><i class="fas fa-ban"></i>Ban List</a>
+                                    </li>
+                                }
+                                else if (User.IsInRole("Manager"))
+                                {
+                                    <li>
+                                        <a asp-action="Index"><i class="fas fa-user"></i>User Table</a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="BanList"><i class="fas fa-ban"></i>Ban List</a>
+                                    </li>
+                                }
+
+
                             </ul>
                         </li>
-                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "RoleIndex" ? "active" : "")">
-                            <a asp-action="RoleIndex">
-                                <i class="fas fa-shield-alt"></i>Roles
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-action="TourList">
-                                <i class="zmdi zmdi-airplane"></i>Tour
-                            </a>
-                        </li>
-                        <li>
-                            <a href="calendar.html">
-                                <i class="fas fa-calendar-alt"></i>Calendar
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-action="MapCountries">
-                                <i class="fas fa-map-marker-alt"></i>Maps
-                            </a>
-                        </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "RoleIndex" ? "active" : "")">
+                                <a asp-action="RoleIndex">
+                                    <i class="fas fa-shield-alt"></i>Roles
+                                </a>
+                            </li>
+
+                        }
+                        else
+                        {
+
+                        }
+
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                        {
+                            <li>
+                                <a asp-action="TourList">
+                                    <i class="zmdi zmdi-airplane"></i>Tour
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                        {
+                            <li>
+                                <a asp-action="MapCountries">
+                                    <i class="fas fa-map-marker-alt"></i>Maps
+                                </a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </nav>
@@ -109,44 +136,61 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li>
-                            <a asp-action="Dashboard">
-                                <i class="fas fa-bar-chart-o"></i>Dashboard
-                            </a>
-                        </li>
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                        {
+                            <li>
+                                <a asp-action="Dashboard">
+                                    <i class="fas fa-bar-chart-o"></i>Dashboard
+                                </a>
+                            </li>
+                        }
                         <li class="has-sub @(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-users"></i>Users
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a asp-action="Index"><i class="fas fa-user"></i>User Table</a>
-                                </li>
-                                <li>
-                                    <a asp-action="BanList"><i class="fas fa-ban"></i>Ban List</a>
-                                </li>
+                                @if (User.IsInRole("Manager"))
+                                {
+                                    <li>
+                                        <a asp-action="BanList"><i class="fas fa-ban"></i>Ban List</a>
+                                    </li>
+                                }
+                                else if (User.IsInRole("Admin"))
+                                {
+                                    <li>
+                                        <a asp-action="Index"><i class="fas fa-user"></i>User Table</a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="BanList"><i class="fas fa-ban"></i>Ban List</a>
+                                    </li>
+                                }
+
                             </ul>
                         </li>
-                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "RoleIndex" ? "active" : "")">
-                            <a asp-action="RoleIndex">
-                                <i class="fas fa-shield-alt"></i>Roles
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-action="TourList">
-                                <i class="zmdi zmdi-airplane"></i>Tour
-                            </a>
-                        </li>
-                        <li>
-                            <a href="calendar.html">
-                                <i class="fas fa-calendar-alt"></i>Calendar
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-action="MapCountries">
-                                <i class="fas fa-map-marker-alt"></i>Maps
-                            </a>
-                        </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "RoleIndex" ? "active" : "")">
+                                <a asp-action="RoleIndex">
+                                    <i class="fas fa-shield-alt"></i>Roles
+                                </a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                        {
+                            <li>
+                                <a asp-action="TourList">
+                                    <i class="zmdi zmdi-airplane"></i>Tour
+                                </a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                        {
+                            <li>
+                                <a asp-action="MapCountries">
+                                    <i class="fas fa-map-marker-alt"></i>Maps
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </nav>
             </div>
@@ -180,8 +224,8 @@
                                 }
                                 else
                                 {
-                                    <form class="form-header" method="get" style="opacity:0" >
-                                        <input class="au-input au-input--xl" type="text" placeholder="Search ..." disabled/>
+                                    <form class="form-header" method="get" style="opacity:0">
+                                        <input class="au-input au-input--xl" type="text" placeholder="Search ..." disabled />
                                         <button class="au-btn--submit" type="submit" disabled style="display:none">
                                             <i class="zmdi zmdi-search"></i>
                                         </button>

@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace BeeTravel.Controllers
 {
-    [Authorize(Roles = "Admin")]
+   
     public class AdministrationController : Controller
     {
         private readonly ITourRepository _tourRepository;
@@ -38,6 +38,7 @@ namespace BeeTravel.Controllers
         }
         #region User
         //   public IActionResult Index() => View(_userManager.Users.ToList());
+        [Authorize(Roles = "Admin,Manager")]
         public IActionResult Index(SearchUser search)
         {
             ViewData["CurrentSort"] = search.sortOrder;
@@ -118,6 +119,7 @@ namespace BeeTravel.Controllers
             }
             return PartialView("_TableUser", users);
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult Create() => View();
         [HttpPost]
         public async Task<IActionResult> Create(CreateUserViewModel model)
@@ -143,6 +145,7 @@ namespace BeeTravel.Controllers
             return View(model);
         }
         [HttpGet]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> Edit(long id)
         {
             var model = _userManager.Users
@@ -195,6 +198,7 @@ namespace BeeTravel.Controllers
             return View(model);
         }
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string id)
         {
             DbUser user = await _userManager.FindByIdAsync(id);
@@ -206,7 +210,7 @@ namespace BeeTravel.Controllers
         }
 
         #endregion
-
+        [Authorize(Roles = "Admin")]
         #region Role
         public IActionResult RoleIndex() => View(_roleManager.Roles.ToList());
         [HttpGet]
@@ -424,7 +428,7 @@ namespace BeeTravel.Controllers
             }
             return View();
         }
-
+        [Authorize(Roles = "Admin,Manager")]
         #region BanList
         public async Task<IActionResult> BanUser(string id)
         {
@@ -533,7 +537,7 @@ namespace BeeTravel.Controllers
             return View();
         }
         #endregion
-
+        [Authorize(Roles = "Admin,Manager")]
         #region Tour
         public IActionResult TourList(string searchString)
         {
@@ -700,7 +704,7 @@ namespace BeeTravel.Controllers
             }
             return View(Tours);
         }
-
+        [Authorize(Roles = "Admin,Manager")]
         #region Dashboard
         [HttpGet]
         public IActionResult Dashboard()

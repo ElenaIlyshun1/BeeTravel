@@ -38,8 +38,8 @@ namespace BeeTravel.Controllers
             _applicationDbContext = applicationDbContext;
         }
 
-        [HttpGet]
-        public IActionResult Confirm()
+        [HttpPost]
+        public IActionResult Confirm(OrderViewModel model)
         {
           
             return View();

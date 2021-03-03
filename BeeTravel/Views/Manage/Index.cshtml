@@ -19,7 +19,7 @@
                                 Upload
                                 <input asp-for="PhotoBase64" type="file" style="visibility: hidden;" accept="image/jpeg, image/png" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0]), showButton()" value="@Model.Image" />
                             </label>
-                            @if (User.IsInRole("Admin"))
+                            @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                             {
                                 <a asp-controller="Administration" asp-action="Index" class="btn button profile-button"> Admin Panel </a>
                             }

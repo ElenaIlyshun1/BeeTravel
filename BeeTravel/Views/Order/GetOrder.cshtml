@@ -2,15 +2,19 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Order";
-    
+
 }
 <section id="banner-lr">
     <div class="content content-profile">
-        <div class="row">
-            @Html.Partial("_TourPartial",Model.Tour)
-            @Html.Partial("_UserPartial",Model.User)
-            
-        </div>
+        <form asp-action="Confirm" method="post">
+            <div class="row">
+                @Html.Partial("_TourPartial", Model.Tour)
+                @Html.Partial("_UserPartial", Model.User)
+                <div class="form-group form-lr container" style="text-align:center;">
+                    <button id="button_save" class="btn button profile-button" type="submit"> Confirm</button>
+                </div>
+            </div>
+        </form>
 
     </div>
 

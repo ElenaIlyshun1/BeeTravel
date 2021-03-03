@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="row">
-                @if (User.IsInRole("Admin"))
+                @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                 {
                     <div class="col-md-2" style="display: -webkit-inline-box;">
                         <a asp-controller="Administration" asp-action="EditTour" asp-route-id="@Model.Id" style=" margin: 10px 10px 10px 10px;"

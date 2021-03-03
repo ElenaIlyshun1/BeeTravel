@@ -67,13 +67,7 @@
                                 <i class="fas fa-users"></i>Users
                             </a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                @if (User.IsInRole("Manager"))
-                                {
-                                    <li>
-                                        <a asp-action="BanList"><i class="fas fa-ban"></i>Ban List</a>
-                                    </li>
-                                }
-                                else if (User.IsInRole("Manager"))
+                                @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                                 {
                                     <li>
                                         <a asp-action="Index"><i class="fas fa-user"></i>User Table</a>
@@ -149,13 +143,7 @@
                                 <i class="fas fa-users"></i>Users
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                @if (User.IsInRole("Manager"))
-                                {
-                                    <li>
-                                        <a asp-action="BanList"><i class="fas fa-ban"></i>Ban List</a>
-                                    </li>
-                                }
-                                else if (User.IsInRole("Admin"))
+                                @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                                 {
                                     <li>
                                         <a asp-action="Index"><i class="fas fa-user"></i>User Table</a>
@@ -164,6 +152,7 @@
                                         <a asp-action="BanList"><i class="fas fa-ban"></i>Ban List</a>
                                     </li>
                                 }
+                               
 
                             </ul>
                         </li>

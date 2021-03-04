@@ -40,7 +40,7 @@
                     <li><a href="elements.html">@Localizer["Navbar_menu_item_3"]</a></li>
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <li><a asp-area="" asp-controller="Manage" asp-action="Index" class="button special" title="Manage" style="box-shadow:none;padding: 0 0.55em;"> Профиль </a></li>
+                        <li><a asp-area="" asp-controller="Manage" asp-action="Index" class="button special" title="Manage" style="box-shadow:none;padding: 0 0.55em;">@Localizer["Navbar_menu_profile"]</a></li>
 
                     }
                     else

@@ -132,4 +132,7 @@
   <data name="Navbar_menu_login" xml:space="preserve">
     <value>Вхід</value>
   </data>
+  <data name="Navbar_menu_profile" xml:space="preserve">
+    <value>Профіль</value>
+  </data>
 </root>

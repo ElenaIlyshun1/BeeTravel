@@ -130,7 +130,8 @@ namespace BeeTravel
             using (var scope = app.ApplicationServices.CreateScope())
             {
                 ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                //SeederDB.SeedTourData(context);
+               // SeederDB.SeedData(app.ApplicationServices, env, this.Configuration);
+
             }
         }
     }

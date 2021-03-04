@@ -28,12 +28,12 @@ namespace BeeTravel.Data.Entities
             {
                 var user = await userManager.FindByNameAsync(httpContext.User.Identity.Name);
 
-                if (user.LockoutEnd > DateTimeOffset.Now)
+                /*if (user.LockoutEnd > DateTimeOffset.Now )
                 {
                     //Log the user out and redirect back to homepage
                     await signInManager.SignOutAsync();
                     httpContext.Response.Redirect("/");
-                }
+                }*/
             }
             await _next(httpContext);
         }

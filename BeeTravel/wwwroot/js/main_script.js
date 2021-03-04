@@ -57,22 +57,23 @@
 		// Off-Canvas Navigation.
 
 			// Title Bar.
-				$(
+				/*$(
 					'<div id="titleBar">' +
 						'<a href="#navPanel" class="toggle"></a>' +
 						'<span class="title">' + $('#logo').html() + '</span>' +
 					'</div>'
 				)
-					.appendTo($body);
+					.appendTo($body);*/
 
 			// Navigation Panel.
 				$(
 					'<div id="navPanel">' +
 					'<nav>' +
 					     $('#nav').navList() +
-						'</nav>' +
+					'</nav>' +
 					'</div>'
 				)
+
 					.appendTo($body)
 					.panel({
 						delay: 500,
@@ -82,7 +83,8 @@
 						resetForms: true,
 						side: 'left',
 						target: $body,
-						visibleClass: 'navPanel-visible'
+						visibleClass: 'navPanel-visible',
+						
 					});
 		$("nav a:nth-child(5)").addClass("button special");
 

@@ -73,6 +73,11 @@
         <ul class="copyright">
             <li>&copy; BeeTravel. All rights reserved.</li>
         </ul>
+        <div style="text-align:center">
+            <partial name="_Culture" />
+
+        </div>
+
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -85,6 +90,12 @@
     <script src="~/js/skel.min.js"></script>
     <script src="~/js/util.js"></script>
     <script src="~/js/main_script.js"></script>
+    <div id="titleBar">
+        <a href="#navPanel" class="toggle"></a>
+        <span class="title">
+            <a class="navbar-brand" href="/">BeeTravel</a>
+        </span>
+    </div>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

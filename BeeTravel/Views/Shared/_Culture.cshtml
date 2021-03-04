@@ -11,7 +11,6 @@
 <div>
     <form id="selectLanguage" asp-controller="Home" asp-action="CultureManagement" asp-route-returnUrl="@returnUrl"
           method="post" role="form">
-
         <select name="culture" onchange="this.form.submit();" class="flag-icon flag-icon-@culture.RequestCulture.Culture"  asp-for="@culture.RequestCulture.UICulture.Name" asp-items="cultureList" style="border:none">
         </select>
     </form>

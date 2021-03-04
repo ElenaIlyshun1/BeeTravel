@@ -117,94 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About_Documents_SubTitle" xml:space="preserve">
-    <value>We guarantee that all documents are authentic.</value>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
   </data>
-  <data name="About_Documents_Title" xml:space="preserve">
-    <value>Authenticity of Documents</value>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
   </data>
-  <data name="About_Facilities_SubTitle" xml:space="preserve">
-    <value>All the amenities to make your trip as comfortable as possible.</value>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
   </data>
-  <data name="About_Facilities_Title" xml:space="preserve">
-    <value>Comfortable travel</value>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
   </data>
-  <data name="About_Insurance_SubTitle" xml:space="preserve">
-    <value>We guarantee medical insurance anywhere in the world.</value>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone number</value>
   </data>
-  <data name="About_Insurance_Title" xml:space="preserve">
-    <value>Medical insurance</value>
-  </data>
-  <data name="About_Main_Title" xml:space="preserve">
-    <value>More about us</value>
-  </data>
-  <data name="About_Privacy_SubTitle" xml:space="preserve">
-    <value>Complete confidentiality of your data and data about your travels.</value>
-  </data>
-  <data name="About_Privacy_Title" xml:space="preserve">
-    <value>Confidentiality</value>
-  </data>
-  <data name="About_Search_SubTitle" xml:space="preserve">
-    <value>BeeTravel offers the best resorts and hotels In 28 countries of the world.</value>
-  </data>
-  <data name="About_Search_Title" xml:space="preserve">
-    <value>Large selection of search</value>
-  </data>
-  <data name="About_Support_SubTitle" xml:space="preserve">
-    <value>Quickly and efficiently we will answer any of your questions.</value>
-  </data>
-  <data name="About_Support_Title" xml:space="preserve">
-    <value>24/7 Support</value>
-  </data>
-  <data name="Berlin_first_info" xml:space="preserve">
-    <value>Berlin is the capital of Germany, whose history dates back to the 13th century. About the complicated history of the city in the XX century. reminiscent of the Memorial to the Victims of the Holocaust and graffiti on the ruins of the Berlin Wall. The Brandenburg Gate, erected in the 18th century, is known as a symbol of the reunification of Berlin, which was divided during</value>
-  </data>
-  <data name="Berlin_main_subtitle" xml:space="preserve">
-    <value>Capital of Germany</value>
-  </data>
-  <data name="Berlin_main_title" xml:space="preserve">
-    <value>Berlin</value>
-  </data>
-  <data name="Berlin_second_info" xml:space="preserve">
-    <value>Cold War in two. The city is also famous for its art galleries and modern attractions, such as the gold-colored Philharmonic Hall built in 1963 with a circus-shaped roof.</value>
-  </data>
-  <data name="Button_LearnMore" xml:space="preserve">
-    <value>Learn More</value>
-  </data>
-  <data name="Button_SearchOrder" xml:space="preserve">
-    <value>Tour Search</value>
-  </data>
-  <data name="Header_main_subtitle_1" xml:space="preserve">
-    <value>Your vacation is in good hands.</value>
-  </data>
-  <data name="Header_main_subtitle_2" xml:space="preserve">
-    <value>BeeTravel offers the best resorts.</value>
-  </data>
-  <data name="Header_main_title" xml:space="preserve">
-    <value>Travel with pleasure</value>
-  </data>
-  <data name="NewYork_first_info" xml:space="preserve">
-    <value>New York includes five boroughs (districts) located at the confluence of the Hudson River into the Atlantic Ocean. The city center is home to populous Manhattan, one of the world's largest commercial, financial and cultural centers.</value>
-  </data>
-  <data name="NewYork_main_subtitle" xml:space="preserve">
-    <value>City in New York State</value>
-  </data>
-  <data name="NewYork_main_title" xml:space="preserve">
-    <value>New York</value>
-  </data>
-  <data name="NewYork_second_info" xml:space="preserve">
-    <value>The main attractions of New York are numerous skyscrapers, including the Empire State Building, and the huge Central Park. The Broadway Theater is located in the neon-lit Times Square.</value>
-  </data>
-  <data name="Paris_first_info" xml:space="preserve">
-    <value>One of the main European cities and the world center for culture, art, fashion and gastronomy. In the central part of the city, built in the 19th century, there are wide boulevards and the Seine River. The most famous sights of Paris are the Eiffel Tower and</value>
-  </data>
-  <data name="Paris_main_subtitle" xml:space="preserve">
-    <value>Capital of France</value>
-  </data>
-  <data name="Paris_main_title" xml:space="preserve">
-    <value>Amazing Paris</value>
-  </data>
-  <data name="Paris_second_info" xml:space="preserve">
-    <value>Notre Dame Cathedral in the Gothic style, erected in the XII century. The city is also famous for its numerous cafes and boutiques with clothes from famous fashion designers on the rue Faubourg Saint-Honoré.</value>
+  <data name="Registration" xml:space="preserve">
+    <value>Registration</value>
   </data>
 </root>

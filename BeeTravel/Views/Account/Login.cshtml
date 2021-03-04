@@ -14,7 +14,7 @@
             <div class="col-md-4 reg-log-col">
                 <form asp-action="Login">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <h2>Login</h2>
+                    <h2>@Localizer["login_button"]</h2>
                     <div class="form-group form-lr" style="position: relative;">
                         @*<label asp-for="Email" class="control-label"></label>*@
                         <input asp-for="Email" type="email" name="email" id="email" value="" placeholder="Email" style="border-radius: 10px 10px 10px 10px; padding: 12px 45px;margin: 8px 0;border-radius: 10px 10px 10px 10px;" />
@@ -32,7 +32,7 @@
                         <label for="human">Remember Me</label>
                     </div>
                     <div class="form-group form-lr">
-                        <input type="submit" value="Войти" class="button special" style="border-radius: 10px 10px 10px 10px; margin-bottom:10px;" />
+                        <input type="submit" value="@Localizer["login_button"]" class="button special" style="border-radius: 10px 10px 10px 10px; margin-bottom:10px;" />
                         <a asp-controller="Account" asp-action="Registration" class="button" style="border-radius: 10px 10px 10px 10px; text-decoration:none;">@Localizer["button_register_user"]</a>
 
                     </div>

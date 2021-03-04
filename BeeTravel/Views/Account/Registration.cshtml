@@ -12,41 +12,41 @@
             <div class="col-md-4 reg-log-col">
                 <form asp-action="Registration">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <h2>Registration</h2>
+                    <h2>@Localizer["Registration"]</h2>
 
                     <div class="form-group form-lr " style="position: relative;">
                         @*<label asp-for="Email" class="control-label"></label>*@
-                        <input class="input-validation-error" asp-for="Firstname" type="text" name="firstname" id="firstname" value="" placeholder="Firstname" style="border-radius: 10px 10px 10px 10px; padding: 12px 40px;margin: 8px 0;border-radius: 10px 10px 10px 10px;" />
+                        <input class="input-validation-error" asp-for="Firstname" type="text" name="firstname" id="firstname" value="" placeholder="@Localizer["FirstName"]" style="border-radius: 10px 10px 10px 10px; padding: 12px 40px;margin: 8px 0;border-radius: 10px 10px 10px 10px;" />
                         <span asp-validation-for="Firstname" class="text-danger"></span>
                         <i class="fa fa-user fa-lg " style=" position: absolute; left: 15px; top: 17px;"></i>
                     </div>
                     <div class="form-group form-lr" style="position: relative;">
                         @*<label asp-for="Email" class="control-label"></label>*@
-                        <input class="input-validation-error" asp-for="Lastname" type="text" name="lastname" id="lastname" value="" placeholder="Lastname" style="border-radius: 10px 10px 10px 10px; padding: 12px 45px;margin: 8px 0;border-radius: 10px 10px 10px 10px;" />
+                        <input class="input-validation-error" asp-for="Lastname" type="text" name="lastname" id="lastname" value="" placeholder="@Localizer["LastName"]" style="border-radius: 10px 10px 10px 10px; padding: 12px 45px;margin: 8px 0;border-radius: 10px 10px 10px 10px;" />
                         <span asp-validation-for="Lastname" class="text-danger"></span>
                         <i class="fa fa-user fa-lg" style=" position: absolute; left: 15px; top: 17px;"></i>
                     </div>
                     <div class="form-group form-lr" style="position: relative;">
                         @*<label asp-for="Email" class="control-label"></label>*@
-                        <input class="input-validation-error" asp-for="Email" type="email" name="email" id="email" value="" placeholder="Email" style="border-radius: 10px 10px 10px 10px; padding: 12px 45px;margin: 8px 0;border-radius: 10px 10px 10px 10px;" />
+                        <input class="input-validation-error" asp-for="Email" type="email" name="email" id="email" value="" placeholder="@Localizer["Email"]" style="border-radius: 10px 10px 10px 10px; padding: 12px 45px;margin: 8px 0;border-radius: 10px 10px 10px 10px;" />
                         <span asp-validation-for="Email" class="text-danger"></span>
                         <i class="fa fa-envelope fa-lg" style=" position: absolute; left: 15px; top: 17px;"></i>
                     </div>
                     <div class="form-group form-lr" style="position: relative;">
                         @*<label asp-for="PhoneNumber" class="control-label"></label>*@
-                        <input class="input-validation-error" asp-for="PhoneNumber" type="text" name="phonenumber" id="email" value="" placeholder="Phone number" style="border-radius: 10px 10px 10px 10px; padding: 12px 45px;margin: 8px 0;border-radius: 10px 10px 10px 10px;" />
+                        <input class="input-validation-error" asp-for="PhoneNumber" type="text" name="phonenumber" id="email" value="" placeholder="@Localizer["Phone"]" style="border-radius: 10px 10px 10px 10px; padding: 12px 45px;margin: 8px 0;border-radius: 10px 10px 10px 10px;" />
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         <i class="fa fa-phone fa-lg" style=" position: absolute; left: 15px; top: 17px;"></i>
                     </div>
 
                     <div class="form-group form-lr" style="position: relative;">
                         @*<label asp-for="Password" class="control-label"></label>*@
-                        <input asp-for="Password" type="password" name="password" id="password" value="" placeholder="Password" style="border-radius: 10px 10px 10px 10px; padding: 12px 45px;margin: 8px 0;border-radius: 10px 10px 10px 10px;" />
+                        <input asp-for="Password" type="password" name="password" id="password" value="" placeholder="@Localizer["Password"]" style="border-radius: 10px 10px 10px 10px; padding: 12px 45px;margin: 8px 0;border-radius: 10px 10px 10px 10px;" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                         <i class="fa fa-key fa-lg" style=" position: absolute; left: 15px; top: 17px;"></i>
                     </div>
                     <div class="form-group form-lr">
-                        <input type="submit" value="Создать" class="button special" style="border-radius: 10px 10px 10px 10px;" />
+                        <input type="submit" value="@Localizer["Registration"]" class="button special" style="border-radius: 10px 10px 10px 10px;" />
                     </div>
                 </form>
             </div>

@@ -118,57 +118,93 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_Documents_SubTitle" xml:space="preserve">
-    <value>We guarantee that all documents are authentic.</value>
+    <value>우리는 모든 문서가 진본임을 보장합니다.</value>
   </data>
   <data name="About_Documents_Title" xml:space="preserve">
-    <value>Authenticity of Documents</value>
+    <value>문서의 진위</value>
   </data>
   <data name="About_Facilities_SubTitle" xml:space="preserve">
-    <value>All the amenities to make your trip as comfortable as possible.</value>
+    <value>여행을 가능한 한 편안하게 만들어주는 모든 편의 시설.</value>
   </data>
   <data name="About_Facilities_Title" xml:space="preserve">
-    <value>Comfortable travel</value>
+    <value>편안한 여행</value>
   </data>
   <data name="About_Insurance_SubTitle" xml:space="preserve">
-    <value>We guarantee medical insurance anywhere in the world.</value>
+    <value>우리는 전 세계 어디에서나 의료 보험을 보장합니다.</value>
   </data>
   <data name="About_Insurance_Title" xml:space="preserve">
-    <value>Medical insurance</value>
+    <value>의료 보험</value>
   </data>
   <data name="About_Main_Title" xml:space="preserve">
-    <value>More about us</value>
+    <value>우리에 대해 더 알아보기</value>
   </data>
   <data name="About_Privacy_SubTitle" xml:space="preserve">
-    <value>Complete confidentiality of your data and data about your travels.</value>
+    <value>여행에 대한 데이터 및 데이터의 완전한 기밀 유지.</value>
   </data>
   <data name="About_Privacy_Title" xml:space="preserve">
-    <value>Confidentiality</value>
+    <value>기밀성</value>
   </data>
   <data name="About_Search_SubTitle" xml:space="preserve">
-    <value>BeeTravel offers the best resorts and hotels In 28 countries of the world.</value>
+    <value>BeeTravel 은 세계 28 개국에서 최고의 리조트와 호텔을 제공합니다.</value>
   </data>
   <data name="About_Search_Title" xml:space="preserve">
-    <value>Large selection of search</value>
+    <value>다양한 검색</value>
   </data>
   <data name="About_Support_SubTitle" xml:space="preserve">
-    <value>Quickly and efficiently we will answer any of your questions.</value>
+    <value>귀하의 질문에 빠르고 효율적으로 답변 해 드리겠습니다.</value>
   </data>
   <data name="About_Support_Title" xml:space="preserve">
-    <value>24/7 Support</value>
+    <value>연중 무휴 지원</value>
+  </data>
+  <data name="Berlin_first_info" xml:space="preserve">
+    <value>베를린은 독일의 수도이며 그 역사는 13 세기로 거슬러 올라갑니다. XX 세기 도시의 복잡한 역사에 대해. 홀로 코스트 희생자 기념관과 베를린 장벽 폐허의 낙서를 연상시킵니다. 18 세기에 세워진 브란덴부르크 문은 베를린 통일의 상징으로 알려져 있습니다.</value>
+  </data>
+  <data name="Berlin_main_subtitle" xml:space="preserve">
+    <value>독일의 수도</value>
+  </data>
+  <data name="Berlin_main_title" xml:space="preserve">
+    <value>베를린</value>
+  </data>
+  <data name="Berlin_second_info" xml:space="preserve">
+    <value>둘의 냉전. 이 도시는 또한 서커스 모양의 지붕으로 1963 년에 지어진 금색 필 하모닉 홀과 같은 현대적인 명소와 미술관으로 유명합니다.</value>
   </data>
   <data name="Button_LearnMore" xml:space="preserve">
-    <value>Learn More</value>
+    <value>더 알아보기</value>
   </data>
   <data name="Button_SearchOrder" xml:space="preserve">
-    <value>Tour Search</value>
+    <value>투어 검색</value>
   </data>
   <data name="Header_main_subtitle_1" xml:space="preserve">
-    <value>Your vacation is in good hands.</value>
+    <value>당신의 휴가는 좋은 손에 있습니다.</value>
   </data>
   <data name="Header_main_subtitle_2" xml:space="preserve">
-    <value>BeeTravel offers the best resorts.</value>
+    <value>BeeTravel 은 최고의 리조트를 제공합니다.</value>
   </data>
   <data name="Header_main_title" xml:space="preserve">
-    <value>Travel with pleasure</value>
+    <value>즐거운 여행</value>
+  </data>
+  <data name="NewYork_first_info" xml:space="preserve">
+    <value>뉴욕에는 허드슨 강과 대서양이 합류하는 지점에 위치한 5 개의 보로 (지구)가 있습니다. 도심에는 세계에서 가장 큰 상업, 금융 및 문화 중심지 중 하나 인 인구가 많은 맨해튼이 있습니다.</value>
+  </data>
+  <data name="NewYork_main_subtitle" xml:space="preserve">
+    <value>뉴욕 주에있는 도시</value>
+  </data>
+  <data name="NewYork_main_title" xml:space="preserve">
+    <value>뉴욕</value>
+  </data>
+  <data name="NewYork_second_info" xml:space="preserve">
+    <value>뉴욕의 주요 명소는 엠파이어 스테이트 빌딩과 거대한 센트럴 파크를 포함한 수많은 고층 빌딩입니다. 브로드 웨이 극장은 네온 불빛이 켜진 타임 스퀘어에 있습니다.</value>
+  </data>
+  <data name="Paris_first_info" xml:space="preserve">
+    <value>유럽의 주요 도시 중 하나이자 문화, 예술, 패션 및 요리의 세계 중심지입니다. 19 세기에 지어진 도시 중심부에는 넓은대로와 센 강이 있습니다. 파리에서 가장 유명한 명소는 에펠 탑과</value>
+  </data>
+  <data name="Paris_main_subtitle" xml:space="preserve">
+    <value>프랑스의 수도</value>
+  </data>
+  <data name="Paris_main_title" xml:space="preserve">
+    <value>놀라운 파리</value>
+  </data>
+  <data name="Paris_second_info" xml:space="preserve">
+    <value>XII 세기에 세워진 고딕 양식의 노트르담 대성당. 이 도시는 또한 Faubourg Saint-Honoré 거리에있는 유명한 패션 디자이너의 옷을 입은 수많은 카페와 부티크로 유명합니다.</value>
   </data>
 </root>

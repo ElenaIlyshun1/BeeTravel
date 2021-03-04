@@ -156,6 +156,18 @@
   <data name="About_Support_Title" xml:space="preserve">
     <value>24/7 Поддержка</value>
   </data>
+  <data name="Berlin_first_info" xml:space="preserve">
+    <value>Берлин – столица Германии, история которой восходит к XIII в. О непростой истории города в XX в. напоминают Мемориал жертвам Холокоста и граффити на руинах Берлинской стены. Бранденбургские ворота, возведенные в XVIII в., известны как символ воссоединения Берлина, разделенного во время</value>
+  </data>
+  <data name="Berlin_main_subtitle" xml:space="preserve">
+    <value>Столица Германии</value>
+  </data>
+  <data name="Berlin_main_title" xml:space="preserve">
+    <value>Берлин</value>
+  </data>
+  <data name="Berlin_second_info" xml:space="preserve">
+    <value>Холодной войны на две части. Также город славится своими художественными галереями и современными достопримечательностями, например построенной в 1963 г. филармонией золотого цвета с крышей в форме циркового шатра.</value>
+  </data>
   <data name="Button_LearnMore" xml:space="preserve">
     <value>Больше</value>
   </data>
@@ -170,5 +182,29 @@
   </data>
   <data name="Header_main_title" xml:space="preserve">
     <value>Путешествуйте с удовольствием</value>
+  </data>
+  <data name="NewYork_first_info" xml:space="preserve">
+    <value>Нью-Йорк включает пять боро (районов), расположенных в месте впадения реки Гудзон в Атлантический океан. В центре города расположен густонаселенный Манхэттен – один из крупнейших в мире коммерческих, финансовых и культурных центров.</value>
+  </data>
+  <data name="NewYork_main_subtitle" xml:space="preserve">
+    <value>Город в штате Нью-Йорк</value>
+  </data>
+  <data name="NewYork_main_title" xml:space="preserve">
+    <value>Нью-Йорк</value>
+  </data>
+  <data name="NewYork_second_info" xml:space="preserve">
+    <value>Главные достопримечательности Нью-Йорка – многочисленные небоскребы, в том числе Эмпайр-стейт-билдинг, и огромный Центральный парк. На залитой неоновыми огнями площади Таймс-сквер расположен театр "Бродвей".</value>
+  </data>
+  <data name="Paris_first_info" xml:space="preserve">
+    <value>Один из главных европейских городов и мировой центр культуры, искусства, моды и гастрономии. В центральной части города, построенной в XIX веке, проходят широкие бульвары и протекает река Сена. Самые известные достопримечательности Парижа – Эйфелева башня и </value>
+  </data>
+  <data name="Paris_main_subtitle" xml:space="preserve">
+    <value>Столица Франции</value>
+  </data>
+  <data name="Paris_main_title" xml:space="preserve">
+    <value>Удивительный Париж</value>
+  </data>
+  <data name="Paris_second_info" xml:space="preserve">
+    <value>собор Парижской Богоматери в готическом стиле, возведенный в XII веке. Также город славится своими многочисленными кафе и бутиками с одеждой от известных модельеров на улице Фобур-Сент-Оноре.</value>
   </data>
 </root>

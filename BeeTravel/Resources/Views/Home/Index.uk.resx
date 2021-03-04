@@ -118,57 +118,93 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_Documents_SubTitle" xml:space="preserve">
-    <value>We guarantee that all documents are authentic.</value>
+    <value>Ми гарантуємо, що всі документи є справжніми.</value>
   </data>
   <data name="About_Documents_Title" xml:space="preserve">
-    <value>Authenticity of Documents</value>
+    <value>Справжність документів</value>
   </data>
   <data name="About_Facilities_SubTitle" xml:space="preserve">
-    <value>All the amenities to make your trip as comfortable as possible.</value>
+    <value>Всі зручності, щоб зробити вашу поїздку максимально комфортною.</value>
   </data>
   <data name="About_Facilities_Title" xml:space="preserve">
-    <value>Comfortable travel</value>
+    <value>Комфортна подорож</value>
   </data>
   <data name="About_Insurance_SubTitle" xml:space="preserve">
-    <value>We guarantee medical insurance anywhere in the world.</value>
+    <value>Ми гарантуємо медичну страховку в будь-якій точці світу.</value>
   </data>
   <data name="About_Insurance_Title" xml:space="preserve">
-    <value>Medical insurance</value>
+    <value>Медичне страхування</value>
   </data>
   <data name="About_Main_Title" xml:space="preserve">
-    <value>More about us</value>
+    <value>Більше про нас</value>
   </data>
   <data name="About_Privacy_SubTitle" xml:space="preserve">
-    <value>Complete confidentiality of your data and data about your travels.</value>
+    <value>Повна конфіденційність ваших даних та даних про ваші подорожі.</value>
   </data>
   <data name="About_Privacy_Title" xml:space="preserve">
-    <value>Confidentiality</value>
+    <value>Конфіденційність</value>
   </data>
   <data name="About_Search_SubTitle" xml:space="preserve">
-    <value>BeeTravel offers the best resorts and hotels In 28 countries of the world.</value>
+    <value>BeeTravel пропонує найкращі курорти та готелі у 28 країнах світу.</value>
   </data>
   <data name="About_Search_Title" xml:space="preserve">
-    <value>Large selection of search</value>
+    <value>Великий вибір пошуку</value>
   </data>
   <data name="About_Support_SubTitle" xml:space="preserve">
-    <value>Quickly and efficiently we will answer any of your questions.</value>
+    <value>Швидко та ефективно ми відповімо на будь-яке ваше запитання.</value>
   </data>
   <data name="About_Support_Title" xml:space="preserve">
-    <value>24/7 Support</value>
+    <value>Цілодобова підтримка</value>
+  </data>
+  <data name="Berlin_first_info" xml:space="preserve">
+    <value>Берлін - столиця Німеччини, історія якої сягає XIII в. Про непросту історію міста в XX в. нагадують Меморіал жертвам Голокосту і графіті на руїнах Берлінської стіни. Бранденбурзькі ворота, зведені в XVIII в., Відомі як символ возз'єднання Берліна, розділеного під час</value>
+  </data>
+  <data name="Berlin_main_subtitle" xml:space="preserve">
+    <value>Столиця Німеччини</value>
+  </data>
+  <data name="Berlin_main_title" xml:space="preserve">
+    <value>Берлін</value>
+  </data>
+  <data name="Berlin_second_info" xml:space="preserve">
+    <value>Холодної війни на дві частини. Також місто славиться своїми художніми галереями і сучасними визначними пам'ятками, наприклад побудованої в 1963 р філармонією золотого кольору з дахом в формі циркового шатра.</value>
   </data>
   <data name="Button_LearnMore" xml:space="preserve">
-    <value>Learn More</value>
+    <value>Більше</value>
   </data>
   <data name="Button_SearchOrder" xml:space="preserve">
-    <value>Tour Search</value>
+    <value>Пошук туру</value>
   </data>
   <data name="Header_main_subtitle_1" xml:space="preserve">
-    <value>Your vacation is in good hands.</value>
+    <value>Ваші канікули в хороших руках.</value>
   </data>
   <data name="Header_main_subtitle_2" xml:space="preserve">
-    <value>BeeTravel offers the best resorts.</value>
+    <value>BeeTravel пропонує найкращі курорти.</value>
   </data>
   <data name="Header_main_title" xml:space="preserve">
-    <value>Travel with pleasure</value>
+    <value>Подорожуйте із задоволенням</value>
+  </data>
+  <data name="NewYork_first_info" xml:space="preserve">
+    <value>Нью-Йорк включає п'ять боро (районів), розташованих в місці впадання річки Гудзон в Атлантичний океан. У центрі міста розташований густонаселений Манхеттен - один з найбільших в світі комерційних, фінансових та культурних центрів.</value>
+  </data>
+  <data name="NewYork_main_subtitle" xml:space="preserve">
+    <value>Місто в штаті Нью-Йорк</value>
+  </data>
+  <data name="NewYork_main_title" xml:space="preserve">
+    <value>Нью-Йорк</value>
+  </data>
+  <data name="NewYork_second_info" xml:space="preserve">
+    <value>Головні пам'ятки Нью-Йорка - численні хмарочоси, в тому числі Емпайр-стейт-білдінг, і величезний Центральний парк. На залитій неоновими вогнями площі Таймс-сквер розташований театр "Бродвей".</value>
+  </data>
+  <data name="Paris_first_info" xml:space="preserve">
+    <value>Один з головних європейських міст і світовий центр культури, мистецтва, моди і гастрономії. У центральній частині міста, побудованої в XIX столітті, проходять широкі бульвари і протікає річка Сена. Найвідоміші пам'ятки Парижа - Ейфелева вежа і</value>
+  </data>
+  <data name="Paris_main_subtitle" xml:space="preserve">
+    <value>Столиця Франції</value>
+  </data>
+  <data name="Paris_main_title" xml:space="preserve">
+    <value>Дивовижний Париж</value>
+  </data>
+  <data name="Paris_second_info" xml:space="preserve">
+    <value>собор Паризької Богоматері в готичному стилі, зведений в XII столітті. Також місто славиться своїми численними кафе і бутиками з одягом від відомих модельєрів на вулиці Фобур-Сент-Оноре.</value>
   </data>
 </root>

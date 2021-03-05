@@ -5,6 +5,7 @@
 
     try {
         //WidgetChart 1
+        var x = document.getElementById("currentOnline").textContent;
         var ctx = document.getElementById("widgetChart1");
         if (ctx) {
             ctx.height = 130;
@@ -14,7 +15,7 @@
                     labels: ['January', 'February', 'March', 'April', 'May'],
                     type: 'line',
                     datasets: [{
-                        data: [0, 0, 0, 0,4],
+                        data: [0,0,0,0, x],
                         label: 'Dataset',
                         backgroundColor: 'rgba(255,255,255,.1)',
                         borderColor: 'rgba(255,255,255,.55)',
@@ -74,13 +75,14 @@
         var ctx = document.getElementById("widgetChart2");
         if (ctx) {
             ctx.height = 130;
+            var x = document.getElementById("TourSolid").textContent;
             var myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: ['April', 'May', 'June','January', 'February', 'March'],
                     type: 'line',
                     datasets: [{
-                        data: [1, 18, 9, 17, 34, 22],
+                        data: [0, 0, 0, 0, 0, x],
                         label: 'Dataset',
                         backgroundColor: 'transparent',
                         borderColor: 'rgba(255,255,255,.55)',
@@ -215,14 +217,15 @@
         var ctx = document.getElementById("widgetChart4");
         if (ctx) {
             ctx.height = 115;
+            var x = document.getElementById("TourTotalEarn").textContent;
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: ['April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December','January', 'February', 'March'],
                     datasets: [
                         {
-                            label: "My First dataset",
-                            data: [78, 81, 80, 65, 58, 75, 60, 75, 65, 60, 60, 75],
+                            label: "$",
+                            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, x],
                             borderColor: "transparent",
                             borderWidth: "0",
                             backgroundColor: "rgba(255,255,255,.3)"

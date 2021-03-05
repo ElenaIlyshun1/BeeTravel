@@ -11,10 +11,10 @@
             var myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    labels: ['January', 'February', 'March', 'April', 'May'],
                     type: 'line',
                     datasets: [{
-                        data: [78, 81, 80, 45, 34, 12, 40],
+                        data: [0, 0, 0, 0,4],
                         label: 'Dataset',
                         backgroundColor: 'rgba(255,255,255,.1)',
                         borderColor: 'rgba(255,255,255,.55)',
@@ -77,7 +77,7 @@
             var myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                    labels: ['April', 'May', 'June','January', 'February', 'March'],
                     type: 'line',
                     datasets: [{
                         data: [1, 18, 9, 17, 34, 22],
@@ -148,7 +148,7 @@
             var myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                    labels: ['April', 'May', 'June','January', 'February', 'March'],
                     type: 'line',
                     datasets: [{
                         data: [65, 59, 84, 84, 51, 55],
@@ -218,7 +218,7 @@
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    labels: ['April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December','January', 'February', 'March'],
                     datasets: [
                         {
                             label: "My First dataset",

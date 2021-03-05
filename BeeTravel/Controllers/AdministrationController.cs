@@ -709,8 +709,14 @@ namespace BeeTravel.Controllers
         [HttpGet]
         public IActionResult Dashboard()
         {
-
-            return View();
+            var users = _userManager.Users;
+            var tours = _tourRepository.GetAllTours().ToList();
+            DashboardViewModel model = new DashboardViewModel()
+            {
+                Users = users.ToList(),
+               Tours = tours
+            };
+            return View(model);
         }
         #endregion
     }

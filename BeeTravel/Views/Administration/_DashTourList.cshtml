@@ -1,0 +1,35 @@
+﻿@model List<Tour>
+
+<div class="col-lg-12">
+    <h2 class="title-1 m-b-25">Earnings By Items</h2>
+    <div class="table-responsive table--no-card m-b-40">
+        <table class="table table-borderless table-striped table-earning">
+            <thead>
+                <tr>
+                    <th>Departure Date</th>
+                    <th>order ID</th>
+                    <th>name</th>
+                    <th class="text-right">price</th>
+                    <th class="text-right">quantity</th>
+                    <th class="text-right">total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var tour in Model)
+                    {
+                        int total_price = tour.Price * tour.Period;
+                        <tr>
+                            <td>@tour.DepartureDate</td>
+                            <td>@tour.Id</td>
+                            <td>@tour.Name</td>
+                            <td class="text-right">$@tour.Price</td>
+                            <td class="text-right">@tour.Period</td>
+                            <td class="text-right">$@total_price</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

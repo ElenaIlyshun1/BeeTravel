@@ -86,6 +86,7 @@ namespace BeeTravel.Controllers
                    tour.Countries,
                    tour.DepartureTown,
                    tour.Period,
+                     String.Format("{0:dddd, d MMMM yyyy}", data.DateDeparture),
                    model.CardHolder,
                    model.CardNumber
                    );

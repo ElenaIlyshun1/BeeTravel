@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="en" xml:space="preserve">
-    <value>Англійський</value>
+    <value>Англійська</value>
   </data>
   <data name="kr" xml:space="preserve">
-    <value>Корейский</value>
+    <value>Корейска</value>
   </data>
   <data name="ru" xml:space="preserve">
-    <value>Русский</value>
+    <value>Російська</value>
   </data>
   <data name="uk" xml:space="preserve">
-    <value>Україна</value>
+    <value>Українська</value>
   </data>
 </root>

@@ -12,6 +12,7 @@ namespace BeeTravel.Models.OrderViewModels
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public int IdTour { get; set; }
+        public DateTime DateDeparture { get; set; }
 
     }
 }

@@ -1,9 +1,11 @@
 ﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 @inject Microsoft.Extensions.Options.IOptions<Microsoft.AspNetCore.Builder.RequestLocalizationOptions> locOptions
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
-@{ 
+@{
     var culture = Context.Features.Get<Microsoft.AspNetCore.Localization.IRequestCultureFeature>();
-    var cultureList = locOptions.Value.SupportedUICultures.Select(x => new SelectListItem { Value = x.Name, Text = x.Name }).ToList();
+    var cultureList = locOptions.Value.SupportedUICultures.Select(x => new SelectListItem { Value = x.Name, Text = localizer.GetString(x.Name)}).ToList();
     var returnUrl = string.IsNullOrWhiteSpace(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}{Context.Request.QueryString}";
 }
 
@@ -11,7 +13,7 @@
 <div>
     <form id="selectLanguage" asp-controller="Home" asp-action="CultureManagement" asp-route-returnUrl="@returnUrl"
           method="post" role="form">
-        <select name="culture" onchange="this.form.submit();" class="flag-icon flag-icon-@culture.RequestCulture.Culture"  asp-for="@culture.RequestCulture.UICulture.Name" asp-items="cultureList" style="border:none">
+        <select name="culture" onchange="this.form.submit();" class="flag-icon flag-icon-@culture.RequestCulture.Culture" asp-for="@culture.RequestCulture.UICulture.Name" asp-items="cultureList" style="border:none">
         </select>
     </form>
 </div>

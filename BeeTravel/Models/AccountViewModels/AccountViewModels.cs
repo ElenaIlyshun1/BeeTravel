@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authentication;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,6 +17,10 @@ namespace BeeTravel.Models.AccountViewModels
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Вкажіть пароль")]
         public string Password { get; set; }
+        public string ReturnUrl { get; set; }
+
+        // AuthenticationScheme is in Microsoft.AspNetCore.Authentication namespace
+        public IList<AuthenticationScheme> ExternalLogins { get; set; }
     }
     public class RegistrationViewModel
     {

@@ -11,7 +11,7 @@
 <section id="banner-lr">
     <div class="content">
         <div class="row">
-            <div class="col-md-4 reg-log-col">
+            <div class="col-md-5 reg-log-col" style="width:100%">
                 <form asp-action="Login">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <h2>@Localizer["login_button"]</h2>
@@ -44,10 +44,33 @@
                     <h4>Use another service to log in.</h4>
                     <hr />
                     <div>
-                        <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
+                        @{
+                            if (Model.ExternalLogins.Count == 0)
+                            {
+                                <p>
+                                    There are no external authentication services configured. See for details on setting up this ASP.NET application to support logging in via external services.
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    To log in, you can use social networks. To continue, click to enter using the social networks below.
+                                </p>
+                                <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl">
+                                    <div>
+                                        @foreach (var provider in Model.ExternalLogins)
+                                        {
+                                        <button type="submit" class="button" style="border-radius: 10px 10px 10px 10px; text-decoration:none; width:100%;margin-bottom: 10px;"
+                                                name="provider" value="@provider.Name"
+                                                title="Log in using your @provider.DisplayName account">
+                                            @provider.DisplayName
+                                        </button>
+                                          
+                                        }
+                                    </div>
+                                </form>
+                            }
+                        }
                     </div>
                 </section>
             </div>

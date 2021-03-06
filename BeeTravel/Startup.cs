@@ -84,7 +84,15 @@ namespace BeeTravel
             services.AddControllersWithViews()
                 .AddViewLocalization();
             services.AddSession();
-
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                options.ClientId = "277214799085-bi5ji74kedv0m653mnfvirqd6sabrdct.apps.googleusercontent.com";
+                options.ClientSecret = "qPLofxG5--rnI__T5sPiRUFE";
+            }).AddFacebook(options =>
+            {
+                options.AppId = "902807517171429";
+                options.AppSecret = "82fa380ab080cfc770dc357c7a2fd9c9";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

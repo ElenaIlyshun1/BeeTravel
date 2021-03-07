@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Not Found";
+}
+
+
+<section id="banner-lr">
+    <div class="content">
+        <div class="container">
+
+            <h2>@ViewBag.ErrorMessage</h2>
+
+            <a asp-action="index" asp-controller="home">
+                Click here to navigate to the home page
+            </a>
+        </div>
+    </div>
+</section>

@@ -2,10 +2,33 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,100italic,300italic");
 
 :root {
-    --main-color: #a7faeb;
-    --main-dark: #fcd76f;
+    --main-color: #fcd76f;
+    --main-dark: #eda532;
+    --main--bg: #171820f2;
+    --main-gr-fr-bg: #2d2f3cf2;
+    --main-gr-sc-bg: #2b2e39;
+    --footer-icon-color: #272833;
+    --about-icon-color: #272833;
+    --about-icon-bg: #272833;
+    --about-bg: #1c1d26;
 }
-
+[data-theme="light"] {
+    --main-color: #e6c056;
+    --main-dark: #eda532;
+    --main--bg: #a1a2b1f2;
+    --main-gr-fr-bg: #a1a2b1f2;
+    --main-gr-sc-bg: #9597a2;
+    --footer-icon-color: #9395a7;
+    --about-icon-color: #7d7e84;
+    --about-icon-bg: #848590;
+    --about-bg: #8f919e;
+}
+#four{
+    background:var(--about-bg);
+}
+#header {
+    background-image: -webkit-linear-gradient(top, var(--main-gr-fr-bg), var(--main-gr-sc-bg)), url(/wwwroot/img/overlay.png)!important;
+}
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
@@ -2395,7 +2418,7 @@ input[type="radio"] {
         }
 
     .icon.major {
-        background: #272833;
+        background: var(--about-icon-bg);
         border-radius: 100%;
         cursor: default;
         display: inline-block;
@@ -2424,7 +2447,7 @@ input[type="radio"] {
             }
 
             .icon.major.alt:before {
-                color: #272833 !important;
+                color: var(--about-icon-color) !important;
                 text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff;
             }
 
@@ -2839,7 +2862,7 @@ table {
         -moz-transition: -moz-transform 1s ease, opacity 1s ease;
         -webkit-transition: -webkit-transform 1s ease, opacity 1s ease;
         transition: transform 1s ease, opacity 1s ease;
-        background: rgba(23, 24, 32, 0.95);
+        background: var(--main--bg);
         border-style: solid;
         opacity: 1;
         position: absolute;
@@ -3231,10 +3254,10 @@ body.landing #header {
     }
 
     #banner:after {
-        background-image: -moz-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");
-        background-image: -webkit-linear-gradient(top, rgb(45 47 60 / 95%), rgba(23, 24, 32, 0.95)), url(images/overlay.png);
-        background-image: linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");
-        content: '';
+/*        background-image: -moz-linear-gradient(top,var(--main-gr-fr-bg), var(--main-gr-sc-bg)), url("images/overlay.png");
+*/        background-image: -webkit-linear-gradient(top, var(--main-gr-fr-bg), var(--main-gr-sc-bg)), url(images/overlay.png);
+/*        background-image: linear-gradient(top, var(--main-gr-fr-bg), var(--main-gr-sc-bg)), url("images/overlay.png");
+*/        content: '';
         display: block;
         height: 100%;
         left: 0;
@@ -3291,7 +3314,7 @@ body.is-touch #banner {
 /* Footer */
 
 #footer {
-    background: #272833;
+    background-image: -webkit-linear-gradient(top, var(--main-gr-fr-bg), var(--main-gr-sc-bg)), url(/wwwroot/img/overlay.png) !important;
     padding: 6em 0;
     text-align: center;
 }
@@ -3310,7 +3333,7 @@ body.is-touch #banner {
         }
 
         #footer .icons .icon.alt:before {
-            color: #272833 !important;
+            color: var(--footer-icon-color) !important;
             text-shadow: 1px 0 0 rgba(255, 255, 255, 0.5), -1px 0 0 rgba(255, 255, 255, 0.5), 0 1px 0 rgba(255, 255, 255, 0.5), 0 -1px 0 rgba(255, 255, 255, 0.5);
         }
 
@@ -3427,7 +3450,7 @@ body.is-touch #banner {
         }
 
         .spotlight .content {
-            background-color: #1c1d26;
+            background: var(--main--bg);
             border-width: 0 !important;
             border-top-width: 0.35em !important;
             bottom: auto !important;
@@ -3626,7 +3649,7 @@ body.is-touch #banner {
         top: 0;
         width: 100%;
         z-index: 10001;
-        background: #272833;
+        background-image: -webkit-linear-gradient(top, var(--main-gr-fr-bg), var(--main-gr-sc-bg)), url(/wwwroot/img/overlay.png) !important;
         box-shadow: 0 0.125em 0.125em 0 rgba(0, 0, 0, 0.125);
     }
 
@@ -3700,7 +3723,7 @@ body.is-touch #banner {
         top: 0;
         width: 275px;
         z-index: 10002;
-        background: #181920;
+        background-image: -webkit-linear-gradient(top, var(--main-gr-fr-bg), var(--main-gr-sc-bg)), url(/wwwroot/img/overlay.png) !important;
         padding: 0.75em 1.25em;
     }
 

@@ -86,7 +86,7 @@
 						visibleClass: 'navPanel-visible',
 						
 					});
-		$("nav a:nth-child(5)").addClass("button special");
+		$("nav a:nth-child(4)").addClass("button special");
 
 
 			// Fix: Remove navPanel transitions on WP<10 (poor/buggy performance).

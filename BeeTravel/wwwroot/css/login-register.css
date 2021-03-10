@@ -22,10 +22,10 @@
     }
 
     #banner-lr:after {
-        background-image: -moz-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");
-        background-image: -webkit-linear-gradient(top, rgb(45 47 60 / 95%), rgba(23, 24, 32, 0.95)), url(images/overlay.png);
+        background-image: -webkit-linear-gradient(top, var(--main-gr-fr-bg), var(--main-gr-sc-bg)), url(/wwwroot/img/overlay.png) !important;
+/*        background-image: -webkit-linear-gradient(top, rgb(45 47 60 / 95%), rgba(23, 24, 32, 0.95)), url(images/overlay.png);
         background-image: linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");
-        content: '';
+*/        content: '';
         display: block;
         height: 100%;
         left: 0;

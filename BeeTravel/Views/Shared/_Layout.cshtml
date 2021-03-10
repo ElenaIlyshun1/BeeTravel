@@ -21,11 +21,12 @@
     <link href="~/css/login-register.css" rel="stylesheet" type="text/css" />
     <link href="~/css/flag-icon.css" rel="stylesheet" type="text/css" />
     <link href="~/css/flag-icon.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/ThemeSwitcher.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body class="landing">
     <div id="page-wrapper">
-        <header id="header" class="header-menu" style="background-image: -webkit-linear-gradient(top, rgb(45 47 60 / 95%), rgb(43 46 57)), url(/wwwroot/img/overlay.png);margin-top: -10px;">
+        <header id="header" class="header-menu" style="margin-top: -10px;">
             <h1 id="logo"><a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BeeTravel</a></h1>
             <nav id="nav">
                 <ul>
@@ -37,7 +38,6 @@
                     </li>
                     <li><a asp-area="" asp-controller="Tour" asp-action="Index">@Localizer["Navbar_menu_item_4"]</a></li>
                     <li><a href="#">@Localizer["Navbar_menu_item_2"]</a></li>
-                    <li><a href="elements.html">@Localizer["Navbar_menu_item_3"]</a></li>
                     @if (SignInManager.IsSignedIn(User))
                     {
                         <li><a asp-area="" asp-controller="Manage" asp-action="Index" class="button special" title="Manage" style="box-shadow:none;padding: 0 0.55em;">@Localizer["Navbar_menu_profile"]</a></li>
@@ -52,11 +52,20 @@
                     <li class="button-language">
                         <partial name="_Culture" />
                     </li>
+                    <li style=" vertical-align: -webkit-baseline-middle;">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox" />
+                                <div class="slider round"></div>
+                            </label>
+                        </div>
+                    </li>
+
                 </ul>
             </nav>
         </header>
         <div>
-            <main role="main" class="pb-3">
+            <main role="main">
                 @RenderBody()
             </main>
         </div>
@@ -90,11 +99,13 @@
     <script src="~/js/skel.min.js"></script>
     <script src="~/js/util.js"></script>
     <script src="~/js/main_script.js"></script>
+    <script src="~/js/ThemeSwitcher.js"></script>
     <div id="titleBar">
         <a href="#navPanel" class="toggle"></a>
         <span class="title">
             <a class="navbar-brand" href="/">BeeTravel</a>
         </span>
+
     </div>
     @RenderSection("Scripts", required: false)
 </body>

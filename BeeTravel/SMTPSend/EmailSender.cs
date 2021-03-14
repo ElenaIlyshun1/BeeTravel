@@ -1,6 +1,8 @@
 ﻿using BeeTravel.Interfaces;
 using MailKit.Net.Smtp;
 using MimeKit;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,24 +16,12 @@ namespace BeeTravel.SMTPSend
         {
             try
             {
-                var emailMessage = new MimeMessage();
-
-                emailMessage.From.Add(new MailboxAddress("Администрация сайта", "beetravelconfirm@gmail.com"));
-                emailMessage.To.Add(new MailboxAddress("lenailyshun@gmail.com", to));
-                emailMessage.Subject = "no-reply";
-                emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
-                {
-                    Text = text
-                };
-
-                using (var client = new SmtpClient())
-                {
-                    await client.ConnectAsync("smtp.gmail.com", 587);
-                    await client.AuthenticateAsync("beetravelconfirm@gmail.com", "Qw3eI98*63%");              
-                    await client.SendAsync(emailMessage);
-
-                    await client.DisconnectAsync(true);
-                }
+                var apiKey = "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";
+                var client = new SendGridClient(apiKey);
+                var from = new EmailAddress("BeeTravel@i.ua", "no-reply");
+                var toEmail = new EmailAddress(to, "Client");
+                var msg = MailHelper.CreateSingleEmail(from, toEmail, subject, text, text);
+                var response = await client.SendEmailAsync(msg);
             }
             catch (Exception ex)
             {
